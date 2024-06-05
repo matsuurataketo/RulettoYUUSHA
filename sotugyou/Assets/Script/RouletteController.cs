@@ -22,7 +22,7 @@ public class RouletteController : MonoBehaviour
     public float RouletteSpeed => rouletteSpeed; // プロパティを介して外部からアクセスできるようにする
     private Quaternion previousRotation;//ルーレットのｚ回転の変数
     private int frameCount = 0;//回り始めてからのフレームカウンター
-    private int comparisonInterval = 210; // 比較間隔
+    private int comparisonInterval = 60; // 比較間隔
 
     Slider _slider; //HPバー
     [SerializeField]GameObject shieldRoulettoObject;//装備決めのシーンで使用
@@ -56,11 +56,16 @@ public class RouletteController : MonoBehaviour
             rouletteSpeed = Input.GetAxis("Mouse ScrollWheel") * rotationSpeed; // ルーレットの速度を更新する
             roulette.transform.Rotate(Vector3.forward, rouletteSpeed, Space.World);
         }
-            
-        if (frameCount % comparisonInterval == 0 && ScrollWheel==true)
+
+        float tolerance = 0.1f; // Adjust this value based on the precision you need
+
+        frameCount++;
+
+        if (frameCount % comparisonInterval == 0 && ScrollWheel == true)
         {
-            if (Quaternion.Angle(roulette.transform.rotation, previousRotation) == 0f&&ScrollWheel==true)
-            { 
+            float angleDifference = Quaternion.Angle(roulette.transform.rotation, previousRotation);
+            if (angleDifference < tolerance && ScrollWheel == true)
+            {
                 ScrollWheel = false;
                 Debug.Log("回転は同じです。");
                 ShowResult(roulette.transform.eulerAngles.z);
@@ -70,8 +75,6 @@ public class RouletteController : MonoBehaviour
                 previousRotation = roulette.transform.rotation;
             }
         }
-        
-        frameCount++;
     }
 
     private void ShowResult(float x)
