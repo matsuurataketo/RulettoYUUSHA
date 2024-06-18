@@ -33,12 +33,12 @@ public class HPmanegment : MonoBehaviour
         UpdateUI();
     }
 
-    public void UpdatePlayerDownHP(int newHP)
+    public void UpdatePlayerDownHP(float newHP)
     {
         PlayerHP -= newHP;
         UpdateUI();
     }
-    public void UpdatePlayerUPHP(int newHP)
+    public void UpdatePlayerUPHP(float newHP)
     {
         PlayerHP += newHP;
         UpdateUI();
@@ -52,7 +52,7 @@ public class HPmanegment : MonoBehaviour
     }
 
     // エネミーのHPを更新するメソッド
-    public void UpdateEnemyUPHP(int newHP)
+    public void UpdateEnemyUPHP(float newHP)
     {
         EnemyHP += newHP;
         UpdateUI();

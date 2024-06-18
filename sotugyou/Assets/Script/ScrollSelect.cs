@@ -53,7 +53,7 @@ public class ScrollSelect : MonoBehaviour
         }
         if (!objectsToActivate[1].activeSelf)
             currentTime = 0;
-        Debug.Log(currentTime);
+        //Debug.Log(currentTime);
     }
 
     // 指定したインデックスのボタンを選択状態にする
