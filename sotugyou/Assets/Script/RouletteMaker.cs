@@ -28,21 +28,23 @@ public class RouletteMaker : MonoBehaviour
 
     public float ratePerRoulette;
     public float rotatePerRoulette;
+
+    private Image YOBJ;
+    private Quaternion initialRotation;
     private void Start()
     {
         //画像の分割数を求めている
         ratePerRoulette = 1 / (float)choices.Count;
         rotatePerRoulette = 360 / (float)(choices.Count);
 
-
         for (int i = 0; i < choices.Count; i++)
         {
             //インスタンス化
             var obj = Instantiate(rouletteImage, imageParentTransform);
-            var RUI =Instantiate(rouletteUIImage,imageParentTransform);
+            var RUI = Instantiate(rouletteUIImage, imageParentTransform);
 
             //画像の色を書き換え
-            obj.color= rouletteColors[(choices.Count - 1 - i)];
+            obj.color = rouletteColors[(choices.Count - 1 - i)];
             //何度まで表示させるか
             obj.fillAmount = ratePerRoulette * (choices.Count - i);
             //書き換えたいプレファブの子供を探し出し書き換えている

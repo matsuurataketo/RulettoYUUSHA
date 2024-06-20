@@ -9,7 +9,7 @@ public class RoulettoGimick : MonoBehaviour
     public float rotationSpeed = 100f; // ‰ñ“]‘¬“x
     private List<Direction> directions = new List<Direction>();
     private int currentStep = 0;
-    private float timeLimit = 10f;
+    public float timeLimit = 5f;
     private float timer = 0f;
     public bool gameActive = false;
     private float totalRotation = 0f;

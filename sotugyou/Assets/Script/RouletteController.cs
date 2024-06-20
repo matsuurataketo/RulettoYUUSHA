@@ -25,8 +25,9 @@ public class RouletteController : MonoBehaviour
     private int comparisonInterval = 60; // 比較間隔
 
     Slider _slider; //HPバー
-    [SerializeField] GameObject shieldRoulettoObject;//装備決めのシーンで使用
-    [SerializeField] GameObject WponsRoulrtto;//装備決めのシーンで使用
+    [SerializeField] GameObject EnemyroulettoYazirusi;//
+    [SerializeField] GameObject RoulettoYazirusi;//
+    [SerializeField] GameObject RoulettoGame;
     [SerializeField] GameObject[] RoulettoORButton;//スキルルーレット
     UIManager UIManager;
     ScrollSelect ScrollSelect;
@@ -133,19 +134,20 @@ public class RouletteController : MonoBehaviour
             {
                 child.gameObject.SetActive(false);
             }
+            RoulettoYazirusi.SetActive(false);
         }
 
-        RoulettoORButton[3].SetActive(false);
     }
 
     private IEnumerator PlayRouletteGame(string result, float hpChange, string message)
     {
         SkillRouletto(message);
         //ミニゲームスタート
+        RoulettoGame.SetActive(true);
         rulettogimickflag = true;
         roulettoGimick.StartRouletteGame();
         // 10秒間待機
-        yield return new WaitForSeconds(10);
+        yield return new WaitForSeconds(5);
         if (result == "きょう" || result == "じゃく" || result == "みす")
         {
             HPmanegment.UpdateEnemyDownHP(hpChange);
@@ -154,10 +156,12 @@ public class RouletteController : MonoBehaviour
         {
             HPmanegment.UpdatePlayerUPHP(hpChange);
         }
+        RoulettoGame.SetActive(false);
         rulettogimickflag = false;
 
         //敵のルーレット開始
         enemyroulette.SetActive(true);
+        EnemyroulettoYazirusi.SetActive(true);
         enemyScript.StartRoulette();
         // ルーレットが停止するまで待機
         yield return new WaitUntil(() => !enemyScript.IsSpinning);
@@ -165,6 +169,7 @@ public class RouletteController : MonoBehaviour
 
         // ルーレットが停止した後の処理
         enemyroulette.SetActive(false);
+        EnemyroulettoYazirusi.SetActive(false);
         RoulettoORButton[0].SetActive(true);
         RoulettoORButton[1].SetActive(true);
 
@@ -172,6 +177,7 @@ public class RouletteController : MonoBehaviour
         ScrollSelect.currentTime = 0f;
 
         RoulettoORButton[2].SetActive(false);
-        RoulettoORButton[4].SetActive(false);
+        RoulettoYazirusi.SetActive(false);
+        RoulettoORButton[3].SetActive(false);
     }
 }
