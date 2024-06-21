@@ -64,8 +64,8 @@ public class EnemyRoulette : MonoBehaviour
         }
 
         rouletteSpeed = 0;
-        isSpinning = false;
         ShowResult(roulette.transform.eulerAngles.z);
+        isSpinning = false;
     }
 
     private void ShowResult(float x)

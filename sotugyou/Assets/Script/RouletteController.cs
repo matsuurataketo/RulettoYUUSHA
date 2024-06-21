@@ -34,6 +34,8 @@ public class RouletteController : MonoBehaviour
     UIManager UIManager;
     ScrollSelect ScrollSelect;
     HPmanegment HPmanegment;
+    CountDownTimer countDownTimer;
+    ActivScene activScene;
 
     [SerializeField] GameObject enemyroulette;
     [SerializeField] EnemyRoulette enemyScript;
@@ -49,6 +51,9 @@ public class RouletteController : MonoBehaviour
         HPmanegment = GameObject.Find("HPManegment").GetComponent<HPmanegment>();
         UIManager = GameObject.Find("Canvas").GetComponent<UIManager>();
         ScrollSelect = GameObject.Find("ScrollSelect").GetComponent<ScrollSelect>();
+        countDownTimer=GameObject.Find("MiniGameTimer").GetComponent<CountDownTimer>();
+        activScene = GameObject.Find("ActiveScene").GetComponent<ActivScene>();
+
         //_slider = GameObject.Find("EnemyHP").GetComponent<Slider>();
         //_slider.value = 1f;
     }
@@ -145,6 +150,7 @@ public class RouletteController : MonoBehaviour
     {
         SkillRouletto(message);
         //ミニゲームスタート
+        countDownTimer.StartCountDown();
         RoulettoGame.SetActive(true);
         RightLeftImage.SetActive(true);
         rulettogimickflag = true;
@@ -161,9 +167,11 @@ public class RouletteController : MonoBehaviour
         }
         RoulettoGame.SetActive(false);
         RightLeftImage.SetActive(false);
-        rulettogimickflag = false;
+        
 
         //敵のルーレット開始
+        activScene.StartEnemyEffect();
+        yield return new WaitUntil(() => activScene.HasCompleted);
         enemyroulette.SetActive(true);
         EnemyroulettoYazirusi.SetActive(true);
         enemyScript.StartRoulette();
@@ -178,10 +186,12 @@ public class RouletteController : MonoBehaviour
         RoulettoORButton[1].SetActive(true);
 
         UIManager.StartCountDown();
+        activScene.StartPlayerEffect();
         ScrollSelect.currentTime = 0f;
 
         RoulettoORButton[2].SetActive(false);
         RoulettoYazirusi.SetActive(false);
         RoulettoORButton[3].SetActive(false);
+        rulettogimickflag = false;
     }
 }
