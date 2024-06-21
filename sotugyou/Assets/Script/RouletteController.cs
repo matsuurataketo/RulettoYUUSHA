@@ -30,6 +30,7 @@ public class RouletteController : MonoBehaviour
     [SerializeField] GameObject RoulettoGame;
     [SerializeField] GameObject RightLeftImage;
     [SerializeField] GameObject[] RoulettoORButton;//スキルルーレット
+
     UIManager UIManager;
     ScrollSelect ScrollSelect;
     HPmanegment HPmanegment;

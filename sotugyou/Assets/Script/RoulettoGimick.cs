@@ -110,6 +110,8 @@ public class RoulettoGimick : MonoBehaviour
                 if (totalRotation >= 360f)
                 {
                     totalRotation = 0f;
+                    // 現在のステップの画像を非表示にする
+                    instantiatedImages[currentStep].gameObject.SetActive(false);
                     currentStep++;
                     Debug.Log("正しい方向に一回転完了！");
 
