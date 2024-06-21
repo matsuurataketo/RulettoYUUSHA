@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class RoulettoGimick : MonoBehaviour
 {
@@ -13,6 +14,12 @@ public class RoulettoGimick : MonoBehaviour
     private float timer = 0f;
     public bool gameActive = false;
     private float totalRotation = 0f;
+    [SerializeField] private Image imagePrefab; // インスタンス化するImageのプレハブ
+    [SerializeField] private Transform imageParent; // Imageを格納する親オブジェクト
+    [SerializeField] private Sprite rightImage; // 右方向の画像
+    [SerializeField] private Sprite leftImage;  // 左方向の画像
+
+    private List<Image> instantiatedImages = new List<Image>(); // インスタンス化された画像のリスト
 
     public void InitializeGame()
     {
@@ -20,6 +27,13 @@ public class RoulettoGimick : MonoBehaviour
         currentStep = 0;
         totalRotation = 0f;
         timer = 0f;
+
+        // 画像の初期化と削除
+        foreach (var img in instantiatedImages)
+        {
+            Destroy(img.gameObject);
+        }
+        instantiatedImages.Clear();
     }
 
     public void StartRouletteGame()
@@ -30,13 +44,26 @@ public class RoulettoGimick : MonoBehaviour
 
     IEnumerator StartGame()
     {
-        if (gameActive == false)
+        if (!gameActive)
         {
+            float initialPositionX = -300f; // 初期位置
+            float offsetX = 150f; // オフセット
+
             // ランダムに5回の方向を抽選
             for (int i = 0; i < 5; i++)
             {
                 directions.Add((Direction)Random.Range(0, 2));
+
+                // 画像をインスタンス化
+                Image newImage = Instantiate(imagePrefab, imageParent);
+                newImage.sprite = directions[i] == Direction.Right ? rightImage : leftImage;
+                instantiatedImages.Add(newImage);
+
+                // 位置を設定
+                RectTransform rectTransform = newImage.GetComponent<RectTransform>();
+                rectTransform.anchoredPosition = new Vector2(initialPositionX + i * offsetX, 0);
             }
+
             // デバッグ用に抽選結果をログに表示
             foreach (var dir in directions)
             {

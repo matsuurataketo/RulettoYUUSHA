@@ -414,6 +414,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &595201205
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 595201206}
+  m_Layer: 0
+  m_Name: RightLeft
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &595201206
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 595201205}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 200, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 772770587}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &654319593
 GameObject:
   m_ObjectHideFlags: 0
@@ -734,7 +765,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 772770587}
-  - component: {fileID: 772770588}
   m_Layer: 5
   m_Name: RoulettoMiniGame
   m_TagString: Untagged
@@ -754,7 +784,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1359301119}
+  - {fileID: 822674116}
+  - {fileID: 595201206}
   m_Father: {fileID: 668309374}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -762,13 +793,46 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &772770588
+--- !u!1 &822674115
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 822674116}
+  - component: {fileID: 822674117}
+  m_Layer: 0
+  m_Name: Game
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &822674116
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 822674115}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1359301119}
+  m_Father: {fileID: 772770587}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &822674117
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 772770586}
+  m_GameObject: {fileID: 822674115}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0e12bc5092713044da521a3f7cc87169, type: 3}
@@ -777,6 +841,10 @@ MonoBehaviour:
   rotationSpeed: 2000
   timeLimit: 5
   gameActive: 0
+  imagePrefab: {fileID: 2756298125594473204, guid: 0f3a8c26e24e6ff4992056a59216df33, type: 3}
+  imageParent: {fileID: 595201206}
+  rightImage: {fileID: 21300000, guid: a6690184266ec6c488a602e134bb1e5b, type: 3}
+  leftImage: {fileID: 21300000, guid: 2b2c57c6f89509444b01c49c027e47fe, type: 3}
 --- !u!1 &914738625
 GameObject:
   m_ObjectHideFlags: 0
@@ -1151,7 +1219,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1499132311}
-  m_Father: {fileID: 772770587}
+  m_Father: {fileID: 822674116}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2692,6 +2760,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 97342435}
     - target: {fileID: 6742485218590208763, guid: 9701416c3c25c3f43af8c1516854822e, type: 3}
+      propertyPath: RightLeftImage
+      value: 
+      objectReference: {fileID: 595201205}
+    - target: {fileID: 6742485218590208763, guid: 9701416c3c25c3f43af8c1516854822e, type: 3}
       propertyPath: RoulettoYazirusi
       value: 
       objectReference: {fileID: 920359826}
@@ -2808,6 +2880,10 @@ PrefabInstance:
       propertyPath: enemyroulette
       value: 
       objectReference: {fileID: 97342435}
+    - target: {fileID: 5094738265116724807, guid: b21cde8c0e868164d8ae6e08b289ca4e, type: 3}
+      propertyPath: RightLeftImage
+      value: 
+      objectReference: {fileID: 595201205}
     - target: {fileID: 5094738265116724807, guid: b21cde8c0e868164d8ae6e08b289ca4e, type: 3}
       propertyPath: RoulettoYazirusi
       value: 

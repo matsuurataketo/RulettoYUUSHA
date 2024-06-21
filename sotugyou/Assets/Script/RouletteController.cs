@@ -28,6 +28,7 @@ public class RouletteController : MonoBehaviour
     [SerializeField] GameObject EnemyroulettoYazirusi;//
     [SerializeField] GameObject RoulettoYazirusi;//
     [SerializeField] GameObject RoulettoGame;
+    [SerializeField] GameObject RightLeftImage;
     [SerializeField] GameObject[] RoulettoORButton;//スキルルーレット
     UIManager UIManager;
     ScrollSelect ScrollSelect;
@@ -144,6 +145,7 @@ public class RouletteController : MonoBehaviour
         SkillRouletto(message);
         //ミニゲームスタート
         RoulettoGame.SetActive(true);
+        RightLeftImage.SetActive(true);
         rulettogimickflag = true;
         roulettoGimick.StartRouletteGame();
         // 10秒間待機
@@ -157,6 +159,7 @@ public class RouletteController : MonoBehaviour
             HPmanegment.UpdatePlayerUPHP(hpChange);
         }
         RoulettoGame.SetActive(false);
+        RightLeftImage.SetActive(false);
         rulettogimickflag = false;
 
         //敵のルーレット開始
