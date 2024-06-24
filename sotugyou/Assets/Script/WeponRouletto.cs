@@ -13,17 +13,16 @@ public class WeponRouletto : MonoBehaviour
     [HideInInspector] public WeponRouletteMaker rMaker;
 
     public static string result;//ルーレットの結果の格納変数
-    [SerializeField] private TextMeshProUGUI resultText;//結果の表示TEXT
-    public float rotationSpeed = 5.0f;//ルーレットの回転スピード
+    [SerializeField, Header("ルーレットの結果表示テキスト")] private TextMeshProUGUI resultText;//結果の表示TEXT
+    [Header("ルーレットの回転スピード")]public float rotationSpeed = 5.0f;//ルーレットの回転スピード
     private float lastScrollWheelInputTime; // 最後にマウススクロールホイールの入力があった時間
-    public float stopThreshold = 1.0f; // ルーレットが停止したとみなす閾値（秒
     private bool ScrollWheel = false;//最初のマウスホイール制御変数
-    [SerializeField] private float rouletteSpeed; // ルーレットの速度を保持する変数
+    [SerializeField, Header("ルーレットのリアルな回転速度")] private float rouletteSpeed; // ルーレットの速度を保持する変数
     public float RouletteSpeed => rouletteSpeed; // プロパティを介して外部からアクセスできるようにする
     private Quaternion previousRotation;//ルーレットのｚ回転の変数
     private int frameCount = 0;//回り始めてからのフレームカウンター
     private int comparisonInterval = 210; // 比較間隔
-    [SerializeField] GameObject WponsRoulrtto;//装備決めのシーンで使用
+    [SerializeField,Header("装備決めのルーレット")] GameObject WponsRoulrtto;//装備決めのシーンで使用
 
     private void Update()
     {

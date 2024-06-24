@@ -7,13 +7,13 @@ using UnityEngine.SceneManagement;
 
 public class HPmanegment : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI PlayerHPText;
-    [SerializeField] private TextMeshProUGUI EnemyHPText;
-    [SerializeField] private TextMeshProUGUI WeponText;
-    public float PlayerHP = 100; // プレイヤーのHPを初期化
-    public float EnemyHP = 100; // エネミーのHPを初期化
-    public float PlayerAtack = 30;
-    public float Weponstate=0;
+    [SerializeField, Header("プレイヤーHP表示テキスト")] private TextMeshProUGUI PlayerHPText;
+    [SerializeField,Header("敵HP表示テキスト")] private TextMeshProUGUI EnemyHPText;
+    [SerializeField, Header("装備表示テキスト")] private TextMeshProUGUI WeponText;
+    [Header("プレイヤーHP")] public float PlayerHP = 100; // プレイヤーのHPを初期化
+    [Header("敵HP")] public float EnemyHP = 100; // エネミーのHPを初期化
+    [Header("プレイヤーの基礎攻撃力")] public float PlayerAtack = 30;
+    [Header("武器の持つ攻撃力")] public float Weponstate=0;
 
     // Start is called before the first frame update
     void Start()

@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class TextEditor : MonoBehaviour
 {
-    public string[] texts;//Unity上で入力するstringの配列
+    [Header("テキストの格納")]public string[] texts;//Unity上で入力するstringの配列
     int textNumber;//何番目のtexts[]を表示させるか
     string displayText;//表示させるstring
     int textCharNumber;//何文字目をdisplayTextに追加するか

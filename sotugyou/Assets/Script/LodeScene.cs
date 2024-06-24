@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class LodeScene : MonoBehaviour
 {
-    [SerializeField] private string SceneName;
+    [SerializeField, Header("ˆÚ“®‚·‚éƒV[ƒ“‚Ì–¼‘O")] private string SceneName;
     // Start is called before the first frame update
     public void OnClickGameStart()
     {

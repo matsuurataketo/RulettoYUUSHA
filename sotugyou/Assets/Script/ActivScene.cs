@@ -6,8 +6,8 @@ using TMPro;
 
 public class ActivScene : MonoBehaviour
 {
-    [SerializeField] private Image image;
-    [SerializeField] private TextMeshProUGUI text;
+    [SerializeField,Header("ターン表示画像")] private Image image;
+    [SerializeField,Header("ターン表示テキスト")] private TextMeshProUGUI text;
     private bool isIncreasing = true;
     private bool hasCompleted = false;
     public bool HasCompleted => hasCompleted;

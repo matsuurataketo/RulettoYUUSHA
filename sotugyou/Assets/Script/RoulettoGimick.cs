@@ -7,17 +7,17 @@ public class RoulettoGimick : MonoBehaviour
 {
     private enum Direction { Right, Left }
 
-    public float rotationSpeed = 100f; // 回転速度
+    [Header("ルーレットのスピード")]public float rotationSpeed = 100f; // 回転速度
     private List<Direction> directions = new List<Direction>();
     private int currentStep = 0;
-    public float timeLimit = 5f;
+    [Header("ミニゲームの時間")]public float timeLimit = 5f;
     private float timer = 0f;
-    public bool gameActive = false;
+    [Header("ゲーム中か否か")]public bool gameActive = false;
     private float totalRotation = 0f;
-    [SerializeField] private Image imagePrefab; // インスタンス化するImageのプレハブ
-    [SerializeField] private Transform imageParent; // Imageを格納する親オブジェクト
-    [SerializeField] private Sprite rightImage; // 右方向の画像
-    [SerializeField] private Sprite leftImage;  // 左方向の画像
+    [SerializeField,Header("インスタンス化するImageのプレハブ")] private Image imagePrefab; // インスタンス化するImageのプレハブ
+    [SerializeField,Header("Imageを格納する親オブジェクト")] private Transform imageParent; // Imageを格納する親オブジェクト
+    [SerializeField,Header("右方向の画像")] private Sprite rightImage; // 右方向の画像
+    [SerializeField,Header("左方向の画像")] private Sprite leftImage;  // 左方向の画像
 
     private List<Image> instantiatedImages = new List<Image>(); // インスタンス化された画像のリスト
 

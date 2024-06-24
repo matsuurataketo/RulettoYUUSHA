@@ -7,25 +7,26 @@ using UnityEngine.UI;
 public class WeponRouletteMaker : MonoBehaviour
 {
     //インスタンス化する座標
-    [SerializeField] private Transform imageParentTransform;
+    [SerializeField,Header("ルーレットの画像")] private Transform imageParentTransform;
 
     //複製したtextの文字書き換え用
-    public List<string> choices;
+    [Header("ルーレットの種類")] public List<string> choices;
 
     //複製したimageの書き換え用
-    public List<Sprite> Images;
+    [Header("ルーレット内の差し替え用画像")] public List<Sprite> Images;
 
     //ルーレットの色書き換え用
-    [SerializeField] private List<Color> rouletteColors;
+    [SerializeField, Header("ルーレットの色")] private List<Color> rouletteColors;
 
     //ルーレットのプレファブ画像
-    [SerializeField] private Image rouletteImage;
+    [SerializeField,Header("ルーレットのプレファブ画像")] private Image rouletteImage;
 
-    [SerializeField] private GameObject rouletteUIImage;
+    [SerializeField, Header("ルーレット内のプレファブ画像（差し替え前）")] private GameObject rouletteUIImage;
 
     //RouletteControllerアッタッチされているオブジェクト
-    [SerializeField] private WeponRouletto rController;
+    [SerializeField, Header("WeponRoulettoがアタッチされているオブジェクト")] private WeponRouletto rController;
 
+    [Header("ルーレットの分割数")]
     public float ratePerRoulette;
     public float rotatePerRoulette;
     private void Start()

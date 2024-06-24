@@ -5,9 +5,9 @@ using UnityEngine.UI;
 
 public class CountDownTimer : MonoBehaviour
 {
-    [SerializeField] private Image uiFill;
-    [SerializeField] private TextMeshProUGUI uiText;
-    [SerializeField] private float CountTime;
+    [SerializeField,Header("タイマー画像")] private Image uiFill;
+    [SerializeField,Header("タイマーテキスト")] private TextMeshProUGUI uiText;
+    [SerializeField, Header("時間制限")] private float CountTime;
 
     private void Start()
     {

@@ -6,8 +6,8 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    [SerializeField] Image countDownImage;
-    [SerializeField] TextMeshProUGUI countDownText;
+    [SerializeField,Header("カウントダウンの画像")] Image countDownImage;
+    [SerializeField,Header("カウントダウンテキスト")] TextMeshProUGUI countDownText;
     int countDownCount;
     float countDownElapsedTime;
     float countDownDuration = 5.0f;
