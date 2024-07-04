@@ -29,6 +29,8 @@ public class RouletteMaker : MonoBehaviour
     [Header("ÉãÅ[ÉåÉbÉgÇÃï™äÑêî")]
     public float ratePerRoulette;
     public float rotatePerRoulette;
+    private List<Image> rouletteImages = new List<Image>();
+    private List<GameObject> rouletteUIImages = new List<GameObject>();
 
     private Quaternion initialRotation;
     private void Start()
@@ -55,9 +57,25 @@ public class RouletteMaker : MonoBehaviour
             obj.transform.GetChild(0).transform.rotation = Quaternion.Euler(0, 0, ((rotatePerRoulette / 2) + rotatePerRoulette * i));
             RUI.transform.rotation = Quaternion.Euler(0, 0, ((rotatePerRoulette / 2) + rotatePerRoulette * i));
             //obj.transform.GetChild(1).transform.rotation = Quaternion.Euler(0, 0, ((rotatePerRoulette / 2) + rotatePerRoulette * i));
+            rouletteImages.Add(obj);
+            rouletteUIImages.Add(RUI);
+            rController.rotatePerRouletteStartAngle.Add(rotatePerRoulette * i);
+            rController.rotatePerRouletteEndAngle.Add(rotatePerRoulette * (i + 1));
         }
         rController.rMaker = this;
-        rController.rotatePerRoulette = rotatePerRoulette;
         rController.roulette = imageParentTransform.gameObject;
+    }
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            IncreaseRandomAngle();
+        }
+    }
+    private void IncreaseRandomAngle()
+    {
+        rouletteImages[1].fillAmount -= 0.00555f;
+        rController.rotatePerRouletteStartAngle[2] = rController.rotatePerRouletteStartAngle[2] - 2.05f;
+        rController.rotatePerRouletteEndAngle[1] = rController.rotatePerRouletteEndAngle[1] - 2.05f;
     }
 }

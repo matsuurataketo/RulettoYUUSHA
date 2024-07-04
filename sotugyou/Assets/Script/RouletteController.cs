@@ -9,7 +9,8 @@ using TMPro;
 public class RouletteController : MonoBehaviour
 {
     [HideInInspector] public GameObject roulette;
-    [HideInInspector] public float rotatePerRoulette;
+    [HideInInspector] public List<float> rotatePerRouletteStartAngle;
+    [HideInInspector] public List<float> rotatePerRouletteEndAngle;
     [HideInInspector] public RouletteMaker rMaker;
 
     private string result;//ƒ‹[ƒŒƒbƒg‚ÌŒ‹‰Ê‚ÌŠi”[•Ï”
@@ -90,13 +91,13 @@ public class RouletteController : MonoBehaviour
 
     private void ShowResult(float x)
     {
-        //resultText.text = "Wepon:";
-        for (int i = 1; i <= rMaker.choices.Count; i++)
+        for (int i = 0; i < rMaker.choices.Count; i++)
         {
-            if (((rotatePerRoulette * (i - 1) <= x) && x <= (rotatePerRoulette * i)) ||
-                (-(360 - ((i - 1) * rotatePerRoulette)) >= x && x >= -(360 - (i * rotatePerRoulette))))
+            if (rotatePerRouletteStartAngle[i] <= x && x < rotatePerRouletteEndAngle[i] ||
+                -(360 - rotatePerRouletteStartAngle[i]) >= x && x >= -(360 - rotatePerRouletteEndAngle[i]))
             {
-                result = rMaker.choices[i - 1];
+                result = rMaker.choices[i];
+
             }
         }
 
@@ -112,13 +113,16 @@ public class RouletteController : MonoBehaviour
                 StartCoroutine(PlayRouletteGame(result, 0f, "\nUŒ‚:"));
                 break;
             case "‚¨‚¢‚µ‚¢":
-                StartCoroutine(PlayRouletteGame(result, 50f, "\n‰ñ•œ:"));
+                //StartCoroutine(PlayRouletteGame(result, 50f, "\n‰ñ•œ:"));
+                Debug.Log("‚¨‚¢‚µ‚¢");
                 break;
             case "‚É‚ª‚¢":
-                StartCoroutine(PlayRouletteGame(result, 30f, "\n‰ñ•œ:"));
+                //StartCoroutine(PlayRouletteGame(result, 30f, "\n‰ñ•œ:"));
+                Debug.Log("‚É‚ª‚¢");
                 break;
             case "‚©‚ç‚¢":
-                StartCoroutine(PlayRouletteGame(result, 10f, "\n‰ñ•œ:"));
+                //StartCoroutine(PlayRouletteGame(result, 10f, "\n‰ñ•œ:"));
+                Debug.Log("‚©‚ç‚¢");
                 break;
             default:
                 break;
