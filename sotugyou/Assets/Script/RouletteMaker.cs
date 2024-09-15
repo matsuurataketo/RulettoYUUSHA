@@ -74,8 +74,19 @@ public class RouletteMaker : MonoBehaviour
     }
     private void IncreaseRandomAngle()
     {
-        rouletteImages[1].fillAmount -= 0.00555f;
-        rController.rotatePerRouletteStartAngle[2] = rController.rotatePerRouletteStartAngle[2] - 2.05f;
-        rController.rotatePerRouletteEndAngle[1] = rController.rotatePerRouletteEndAngle[1] - 2.05f;
+        rouletteImages[1].fillAmount -= 0.002775f;
+        rController.rotatePerRouletteStartAngle[2] = rController.rotatePerRouletteStartAngle[2] - 1.025f;
+        rController.rotatePerRouletteEndAngle[1] = rController.rotatePerRouletteEndAngle[1] - 1.025f;
+        for (int i = 0; i < choices.Count-1; i++)
+        {
+            // Œ»Ý‚Ì‰ñ“]Šp“x‚ð1“x’Ç‰Á‚µ‚ÄŒvŽZ
+            Vector3 savedRotation = rouletteImages[i].transform.GetChild(0).transform.eulerAngles;
+            Vector3 UIsaveRotation = rouletteUIImages[i].transform.eulerAngles;
+            savedRotation.z += 0.9f;
+            UIsaveRotation.z += 0.9f;
+            rouletteImages[i].transform.GetChild(0).transform.rotation = Quaternion.Euler(savedRotation);
+            rouletteUIImages[i].transform.rotation = Quaternion.Euler(UIsaveRotation);
+        }
+
     }
 }
