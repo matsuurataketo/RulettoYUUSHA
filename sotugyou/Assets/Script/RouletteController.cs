@@ -5,6 +5,7 @@ using UnityEngine.Events;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
+using UnityEngine.Playables;
 
 public class RouletteController : MonoBehaviour
 {
@@ -39,6 +40,7 @@ public class RouletteController : MonoBehaviour
 
     [SerializeField, Header("敵のルーレットオブジェクト")] GameObject enemyroulette;
     [SerializeField, Header("EnemyRouletteがアタッチされているオブジェクト")] EnemyRoulette enemyScript;
+    [SerializeField,Header("タイムラインをアッタッチ")]TimelineController timelineController;
 
     private RoulettoGimick roulettoGimick;
     private bool rulettogimickflag = false;
@@ -158,19 +160,28 @@ public class RouletteController : MonoBehaviour
         RightLeftImage.SetActive(true);
         rulettogimickflag = true;
         roulettoGimick.StartRouletteGame();
+
         // 10秒間待機
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(5); 
+
+        RoulettoGame.SetActive(false);
+        RightLeftImage.SetActive(false);
+
         if (result == "きょう" || result == "じゃく" || result == "みす")
         {
+            // タイムラインを再生
+            timelineController.PlayTimeline();
+
+            // タイムラインの再生が終了するまで待機
+            yield return new WaitUntil(() => timelineController.playableDirector.state != PlayState.Playing);
+
+            // HPを減少させる処理
             HPmanegment.UpdateEnemyDownHP(hpChange);
         }
         else if (result == "おいしい" || result == "にがい" || result == "からい")
         {
             HPmanegment.UpdatePlayerUPHP(hpChange);
         }
-        RoulettoGame.SetActive(false);
-        RightLeftImage.SetActive(false);
-        
 
         //敵のルーレット開始
         activScene.StartEnemyEffect();
@@ -178,9 +189,9 @@ public class RouletteController : MonoBehaviour
         enemyroulette.SetActive(true);
         EnemyroulettoYazirusi.SetActive(true);
         enemyScript.StartRoulette();
+
         // ルーレットが停止するまで待機
         yield return new WaitUntil(() => !enemyScript.IsSpinning);
-        
 
         // ルーレットが停止した後の処理
         enemyroulette.SetActive(false);

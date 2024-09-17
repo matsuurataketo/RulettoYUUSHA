@@ -1,18 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Playables;
 
 public class TimelineController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    // PlayableDirectorをアタッチ
+    public PlayableDirector playableDirector;
 
-    // Update is called once per frame
-    void Update()
+    // タイムラインを再生するメソッド
+    public void PlayTimeline()
     {
-        
+        if (playableDirector != null)
+        {
+            playableDirector.Play(); // タイムラインを再生
+        }
     }
 }
