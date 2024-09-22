@@ -798,8 +798,6 @@ RectTransform:
   - {fileID: 2052696271}
   - {fileID: 716511535}
   - {fileID: 1742465755}
-  - {fileID: 1081397636}
-  - {fileID: 925194580}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -850,6 +848,8 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 317881826}
+  - {fileID: 1081397636}
+  - {fileID: 925194580}
   m_Father: {fileID: 668309374}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -1266,14 +1266,14 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 925194578}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2085253655}
   - {fileID: 1508670576}
-  m_Father: {fileID: 668309374}
+  m_Father: {fileID: 716511535}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1475,14 +1475,14 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1081397635}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1196570640}
   - {fileID: 1356057259}
-  m_Father: {fileID: 668309374}
+  m_Father: {fileID: 716511535}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1895,7 +1895,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6131016831656748822, guid: 5b82c3fa324142d4cb862e6b722ab2ce, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 500
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6131016831656748822, guid: 5b82c3fa324142d4cb862e6b722ab2ce, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -3104,7 +3104,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 698972131143715284, guid: fbbb349397efe7d459680b09b12822f9, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 280
+      value: 400
       objectReference: {fileID: 0}
     - target: {fileID: 698972131143715284, guid: fbbb349397efe7d459680b09b12822f9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -3556,13 +3556,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1805751600}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0.9246821, z: -0, w: 0.38074023}
-  m_LocalPosition: {x: 45.1, y: 18.5, z: -39.8}
+  m_LocalRotation: {x: -0, y: 0.7224148, z: -0, w: -0.69146}
+  m_LocalPosition: {x: 56.3, y: 10, z: 14}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 359.0738, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 267.492, z: 0}
 --- !u!1001 &1822668485
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3726,7 +3726,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5588025233561594105, guid: f0b45fa946f835f42a0e65079ed69dab, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 500
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5588025233561594105, guid: f0b45fa946f835f42a0e65079ed69dab, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -4550,6 +4550,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3295962123828223686, guid: 9701416c3c25c3f43af8c1516854822e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4365384572147014508, guid: 9701416c3c25c3f43af8c1516854822e, type: 3}
       propertyPath: m_Name
       value: KougekiMaker
@@ -4711,6 +4715,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2008973159}
     m_Modifications:
+    - target: {fileID: 2634767086178632584, guid: b21cde8c0e868164d8ae6e08b289ca4e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3871398589929801250, guid: b21cde8c0e868164d8ae6e08b289ca4e, type: 3}
       propertyPath: m_Name
       value: KaihukuMaker
@@ -5010,7 +5018,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6131016831656748822, guid: 5b82c3fa324142d4cb862e6b722ab2ce, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -600
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6131016831656748822, guid: 5b82c3fa324142d4cb862e6b722ab2ce, type: 3}
       propertyPath: m_AnchoredPosition.y
