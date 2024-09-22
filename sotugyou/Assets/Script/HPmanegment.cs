@@ -1,24 +1,34 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using System.Diagnostics;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI; // スライダー用
+using System.Collections;
 
 public class HPmanegment : MonoBehaviour
 {
     [SerializeField, Header("プレイヤーHP表示テキスト")] private TextMeshProUGUI PlayerHPText;
-    [SerializeField,Header("敵HP表示テキスト")] private TextMeshProUGUI EnemyHPText;
+    [SerializeField, Header("敵HP表示テキスト")] private TextMeshProUGUI EnemyHPText;
     [SerializeField, Header("装備表示テキスト")] private TextMeshProUGUI WeponText;
-    [Header("プレイヤーHP")] public float PlayerHP = 100; // プレイヤーのHPを初期化
-    [Header("敵HP")] public float EnemyHP = 100; // エネミーのHPを初期化
-    [Header("プレイヤーの基礎攻撃力")] public float PlayerAtack = 30;
-    [Header("武器の持つ攻撃力")] public float Weponstate=0;
+    [SerializeField, Header("プレイヤーHPスライダー")] private Slider PlayerHPSlider;
+    [SerializeField, Header("敵HPスライダー")] private Slider EnemyHPSlider;
+    [SerializeField, Header("プレイヤーHPスライダーのFill Image")] private Image PlayerHPFillImage;
+    [SerializeField, Header("敵HPスライダーのFill Image")] private Image EnemyHPFillImage;
 
-    // Start is called before the first frame update
+    [Header("プレイヤーHP")] public float PlayerHP = 100;
+    [Header("敵HP")] public float EnemyHP = 100;
+    [Header("プレイヤーの基礎攻撃力")] public float PlayerAtack = 30;
+    [Header("武器の持つ攻撃力")] public float Weponstate = 0;
+    [SerializeField, Header("HP減少/増加にかける時間(秒)")] private float damageDuration = 1.0f; // HP減少・増加にかける時間
+
+    private Color greenColor = Color.green;
+    private Color yellowColor = Color.yellow;
+    private Color orangeColor = new Color(1f, 0.64f, 0f); // オレンジ
+    private Color redColor = Color.red;
+
     void Start()
     {
-        switch (WeponRouletto.result) {
+        switch (WeponRouletto.result)
+        {
             case "ken":
                 Weponstate = 20;
                 WeponText.text = "ぷれいやー武器:" + WeponRouletto.result;
@@ -29,62 +39,95 @@ public class HPmanegment : MonoBehaviour
                 break;
         }
 
-        // HPの初期値をUIに反映
+        PlayerHPSlider.maxValue = PlayerHP;
+        EnemyHPSlider.maxValue = EnemyHP;
+
         UpdateUI();
     }
 
     public void UpdatePlayerDownHP(float newHP)
     {
-        PlayerHP -= newHP;
-        UpdateUI();
+        StartCoroutine(SmoothHPChange(PlayerHPSlider, PlayerHPText, PlayerHP, PlayerHP - newHP));
+        PlayerHP = Mathf.Max(0, PlayerHP - newHP);  // HPを更新
     }
+
     public void UpdatePlayerUPHP(float newHP)
     {
-        PlayerHP += newHP;
-        UpdateUI();
+        StartCoroutine(SmoothHPChange(PlayerHPSlider, PlayerHPText, PlayerHP, PlayerHP + newHP));
+        PlayerHP = Mathf.Min(PlayerHP + newHP, PlayerHPSlider.maxValue);  // HPが最大値を超えないように
     }
 
-    // エネミーのHPを更新するメソッド
     public void UpdateEnemyDownHP(float newHP)
     {
-        EnemyHP -= (30 + Weponstate) * newHP;
-        UpdateUI();
+        float totalDamage = (30 + Weponstate) * newHP;
+        StartCoroutine(SmoothHPChange(EnemyHPSlider, EnemyHPText, EnemyHP, EnemyHP - totalDamage));
+        EnemyHP = Mathf.Max(0, EnemyHP - totalDamage);  // HPを更新
     }
 
-    // エネミーのHPを更新するメソッド
     public void UpdateEnemyUPHP(float newHP)
     {
-        EnemyHP += newHP;
-        UpdateUI();
+        StartCoroutine(SmoothHPChange(EnemyHPSlider, EnemyHPText, EnemyHP, EnemyHP + newHP));
+        EnemyHP = Mathf.Min(EnemyHP + newHP, EnemyHPSlider.maxValue);  // HPが最大値を超えないように
     }
 
-    // UIにHPの値を反映するメソッド
+    IEnumerator SmoothHPChange(Slider hpSlider, TextMeshProUGUI hpText, float startHP, float endHP)
+    {
+        float elapsedTime = 0f;
+        endHP = Mathf.Clamp(endHP, 0, hpSlider.maxValue);
+
+        while (elapsedTime < damageDuration)
+        {
+            elapsedTime += Time.deltaTime;
+            float currentHP = Mathf.Lerp(startHP, endHP, elapsedTime / damageDuration);
+            hpSlider.value = currentHP;
+            hpText.text = currentHP.ToString("F0");
+            yield return null;
+        }
+
+        hpSlider.value = endHP;
+        hpText.text = endHP.ToString("F0");
+
+        UpdateUI(); // 色の更新もする
+    }
+
     void UpdateUI()
     {
-        if (PlayerHP <= 0)
+        // プレイヤーHPスライダーの更新
+        PlayerHPText.text = "ぷれいやー: " + PlayerHP.ToString();
+        PlayerHPSlider.value = PlayerHP;
+        UpdateHPBarColor(PlayerHPSlider, PlayerHPFillImage, PlayerHP);
+
+        // 敵HPスライダーの更新
+        EnemyHPText.text = "てき: " + EnemyHP.ToString();
+        EnemyHPSlider.value = EnemyHP;
+        UpdateHPBarColor(EnemyHPSlider, EnemyHPFillImage, EnemyHP);
+    }
+
+    void UpdateHPBarColor(Slider slider, Image fillImage, float hp)
+    {
+        if (hp > 70)
         {
-            PlayerHP = 0;
-            PlayerHPText.text = "ぷれいやー: " + PlayerHP.ToString();
-            StartCoroutine(Weit("EndScene"));
+            fillImage.color = greenColor;
         }
-        else if (EnemyHP <= 0)
+        else if (hp > 40)
         {
-            EnemyHP = 0;
-            EnemyHPText.text = "てき: " + EnemyHP.ToString();
-            StartCoroutine(Weit("CrearScene"));
+            fillImage.color = yellowColor;
+        }
+        else if (hp > 20)
+        {
+            fillImage.color = orangeColor;
         }
         else
         {
-            PlayerHPText.text = "ぷれいやー: " + PlayerHP.ToString();
-            EnemyHPText.text = "てき: " + EnemyHP.ToString();
+            fillImage.color = redColor;
         }
     }
 
     IEnumerator Weit(string sceneName)
     {
-        Time.timeScale = 0; // ゲームを一時停止
+        Time.timeScale = 0;
         yield return new WaitForSecondsRealtime(1.0f);
-        Time.timeScale = 1; // ゲームを再開
+        Time.timeScale = 1;
         SceneManager.LoadScene(sceneName);
     }
 }
