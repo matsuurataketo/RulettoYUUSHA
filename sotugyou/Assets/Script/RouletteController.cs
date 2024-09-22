@@ -18,7 +18,7 @@ public class RouletteController : MonoBehaviour
     [SerializeField,Header("ルーレットの結果表示テキスト")] private TextMeshProUGUI resultText;//結果の表示TEXT
     [Header("ルーレットの回転スピード")] public float rotationSpeed = 5.0f;//ルーレットの回転スピード
     private float lastScrollWheelInputTime; // 最後にマウススクロールホイールの入力があった時間
-    private bool ScrollWheel = false;//最初のマウスホイール制御変数
+    public bool ScrollWheel = false;//最初のマウスホイール制御変数
     [SerializeField, Header("ルーレットのリアルな回転速度")] private float rouletteSpeed; // ルーレットの速度を保持する変数
     public float RouletteSpeed => rouletteSpeed; // プロパティを介して外部からアクセスできるようにする
     private Quaternion previousRotation;//ルーレットのｚ回転の変数
@@ -75,8 +75,15 @@ public class RouletteController : MonoBehaviour
 
         frameCount++;
 
+        if (Input.GetKeyDown(KeyCode.Space)&&ScrollWheel==true)
+        {
+            rMaker.IncreaseRandomAngle();
+            Debug.Log("拡張してます");
+        }
+
         if (frameCount % comparisonInterval == 0 && ScrollWheel == true)
         {
+            
             float angleDifference = Quaternion.Angle(roulette.transform.rotation, previousRotation);
             if (angleDifference < tolerance && ScrollWheel == true)
             {
@@ -86,6 +93,7 @@ public class RouletteController : MonoBehaviour
             }
             else
             {
+                
                 previousRotation = roulette.transform.rotation;
             }
         }

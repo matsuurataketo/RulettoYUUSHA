@@ -65,14 +65,8 @@ public class RouletteMaker : MonoBehaviour
         rController.rMaker = this;
         rController.roulette = imageParentTransform.gameObject;
     }
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            IncreaseRandomAngle();
-        }
-    }
-    private void IncreaseRandomAngle()
+   
+    public void IncreaseRandomAngle()
     {
         rouletteImages[1].fillAmount -= 0.002775f;
         rController.rotatePerRouletteStartAngle[2] = rController.rotatePerRouletteStartAngle[2] - 1.025f;
