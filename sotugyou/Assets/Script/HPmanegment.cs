@@ -101,6 +101,10 @@ public class HPmanegment : MonoBehaviour
         EnemyHPText.text = "‚Ä‚«: " + EnemyHP.ToString();
         EnemyHPSlider.value = EnemyHP;
         UpdateHPBarColor(EnemyHPSlider, EnemyHPFillImage, EnemyHP);
+        if (PlayerHP <= 0)
+        {
+            StartCoroutine(Weit("EndScene"));
+        }
     }
 
     void UpdateHPBarColor(Slider slider, Image fillImage, float hp)
@@ -121,6 +125,7 @@ public class HPmanegment : MonoBehaviour
         {
             fillImage.color = redColor;
         }
+        
     }
 
     IEnumerator Weit(string sceneName)

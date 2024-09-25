@@ -11,12 +11,12 @@ public class EnemyRoulette : MonoBehaviour
 
     private string result; // ルーレットの結果の格納変数
     [SerializeField, Header("結果表示TEXT")] private TextMeshProUGUI resultText; // 結果の表示TEXT
-    [Header("ルーレットの回転速度")] public float initialRotationSpeed = 1000f; // ルーレットの初期回転スピード
+    [Header("ルーレットの回転速度")] public float initialRotationSpeed = 500f; // ルーレットの初期回転スピード
     private float rouletteSpeed; // ルーレットの速度を保持する変数
     private bool isSpinning = false; // ルーレットが回転しているかどうかのフラグ
-    [Header("ルーレットの最小減速率")] public float minDecelerationRate = 0.98f; // 最小減速率
-    [Header("ルーレットの最大減速率")] public float maxDecelerationRate = 0.995f; // 最大減速率
-    [Header("ルーレットの最低速度")] public float minimumSpeed = 0.1f; // 最低速度
+    [Header("ルーレットの最小減速率")] public float minDecelerationRate = 0.1f; // 最小減速率
+    [Header("ルーレットの最大減速率")] public float maxDecelerationRate = 0.5f; // 最大減速率
+    [Header("ルーレットの最低速度")] public float minimumSpeed = 4.5f; // 最低速度
     public bool IsSpinning => isSpinning;
 
     HPmanegment HPmanegment;
@@ -59,7 +59,7 @@ public class EnemyRoulette : MonoBehaviour
             // ランダムな減速率を適用
             float decelerationRate = Random.Range(minDecelerationRate, maxDecelerationRate);
             rouletteSpeed *= decelerationRate;
-
+            Debug.Log(rouletteSpeed);
             yield return null; // 次のフレームまで待機
         }
 
