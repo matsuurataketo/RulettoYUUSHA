@@ -2734,7 +2734,7 @@ MonoBehaviour:
   EnemyHPSlider: {fileID: 925194579}
   PlayerHPFillImage: {fileID: 967606792}
   EnemyHPFillImage: {fileID: 449691461}
-  PlayerHP: 30
+  PlayerHP: 100
   EnemyHP: 100
   PlayerAtack: 30
   Weponstate: 0
@@ -4671,6 +4671,18 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8790213645377416002, guid: 5b82c3fa324142d4cb862e6b722ab2ce, type: 3}
     - target: {fileID: 8371949389234987480, guid: 9701416c3c25c3f43af8c1516854822e, type: 3}
+      propertyPath: Images.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8371949389234987480, guid: 9701416c3c25c3f43af8c1516854822e, type: 3}
+      propertyPath: choices.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8371949389234987480, guid: 9701416c3c25c3f43af8c1516854822e, type: 3}
+      propertyPath: Images.Array.data[3]
+      value: 
+      objectReference: {fileID: 21300000, guid: 08da9f8db8d7f484980c48e4336650ba, type: 3}
+    - target: {fileID: 8371949389234987480, guid: 9701416c3c25c3f43af8c1516854822e, type: 3}
       propertyPath: choices.Array.data[0]
       value: "\u307F\u3059"
       objectReference: {fileID: 0}
@@ -4681,6 +4693,14 @@ PrefabInstance:
     - target: {fileID: 8371949389234987480, guid: 9701416c3c25c3f43af8c1516854822e, type: 3}
       propertyPath: choices.Array.data[2]
       value: "\u304D\u3087\u3046"
+      objectReference: {fileID: 0}
+    - target: {fileID: 8371949389234987480, guid: 9701416c3c25c3f43af8c1516854822e, type: 3}
+      propertyPath: choices.Array.data[3]
+      value: "\u78BA\u6B7B"
+      objectReference: {fileID: 0}
+    - target: {fileID: 8371949389234987480, guid: 9701416c3c25c3f43af8c1516854822e, type: 3}
+      propertyPath: rouletteColors.Array.size
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8371949389234987480, guid: 9701416c3c25c3f43af8c1516854822e, type: 3}
       propertyPath: rouletteColors.Array.data[0].b
@@ -4713,6 +4733,22 @@ PrefabInstance:
     - target: {fileID: 8371949389234987480, guid: 9701416c3c25c3f43af8c1516854822e, type: 3}
       propertyPath: rouletteColors.Array.data[2].r
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8371949389234987480, guid: 9701416c3c25c3f43af8c1516854822e, type: 3}
+      propertyPath: rouletteColors.Array.data[3].a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8371949389234987480, guid: 9701416c3c25c3f43af8c1516854822e, type: 3}
+      propertyPath: rouletteColors.Array.data[3].b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8371949389234987480, guid: 9701416c3c25c3f43af8c1516854822e, type: 3}
+      propertyPath: rouletteColors.Array.data[3].g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8371949389234987480, guid: 9701416c3c25c3f43af8c1516854822e, type: 3}
+      propertyPath: rouletteColors.Array.data[3].r
+      value: 0.08695221
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
