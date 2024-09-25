@@ -75,7 +75,7 @@ public class RouletteController : MonoBehaviour
 
         frameCount++;
 
-        if (Input.GetKeyDown(KeyCode.Space)/*&&ScrollWheel==true*/)
+        if (Input.GetKeyDown(KeyCode.Space)&&ScrollWheel==true)
         {
             rMaker.IncreaseRandomAngle();
             Debug.Log("Šg’£‚µ‚Ä‚Ü‚·");
@@ -114,19 +114,19 @@ public class RouletteController : MonoBehaviour
         switch (result)
         {
             case "‚«‚å‚¤":
-                //StartCoroutine(PlayRouletteGame(result, 1f, "\nUŒ‚:"));
+                StartCoroutine(PlayRouletteGame(result, 1f, "\nUŒ‚:"));
                 Debug.Log("‚«‚å‚¤");
                 break;
             case "‚¶‚á‚­":
-                //StartCoroutine(PlayRouletteGame(result, 0.5f, "\nUŒ‚:"));
+                StartCoroutine(PlayRouletteGame(result, 0.5f, "\nUŒ‚:"));
                 Debug.Log("‚¶‚á‚­");
                 break;
             case "’†":
-                //StartCoroutine(PlayRouletteGame(result, 0f, "\nUŒ‚:"));
+                StartCoroutine(PlayRouletteGame(result, 0f, "\nUŒ‚:"));
                 Debug.Log("’†");
                 break;
             case "Šm€":
-                //StartCoroutine(PlayRouletteGame(result, 0f, "\nUŒ‚:"));
+                StartCoroutine(PlayRouletteGame(result, 100f, "\nUŒ‚:"));
                 Debug.Log("Šm€");
                 break;
             case "‚¨‚¢‚µ‚¢":
@@ -183,7 +183,7 @@ public class RouletteController : MonoBehaviour
         RoulettoGame.SetActive(false);
         RightLeftImage.SetActive(false);
 
-        if (result == "‚«‚å‚¤" || result == "‚¶‚á‚­" || result == "‚İ‚·")
+        if (result == "‚«‚å‚¤" || result == "‚¶‚á‚­" || result == "’†"||result=="Šm€")
         {
             // ƒ^ƒCƒ€ƒ‰ƒCƒ“‚ğÄ¶
             timelineController.PlayTimeline();

@@ -102,9 +102,9 @@ public class HPmanegment : MonoBehaviour
         EnemyHPSlider.value = EnemyHP;
         UpdateHPBarColor(EnemyHPSlider, EnemyHPFillImage, EnemyHP);
         if (PlayerHP <= 0)
-        {
             StartCoroutine(Weit("EndScene"));
-        }
+        if (EnemyHP <= 0)
+            StartCoroutine(Weit("CrearScene"));
     }
 
     void UpdateHPBarColor(Slider slider, Image fillImage, float hp)
