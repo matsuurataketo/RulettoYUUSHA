@@ -75,7 +75,7 @@ public class RouletteController : MonoBehaviour
 
         frameCount++;
 
-        if (Input.GetKeyDown(KeyCode.Space)&&ScrollWheel==true)
+        if (Input.GetKeyDown(KeyCode.Space)/*&&ScrollWheel==true*/)
         {
             rMaker.IncreaseRandomAngle();
             Debug.Log("Šg’£‚µ‚Ä‚Ü‚·");
@@ -114,13 +114,20 @@ public class RouletteController : MonoBehaviour
         switch (result)
         {
             case "‚«‚å‚¤":
-                StartCoroutine(PlayRouletteGame(result, 1f, "\nUŒ‚:"));
+                //StartCoroutine(PlayRouletteGame(result, 1f, "\nUŒ‚:"));
+                Debug.Log("‚«‚å‚¤");
                 break;
             case "‚¶‚á‚­":
-                StartCoroutine(PlayRouletteGame(result, 0.5f, "\nUŒ‚:"));
+                //StartCoroutine(PlayRouletteGame(result, 0.5f, "\nUŒ‚:"));
+                Debug.Log("‚¶‚á‚­");
                 break;
-            case "‚İ‚·":
-                StartCoroutine(PlayRouletteGame(result, 0f, "\nUŒ‚:"));
+            case "’†":
+                //StartCoroutine(PlayRouletteGame(result, 0f, "\nUŒ‚:"));
+                Debug.Log("’†");
+                break;
+            case "Šm€":
+                //StartCoroutine(PlayRouletteGame(result, 0f, "\nUŒ‚:"));
+                Debug.Log("Šm€");
                 break;
             case "‚¨‚¢‚µ‚¢":
                 StartCoroutine(PlayRouletteGame(result, 50f, "\n‰ñ•œ:"));
@@ -161,6 +168,7 @@ public class RouletteController : MonoBehaviour
 
     private IEnumerator PlayRouletteGame(string result, float hpChange, string message)
     {
+        rMaker.ResetRoulette();
         SkillRouletto(message);
         //ƒ~ƒjƒQ[ƒ€ƒXƒ^[ƒg
         countDownTimer.StartCountDown();
