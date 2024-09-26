@@ -88,6 +88,26 @@ public class RouletteMaker : MonoBehaviour
         rController.roulette = imageParentTransform.gameObject;
     }
 
+
+    //public float speed = 1.0f;ココからレインボー
+    //private float hue = 0f;
+    //public void Update()
+    //{
+    //    float t = Mathf.PingPong(Time.time * speed, 1);
+    //    if (choices[0] == "確死")
+    //    {
+    //        // 時間に基づいて色相をスムーズに変化させる
+    //        hue += speed * Time.deltaTime;
+
+    //        // 色相をループさせる (0 ~ 1)
+    //        if (hue > 1f)
+    //            hue -= 1f;
+
+    //        // HSVからRGBに変換して色を設定
+    //        rouletteImages[3].color = Color.HSVToRGB(hue, 1f, 1f);
+    //    }
+    //}
+
     // リセットメソッド
     public void ResetRoulette()
     {

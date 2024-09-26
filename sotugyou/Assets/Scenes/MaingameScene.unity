@@ -4667,6 +4667,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 278665070}
     - target: {fileID: 8371949389234987480, guid: 9701416c3c25c3f43af8c1516854822e, type: 3}
+      propertyPath: speed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8371949389234987480, guid: 9701416c3c25c3f43af8c1516854822e, type: 3}
       propertyPath: rouletteImage2
       value: 
       objectReference: {fileID: 8790213645377416002, guid: 5b82c3fa324142d4cb862e6b722ab2ce, type: 3}
