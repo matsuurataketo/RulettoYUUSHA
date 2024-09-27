@@ -572,6 +572,7 @@ PlayableDirector:
     - 96d4b13f633100d4c98a6926d77b9ca9: {fileID: 0}
     - fb2fbf73063274d48a63a533a5d3cf0d: {fileID: 0}
     - ffb2278b69948be4bbcbea2bc1e61c57: {fileID: 0}
+    - 8f06cb4bca3711845987c893730c054f: {fileID: 1611090704}
     - d38f6da0d8e73ec489d3926e165f287d: {fileID: 0}
     - 03f5be1de1d0a4745bef0408c2322611: {fileID: 0}
     - 06697fdb268313b4299992f2e69ce2e2: {fileID: 1611090704}
@@ -790,7 +791,7 @@ VideoPlayer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1611090703}
   m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: 8b2579811456ece4d8ad772b8367a04c, type: 3}
+  m_VideoClip: {fileID: 32900000, guid: 87d5cdf5bd8f3134994287588a0b3e66, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 2079457476}
