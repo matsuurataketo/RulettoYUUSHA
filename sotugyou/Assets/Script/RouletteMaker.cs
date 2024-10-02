@@ -126,6 +126,7 @@ public class RouletteMaker : MonoBehaviour
         rouletteImages.Clear();
         rController.rotatePerRouletteStartAngle.Clear();
         rController.rotatePerRouletteEndAngle.Clear();
+        rouletteUIImages.Clear();
     }
 
     public void IncreaseRandomAngle()
