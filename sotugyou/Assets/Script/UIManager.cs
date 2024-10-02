@@ -12,6 +12,7 @@ public class UIManager : MonoBehaviour
     float countDownElapsedTime;
     float countDownDuration = 5.0f;
     // Start is called before the first frame update
+    public AudioSource bgmSource;  // BGM用のAudioSource
 
     public void StartCountDown()
     {
@@ -20,6 +21,8 @@ public class UIManager : MonoBehaviour
 
     IEnumerator CountDown()
     {
+        bgmSource.loop = true;     // ループ再生
+        bgmSource.Play();          // 再生開始
         countDownCount = 0;
         countDownElapsedTime = 0;
 
@@ -53,7 +56,7 @@ public class UIManager : MonoBehaviour
 
                 countDownImage.gameObject.SetActive(false);
                 countDownText.gameObject.SetActive(false);
-
+                bgmSource.Stop();
                 yield break;
             }
 

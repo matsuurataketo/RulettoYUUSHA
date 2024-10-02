@@ -44,6 +44,7 @@ public class RouletteController : MonoBehaviour
 
     private RoulettoGimick roulettoGimick;
     private bool rulettogimickflag = false;
+    public AudioSource SE;
 
 
 
@@ -65,7 +66,12 @@ public class RouletteController : MonoBehaviour
         if (enemyScript != null && !enemyScript.IsSpinning&&!rulettogimickflag)
         {
             if (Input.GetAxis("Mouse ScrollWheel") != 0f)     // マウスホイールが回された場合
+            {
+
+                SE.Play();
                 ScrollWheel = true; // フラグを下ろして、以降の処理を実行可能にする
+            }
+               
 
             rouletteSpeed = Input.GetAxis("Mouse ScrollWheel") * rotationSpeed; // ルーレットの速度を更新する
             roulette.transform.Rotate(Vector3.forward, rouletteSpeed, Space.World);
@@ -107,7 +113,7 @@ public class RouletteController : MonoBehaviour
                 -(360 - rotatePerRouletteStartAngle[i]) >= x && x >= -(360 - rotatePerRouletteEndAngle[i]))
             {
                 result = rMaker.choices[i];
-
+                SE.Stop();
             }
         }
 

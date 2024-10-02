@@ -14,6 +14,7 @@ public class ScrollSelect : MonoBehaviour
     UIManager uiManager;
     public RouletteMaker KougekirMaker;
     public RouletteMaker KaihukurMaker;
+    public AudioSource SESource;  // SE—p‚ÌAudioSource
 
     void Start()
     {
@@ -72,6 +73,7 @@ public class ScrollSelect : MonoBehaviour
     {
         if (selectedIndex == 0)
         {
+            SESource.Play();
             currentTime = 0f;
             objectsToActivate[1].SetActive(false);
             objectsToActivate[2].SetActive(false);
@@ -103,6 +105,7 @@ public class ScrollSelect : MonoBehaviour
 
         else
         {
+            SESource.Play();
             currentTime = 0f;
             objectsToActivate[1].SetActive(false);
             objectsToActivate[2].SetActive(false);
