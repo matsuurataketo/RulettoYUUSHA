@@ -40,8 +40,16 @@ public class RouletteMaker : MonoBehaviour
     private List<Quaternion> initialRotations = new List<Quaternion>();
     private List<float> initialFillAmounts = new List<float>();
 
+    private List<GameObject> instantiatedObjects = new List<GameObject>(); // インスタンス化したオブジェクトのリスト
+
     private void Start()
     {
+
+    }
+    public void RuleetSet()
+    {
+        // 前のターンのオブジェクトを削除
+        ClearPreviousTurnObjects();
 
         rotatePerRoulette = 360 / (float)(choices.Count);
         float rouletteRatesEnd = 0;
@@ -49,92 +57,98 @@ public class RouletteMaker : MonoBehaviour
         float ChildrenrouletteRatesStart = 0;
         float ChildrenrouletteRatesEnd = 0;
 
+        // ratePerRouletteを初期化
+        float ratePerRoulette = 1f; // 必要に応じて初期化値を調整
 
         for (int i = 0; i < choices.Count; i++)
         {
-            var obj = Instantiate(rouletteImage, imageParentTransform);
-            var RUI = Instantiate(rouletteUIImage, imageParentTransform);
-            
+            var obj = Instantiate(rouletteImage, imageParentTransform);  // 新しいオブジェクトをインスタンス化
+            var RUI = Instantiate(rouletteUIImage, imageParentTransform); // 新しいオブジェクトをインスタンス化
 
-            obj.color = rouletteColors[(choices.Count - 1 - i)];
+            // 色の設定 (Alpha値を1にする)
+            Color color = rouletteColors[(choices.Count - 1 - i)];
+            obj.color = new Color(color.r, color.g, color.b, 1f); // 不透明に設定
+
             obj.fillAmount = ratePerRoulette;
             ratePerRoulette -= rouletteRates[i];
 
             rController.rotatePerRouletteStartAngle.Add(rouletteRatesStart);
-            Debug.Log("スタート" + rouletteRatesStart);
             rouletteRatesStart += rouletteRates[rouletteRates.Count - i - 1] * 360;
 
             rouletteRatesEnd += rouletteRates[rouletteRates.Count - i - 1] * 360;
-            Debug.Log("終わり" + rouletteRatesEnd);
             rController.rotatePerRouletteEndAngle.Add(rouletteRatesEnd);
+
+            // スプライトの設定が正しいか確認
+            Image imageComponent = RUI.GetComponentInChildren<Image>();
+            if (imageComponent != null)
+            {
+                imageComponent.sprite = Images[(Images.Count - 1 - i)];
+                imageComponent.enabled = true; // Image コンポーネントが有効か確認
+            }
+            else
+            {
+                Debug.LogWarning("RUIのImageコンポーネントが見つかりませんでした。");
+            }
+
+            // 透明度をチェック
+            if (obj.color.a < 1f)
+            {
+                Debug.LogWarning($"objの透明度が不正です: {obj.color.a}");
+            }
 
             obj.GetComponentInChildren<TextMeshProUGUI>().text = choices[(choices.Count - 1 - i)];
             RUI.GetComponentInChildren<Image>().sprite = Images[(Images.Count - 1 - i)];
 
             ChildrenrouletteRatesStart = rouletteRates[i] * 360;
-            obj.transform.GetChild(0).transform.rotation = Quaternion.Euler(0, 0, (ChildrenrouletteRatesStart / 2)+ ChildrenrouletteRatesEnd);
+            obj.transform.GetChild(0).transform.rotation = Quaternion.Euler(0, 0, (ChildrenrouletteRatesStart / 2) + ChildrenrouletteRatesEnd);
             RUI.transform.rotation = Quaternion.Euler(0, 0, (ChildrenrouletteRatesStart / 2) + ChildrenrouletteRatesEnd);
             ChildrenrouletteRatesEnd += rouletteRates[i] * 360;
-
 
             rouletteImages.Add(obj);
             rouletteUIImages.Add(RUI);
 
-            // 初期状態を保存
-            initialRotations.Add(obj.transform.GetChild(0).transform.rotation);
-            initialFillAmounts.Add(obj.fillAmount);
+            // 新しく生成したオブジェクトをリストに保存
+            instantiatedObjects.Add(obj.gameObject);
+            instantiatedObjects.Add(RUI.gameObject);
         }
         rController.rMaker = this;
         rController.roulette = imageParentTransform.gameObject;
     }
 
-
-    //public float speed = 1.0f;ココからレインボー
-    //private float hue = 0f;
-    //public void Update()
-    //{
-    //    float t = Mathf.PingPong(Time.time * speed, 1);
-    //    if (choices[0] == "確死")
-    //    {
-    //        // 時間に基づいて色相をスムーズに変化させる
-    //        hue += speed * Time.deltaTime;
-
-    //        // 色相をループさせる (0 ~ 1)
-    //        if (hue > 1f)
-    //            hue -= 1f;
-
-    //        // HSVからRGBに変換して色を設定
-    //        rouletteImages[3].color = Color.HSVToRGB(hue, 1f, 1f);
-    //    }
-    //}
-
-    // リセットメソッド
-    public void ResetRoulette()
+    private void ClearPreviousTurnObjects()
     {
-        for (int i = 0; i < rouletteImages.Count; i++)
+        imageParentTransform.transform.rotation = Quaternion.Euler(0, 0, 0);
+        foreach (var obj in instantiatedObjects)
         {
-            // 初期状態にリセット
-            rouletteImages[i].transform.GetChild(0).transform.rotation = initialRotations[i];
-            rouletteUIImages[i].transform.rotation = initialRotations[i];
-            rouletteImages[i].fillAmount = initialFillAmounts[i];
+            Destroy(obj); // ゲームオブジェクトを削除
         }
+        instantiatedObjects.Clear(); // リストをクリア
+        rouletteImages.Clear();
+        rController.rotatePerRouletteStartAngle.Clear();
+        rController.rotatePerRouletteEndAngle.Clear();
+        rouletteUIImages.Clear();
     }
 
     public void IncreaseRandomAngle()
     {
-
-        rouletteImages[1].fillAmount -= 0.002775f;
-        rController.rotatePerRouletteEndAngle[2] = rController.rotatePerRouletteEndAngle[2] - 1.025f;
-        rController.rotatePerRouletteStartAngle[3] = rController.rotatePerRouletteStartAngle[3] - 1.025f;
+        if (rouletteImages.Count > 1 && rouletteImages[1] != null) // nullチェックを追加
+        {
+            rouletteImages[1].fillAmount -= 0.002775f;
+            rController.rotatePerRouletteEndAngle[2] -= 1.025f;
+            rController.rotatePerRouletteStartAngle[3] -= 1.025f;
+        }
 
         for (int i = 0; i < choices.Count - 2; i++)
         {
-            Vector3 savedRotation = rouletteImages[i].transform.GetChild(0).transform.eulerAngles;
-            Vector3 UIsaveRotation = rouletteUIImages[i].transform.eulerAngles;
-            savedRotation.z += 0.9f;
-            UIsaveRotation.z += 0.9f;
-            rouletteImages[i].transform.GetChild(0).transform.rotation = Quaternion.Euler(savedRotation);
-            rouletteUIImages[i].transform.rotation = Quaternion.Euler(UIsaveRotation);
+            if (rouletteImages[i] != null && rouletteUIImages[i] != null) // nullチェックを追加
+            {
+                Vector3 savedRotation = rouletteImages[i].transform.GetChild(0).transform.eulerAngles;
+                Vector3 UIsaveRotation = rouletteUIImages[i].transform.eulerAngles;
+                savedRotation.z += 0.9f;
+                UIsaveRotation.z += 0.9f;
+                rouletteImages[i].transform.GetChild(0).transform.rotation = Quaternion.Euler(savedRotation);
+                rouletteUIImages[i].transform.rotation = Quaternion.Euler(UIsaveRotation);
+            }
         }
     }
 }

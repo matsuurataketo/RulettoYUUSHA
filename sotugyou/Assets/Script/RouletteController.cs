@@ -115,7 +115,7 @@ public class RouletteController : MonoBehaviour
         {
             case "きょう":
                 StartCoroutine(PlayRouletteGame(result, 1f, "\n攻撃:"));
-                Debug.Log("きょう");
+                Debug.Log(result);
                 break;
             case "じゃく":
                 StartCoroutine(PlayRouletteGame(result, 0.5f, "\n攻撃:"));
@@ -168,7 +168,6 @@ public class RouletteController : MonoBehaviour
 
     private IEnumerator PlayRouletteGame(string result, float hpChange, string message)
     {
-        rMaker.ResetRoulette();
         SkillRouletto(message);
         //ミニゲームスタート
         countDownTimer.StartCountDown();
