@@ -1166,6 +1166,8 @@ MonoBehaviour:
   RoulettoYazirusi:
   - {fileID: 920359826}
   currentTime: 0
+  KougekirMaker: {fileID: 1035663096}
+  KaihukurMaker: {fileID: 1015445208}
 --- !u!4 &914738627
 Transform:
   m_ObjectHideFlags: 0
@@ -1446,11 +1448,33 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3871398589929801250, guid: b21cde8c0e868164d8ae6e08b289ca4e, type: 3}
   m_PrefabInstance: {fileID: 1971370800511237460}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1015445208 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9007811952706829462, guid: b21cde8c0e868164d8ae6e08b289ca4e, type: 3}
+  m_PrefabInstance: {fileID: 1971370800511237460}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1015445207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bce176b7432319409a18df18c659bd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1035663094 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4365384572147014508, guid: 9701416c3c25c3f43af8c1516854822e, type: 3}
   m_PrefabInstance: {fileID: 1588558793983524730}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1035663096 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8371949389234987480, guid: 9701416c3c25c3f43af8c1516854822e, type: 3}
+  m_PrefabInstance: {fileID: 1588558793983524730}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1035663094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bce176b7432319409a18df18c659bd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1081397635
 GameObject:
   m_ObjectHideFlags: 0
@@ -3766,7 +3790,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7839777441579159883, guid: f0b45fa946f835f42a0e65079ed69dab, type: 3}
       propertyPath: initialRotationSpeed
-      value: 10000
+      value: 1000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

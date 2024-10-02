@@ -123,22 +123,31 @@ public class RouletteMaker : MonoBehaviour
             Destroy(obj); // ゲームオブジェクトを削除
         }
         instantiatedObjects.Clear(); // リストをクリア
+        rouletteImages.Clear();
+        rController.rotatePerRouletteStartAngle.Clear();
+        rController.rotatePerRouletteEndAngle.Clear();
     }
 
     public void IncreaseRandomAngle()
     {
-        rouletteImages[1].fillAmount -= 0.002775f;
-        rController.rotatePerRouletteEndAngle[2] = rController.rotatePerRouletteEndAngle[2] - 1.025f;
-        rController.rotatePerRouletteStartAngle[3] = rController.rotatePerRouletteStartAngle[3] - 1.025f;
+        if (rouletteImages.Count > 1 && rouletteImages[1] != null) // nullチェックを追加
+        {
+            rouletteImages[1].fillAmount -= 0.002775f;
+            rController.rotatePerRouletteEndAngle[2] -= 1.025f;
+            rController.rotatePerRouletteStartAngle[3] -= 1.025f;
+        }
 
         for (int i = 0; i < choices.Count - 2; i++)
         {
-            Vector3 savedRotation = rouletteImages[i].transform.GetChild(0).transform.eulerAngles;
-            Vector3 UIsaveRotation = rouletteUIImages[i].transform.eulerAngles;
-            savedRotation.z += 0.9f;
-            UIsaveRotation.z += 0.9f;
-            rouletteImages[i].transform.GetChild(0).transform.rotation = Quaternion.Euler(savedRotation);
-            rouletteUIImages[i].transform.rotation = Quaternion.Euler(UIsaveRotation);
+            if (rouletteImages[i] != null && rouletteUIImages[i] != null) // nullチェックを追加
+            {
+                Vector3 savedRotation = rouletteImages[i].transform.GetChild(0).transform.eulerAngles;
+                Vector3 UIsaveRotation = rouletteUIImages[i].transform.eulerAngles;
+                savedRotation.z += 0.9f;
+                UIsaveRotation.z += 0.9f;
+                rouletteImages[i].transform.GetChild(0).transform.rotation = Quaternion.Euler(savedRotation);
+                rouletteUIImages[i].transform.rotation = Quaternion.Euler(UIsaveRotation);
+            }
         }
     }
 }
