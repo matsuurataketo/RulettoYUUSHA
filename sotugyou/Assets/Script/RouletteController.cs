@@ -71,7 +71,6 @@ public class RouletteController : MonoBehaviour
                 SE.Play();
                 ScrollWheel = true; // フラグを下ろして、以降の処理を実行可能にする
             }
-               
 
             rouletteSpeed = Input.GetAxis("Mouse ScrollWheel") * rotationSpeed; // ルーレットの速度を更新する
             roulette.transform.Rotate(Vector3.forward, rouletteSpeed, Space.World);
