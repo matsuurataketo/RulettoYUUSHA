@@ -12,6 +12,8 @@ public class ScrollSelect : MonoBehaviour
     private float selectionTime = 5f; // 選択時間
     [Header("現在の経過時間")]public float currentTime = 0f; // 現在の経過時間
     UIManager uiManager;
+    public RouletteMaker KougekirMaker;
+    public RouletteMaker KaihukurMaker;
 
     void Start()
     {
@@ -88,6 +90,10 @@ public class ScrollSelect : MonoBehaviour
                 }
 
                 parentObject = objectsToActivate[4];
+                parentObject.SetActive(true);
+                Debug.Log("呼び出しています");
+                KaihukurMaker.RuleetSet();
+
                 foreach (Transform child in parentObject.transform)
                 {
                     child.gameObject.SetActive(true);
@@ -115,6 +121,9 @@ public class ScrollSelect : MonoBehaviour
                 }
 
                 parentObject = objectsToActivate[5];
+                parentObject.SetActive(true);
+                KougekirMaker.RuleetSet();
+
                 foreach (Transform child in parentObject.transform)
                 {
                     child.gameObject.SetActive(true);
