@@ -95,6 +95,7 @@ public class EnemyRoulette : MonoBehaviour
                 HPmanegment.UpdatePlayerDownHP(15);
                 break;
             case "‚Ý‚·":
+                EnemyAttack();
                 HPmanegment.UpdatePlayerDownHP(0);
                 break;
 

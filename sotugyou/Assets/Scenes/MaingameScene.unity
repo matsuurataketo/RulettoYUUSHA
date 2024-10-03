@@ -299,6 +299,7 @@ Transform:
   - {fileID: 2042282683}
   - {fileID: 1822668486}
   - {fileID: 1383921401}
+  - {fileID: 801646690}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &192044697
@@ -1238,6 +1239,98 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &801646689
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 801646690}
+  - component: {fileID: 801646692}
+  - component: {fileID: 801646691}
+  m_Layer: 0
+  m_Name: Camera
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &801646690
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 801646689}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 100641981}
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+--- !u!81 &801646691
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 801646689}
+  m_Enabled: 1
+--- !u!20 &801646692
+Camera:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 801646689}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_ClearFlags: 1
+  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_projectionMatrixMode: 1
+  m_GateFitMode: 2
+  m_FOVAxisMode: 0
+  m_Iso: 200
+  m_ShutterSpeed: 0.005
+  m_Aperture: 16
+  m_FocusDistance: 10
+  m_FocalLength: 50
+  m_BladeCount: 5
+  m_Curvature: {x: 2, y: 11}
+  m_BarrelClipping: 0.25
+  m_Anamorphism: 0
+  m_SensorSize: {x: 36, y: 24}
+  m_LensShift: {x: 0, y: 0}
+  m_NormalizedViewPortRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+  near clip plane: 0.3
+  far clip plane: 1000
+  field of view: 60
+  orthographic: 0
+  orthographic size: 5
+  m_Depth: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RenderingPath: -1
+  m_TargetTexture: {fileID: 0}
+  m_TargetDisplay: 0
+  m_TargetEye: 3
+  m_HDR: 1
+  m_AllowMSAA: 1
+  m_AllowDynamicResolution: 0
+  m_ForceIntoRT: 0
+  m_OcclusionCulling: 1
+  m_StereoConvergence: 10
+  m_StereoSeparation: 0.022
 --- !u!1 &807655678
 GameObject:
   m_ObjectHideFlags: 0
@@ -1962,7 +2055,7 @@ VideoPlayer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1124250151}
   m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: 02c1e5e6bece93c449ccbf14b3ea781f, type: 3}
+  m_VideoClip: {fileID: 0}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 1805751601}
@@ -4501,7 +4594,7 @@ VideoPlayer:
   m_GameObject: {fileID: 1987856265}
   m_Enabled: 1
   m_VideoClip: {fileID: 32900000, guid: 5d1deb25f8a3bdf48a7e09d92ea344df, type: 3}
-  m_TargetCameraAlpha: 1
+  m_TargetCameraAlpha: 0
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 1805751601}
   m_TargetTexture: {fileID: 0}
@@ -4524,7 +4617,7 @@ VideoPlayer:
   m_ControlledAudioTrackCount: 1
   m_PlayOnAwake: 0
   m_SkipOnDrop: 1
-  m_Looping: 1
+  m_Looping: 0
   m_WaitForFirstFrame: 1
   m_FrameReadyEventEnabled: 0
   m_VideoShaders: []
@@ -4868,6 +4961,20 @@ PlayableDirector:
     value: {fileID: 0}
   - key: {fileID: -4415735028799525650, guid: 3b8a56b27fe27194a8df3c0871750156, type: 2}
     value: {fileID: 0}
+  - key: {fileID: -1533130019927893015, guid: 89a9bfc04ef599f4cacf5a91c12143eb, type: 2}
+    value: {fileID: 1383921403}
+  - key: {fileID: 323419293038215234, guid: 89a9bfc04ef599f4cacf5a91c12143eb, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: -9112768201631820621, guid: 89a9bfc04ef599f4cacf5a91c12143eb, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: -8468831690761559578, guid: 89a9bfc04ef599f4cacf5a91c12143eb, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: -230232188527287951, guid: 89a9bfc04ef599f4cacf5a91c12143eb, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: 831931051036865204, guid: 89a9bfc04ef599f4cacf5a91c12143eb, type: 2}
+    value: {fileID: 801646689}
+  - key: {fileID: 1738733630083364857, guid: 89a9bfc04ef599f4cacf5a91c12143eb, type: 2}
+    value: {fileID: 1805751602}
   m_ExposedReferences:
     m_References:
     - 1ff5b9a298f6bc94fac74fd0565baf97: {fileID: 1987856266}
