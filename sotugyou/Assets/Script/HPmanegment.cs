@@ -14,6 +14,7 @@ public class HPmanegment : MonoBehaviour
     [SerializeField, Header("プレイヤーHPスライダーのFill Image")] private Image PlayerHPFillImage;
     [SerializeField, Header("敵HPスライダーのFill Image")] private Image EnemyHPFillImage;
 
+
     [Header("プレイヤーHP")] public float PlayerHP = 100;
     [Header("敵HP")] public float EnemyHP = 100;
     [Header("プレイヤーの基礎攻撃力")] public float PlayerAtack = 30;
@@ -24,6 +25,7 @@ public class HPmanegment : MonoBehaviour
     private Color yellowColor = Color.yellow;
     private Color orangeColor = new Color(1f, 0.64f, 0f); // オレンジ
     private Color redColor = Color.red;
+    public RoulettoGimick roulettoGimick;
 
     void Start()
     {
@@ -47,19 +49,23 @@ public class HPmanegment : MonoBehaviour
 
     public void UpdatePlayerDownHP(float newHP)
     {
+        
         StartCoroutine(SmoothHPChange(PlayerHPSlider, PlayerHPText, PlayerHP, PlayerHP - newHP));
         PlayerHP = Mathf.Max(0, PlayerHP - newHP);  // HPを更新
     }
 
     public void UpdatePlayerUPHP(float newHP)
     {
-        StartCoroutine(SmoothHPChange(PlayerHPSlider, PlayerHPText, PlayerHP, PlayerHP + newHP));
-        PlayerHP = Mathf.Min(PlayerHP + newHP, PlayerHPSlider.maxValue);  // HPが最大値を超えないように
+        float Crearnum = 1 + (roulettoGimick.CrearNum / 10);
+        float totalHeal = newHP * Crearnum;
+        StartCoroutine(SmoothHPChange(PlayerHPSlider, PlayerHPText, PlayerHP, PlayerHP + totalHeal));
+        PlayerHP = Mathf.Min(PlayerHP + totalHeal, PlayerHPSlider.maxValue);  // HPが最大値を超えないように
     }
 
     public void UpdateEnemyDownHP(float newHP)
     {
-        float totalDamage = (30 + Weponstate) * newHP;
+        float Crearnum = 1+(roulettoGimick.CrearNum/10);
+        float totalDamage = newHP * Crearnum;
         StartCoroutine(SmoothHPChange(EnemyHPSlider, EnemyHPText, EnemyHP, EnemyHP - totalDamage));
         EnemyHP = Mathf.Max(0, EnemyHP - totalDamage);  // HPを更新
     }

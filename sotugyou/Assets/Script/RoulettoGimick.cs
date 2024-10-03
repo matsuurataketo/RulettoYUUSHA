@@ -10,6 +10,8 @@ public class RoulettoGimick : MonoBehaviour
     [Header("ルーレットのスピード")]public float rotationSpeed = 100f; // 回転速度
     private List<Direction> directions = new List<Direction>();
     private int currentStep = 0;
+    public float CrearNum = 0;
+    
     [Header("ミニゲームの時間")]public float timeLimit = 5f;
     private float timer = 0f;
     [Header("ゲーム中か否か")]public bool gameActive = false;
@@ -77,6 +79,7 @@ public class RoulettoGimick : MonoBehaviour
         // 制限時間を過ぎた場合の処理
         if (currentStep < directions.Count)
         {
+            Debug.Log(currentStep);
             Debug.Log("時間切れ！");
             gameActive = false;
         }
@@ -113,6 +116,7 @@ public class RoulettoGimick : MonoBehaviour
                     // 現在のステップの画像を非表示にする
                     instantiatedImages[currentStep].gameObject.SetActive(false);
                     currentStep++;
+                    CrearNum++;
                     Debug.Log("正しい方向に一回転完了！");
 
                     // 次のステップに進む

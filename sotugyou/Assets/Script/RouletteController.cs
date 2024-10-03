@@ -45,6 +45,7 @@ public class RouletteController : MonoBehaviour
     private RoulettoGimick roulettoGimick;
     private bool rulettogimickflag = false;
     public AudioSource SE;
+    bool scrollSoundPlayed = false; // SEが再生されたかどうかを示すフラグ
 
 
 
@@ -67,8 +68,12 @@ public class RouletteController : MonoBehaviour
         {
             if (Input.GetAxis("Mouse ScrollWheel") != 0f)     // マウスホイールが回された場合
             {
-
-                SE.Play();
+                if (!scrollSoundPlayed) // SEがまだ再生されていない場合
+                {
+                    SE.Play();
+                    scrollSoundPlayed = true;
+                }
+                   
                 ScrollWheel = true; // フラグを下ろして、以降の処理を実行可能にする
             }
 
@@ -93,6 +98,7 @@ public class RouletteController : MonoBehaviour
             if (angleDifference < tolerance && ScrollWheel == true)
             {
                 ScrollWheel = false;
+                scrollSoundPlayed = false;
                 Debug.Log("回転は同じです。");
                 ShowResult(roulette.transform.eulerAngles.z);
             }
@@ -119,15 +125,15 @@ public class RouletteController : MonoBehaviour
         switch (result)
         {
             case "きょう":
-                StartCoroutine(PlayRouletteGame(result, 1f, "\n攻撃:"));
+                StartCoroutine(PlayRouletteGame(result, 45, "\n攻撃:"));
                 Debug.Log(result);
                 break;
             case "じゃく":
-                StartCoroutine(PlayRouletteGame(result, 0.5f, "\n攻撃:"));
+                StartCoroutine(PlayRouletteGame(result, 15, "\n攻撃:"));
                 Debug.Log("じゃく");
                 break;
             case "中":
-                StartCoroutine(PlayRouletteGame(result, 0f, "\n攻撃:"));
+                StartCoroutine(PlayRouletteGame(result, 30, "\n攻撃:"));
                 Debug.Log("中");
                 break;
             case "確死":

@@ -1312,7 +1312,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e12bc5092713044da521a3f7cc87169, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 2000
+  rotationSpeed: 500
+  CrearNum: 0
   timeLimit: 5
   gameActive: 0
   imagePrefab: {fileID: 2756298125594473204, guid: 0f3a8c26e24e6ff4992056a59216df33, type: 3}
@@ -3131,6 +3132,7 @@ MonoBehaviour:
   PlayerAtack: 30
   Weponstate: 0
   damageDuration: 1
+  roulettoGimick: {fileID: 822674117}
 --- !u!4 &1535047000
 Transform:
   m_ObjectHideFlags: 0
@@ -4049,12 +4051,96 @@ PrefabInstance:
     m_TransformParent: {fileID: 2008973159}
     m_Modifications:
     - target: {fileID: 2394996521309516349, guid: f0b45fa946f835f42a0e65079ed69dab, type: 3}
+      propertyPath: Images.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2394996521309516349, guid: f0b45fa946f835f42a0e65079ed69dab, type: 3}
+      propertyPath: choices.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2394996521309516349, guid: f0b45fa946f835f42a0e65079ed69dab, type: 3}
+      propertyPath: Images.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: 08da9f8db8d7f484980c48e4336650ba, type: 3}
+    - target: {fileID: 2394996521309516349, guid: f0b45fa946f835f42a0e65079ed69dab, type: 3}
+      propertyPath: Images.Array.data[3]
+      value: 
+      objectReference: {fileID: 21300000, guid: 08da9f8db8d7f484980c48e4336650ba, type: 3}
+    - target: {fileID: 2394996521309516349, guid: f0b45fa946f835f42a0e65079ed69dab, type: 3}
       propertyPath: choices.Array.data[0]
       value: "\u304D\u3087\u3046"
       objectReference: {fileID: 0}
     - target: {fileID: 2394996521309516349, guid: f0b45fa946f835f42a0e65079ed69dab, type: 3}
       propertyPath: choices.Array.data[1]
       value: "\u3058\u3083\u304F"
+      objectReference: {fileID: 0}
+    - target: {fileID: 2394996521309516349, guid: f0b45fa946f835f42a0e65079ed69dab, type: 3}
+      propertyPath: choices.Array.data[2]
+      value: "\u3061\u3085\u3046"
+      objectReference: {fileID: 0}
+    - target: {fileID: 2394996521309516349, guid: f0b45fa946f835f42a0e65079ed69dab, type: 3}
+      propertyPath: choices.Array.data[3]
+      value: "\u307F\u3059"
+      objectReference: {fileID: 0}
+    - target: {fileID: 2394996521309516349, guid: f0b45fa946f835f42a0e65079ed69dab, type: 3}
+      propertyPath: rouletteColors.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2394996521309516349, guid: f0b45fa946f835f42a0e65079ed69dab, type: 3}
+      propertyPath: rouletteColors.Array.data[0].b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2394996521309516349, guid: f0b45fa946f835f42a0e65079ed69dab, type: 3}
+      propertyPath: rouletteColors.Array.data[0].g
+      value: 0.08780822
+      objectReference: {fileID: 0}
+    - target: {fileID: 2394996521309516349, guid: f0b45fa946f835f42a0e65079ed69dab, type: 3}
+      propertyPath: rouletteColors.Array.data[0].r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2394996521309516349, guid: f0b45fa946f835f42a0e65079ed69dab, type: 3}
+      propertyPath: rouletteColors.Array.data[1].b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2394996521309516349, guid: f0b45fa946f835f42a0e65079ed69dab, type: 3}
+      propertyPath: rouletteColors.Array.data[1].g
+      value: 0.64020205
+      objectReference: {fileID: 0}
+    - target: {fileID: 2394996521309516349, guid: f0b45fa946f835f42a0e65079ed69dab, type: 3}
+      propertyPath: rouletteColors.Array.data[1].r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2394996521309516349, guid: f0b45fa946f835f42a0e65079ed69dab, type: 3}
+      propertyPath: rouletteColors.Array.data[2].a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2394996521309516349, guid: f0b45fa946f835f42a0e65079ed69dab, type: 3}
+      propertyPath: rouletteColors.Array.data[2].b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2394996521309516349, guid: f0b45fa946f835f42a0e65079ed69dab, type: 3}
+      propertyPath: rouletteColors.Array.data[2].g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2394996521309516349, guid: f0b45fa946f835f42a0e65079ed69dab, type: 3}
+      propertyPath: rouletteColors.Array.data[2].r
+      value: 0.8556745
+      objectReference: {fileID: 0}
+    - target: {fileID: 2394996521309516349, guid: f0b45fa946f835f42a0e65079ed69dab, type: 3}
+      propertyPath: rouletteColors.Array.data[3].a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2394996521309516349, guid: f0b45fa946f835f42a0e65079ed69dab, type: 3}
+      propertyPath: rouletteColors.Array.data[3].b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2394996521309516349, guid: f0b45fa946f835f42a0e65079ed69dab, type: 3}
+      propertyPath: rouletteColors.Array.data[3].g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2394996521309516349, guid: f0b45fa946f835f42a0e65079ed69dab, type: 3}
+      propertyPath: rouletteColors.Array.data[3].r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5588025233561594105, guid: f0b45fa946f835f42a0e65079ed69dab, type: 3}
       propertyPath: m_Pivot.x
@@ -5162,7 +5248,7 @@ PrefabInstance:
       objectReference: {fileID: 97342435}
     - target: {fileID: 6742485218590208763, guid: 9701416c3c25c3f43af8c1516854822e, type: 3}
       propertyPath: rotationSpeed
-      value: 3
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6742485218590208763, guid: 9701416c3c25c3f43af8c1516854822e, type: 3}
       propertyPath: RightLeftImage
@@ -5399,7 +5485,7 @@ PrefabInstance:
       objectReference: {fileID: 97342435}
     - target: {fileID: 5094738265116724807, guid: b21cde8c0e868164d8ae6e08b289ca4e, type: 3}
       propertyPath: rotationSpeed
-      value: 3
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 5094738265116724807, guid: b21cde8c0e868164d8ae6e08b289ca4e, type: 3}
       propertyPath: RightLeftImage
@@ -5558,6 +5644,18 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8790213645377416002, guid: 5b82c3fa324142d4cb862e6b722ab2ce, type: 3}
     - target: {fileID: 9007811952706829462, guid: b21cde8c0e868164d8ae6e08b289ca4e, type: 3}
+      propertyPath: Images.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 9007811952706829462, guid: b21cde8c0e868164d8ae6e08b289ca4e, type: 3}
+      propertyPath: choices.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 9007811952706829462, guid: b21cde8c0e868164d8ae6e08b289ca4e, type: 3}
+      propertyPath: Images.Array.data[3]
+      value: 
+      objectReference: {fileID: 21300000, guid: 08da9f8db8d7f484980c48e4336650ba, type: 3}
+    - target: {fileID: 9007811952706829462, guid: b21cde8c0e868164d8ae6e08b289ca4e, type: 3}
       propertyPath: choices.Array.data[0]
       value: "\u304B\u3089\u3044"
       objectReference: {fileID: 0}
@@ -5570,20 +5668,32 @@ PrefabInstance:
       value: "\u304A\u3044\u3057\u3044"
       objectReference: {fileID: 0}
     - target: {fileID: 9007811952706829462, guid: b21cde8c0e868164d8ae6e08b289ca4e, type: 3}
+      propertyPath: choices.Array.data[3]
+      value: "\u6975\u4E0A\u56DE\u5FA9"
+      objectReference: {fileID: 0}
+    - target: {fileID: 9007811952706829462, guid: b21cde8c0e868164d8ae6e08b289ca4e, type: 3}
       propertyPath: rouletteRates.Array.size
-      value: 3
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 9007811952706829462, guid: b21cde8c0e868164d8ae6e08b289ca4e, type: 3}
+      propertyPath: rouletteColors.Array.size
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 9007811952706829462, guid: b21cde8c0e868164d8ae6e08b289ca4e, type: 3}
       propertyPath: rouletteRates.Array.data[0]
-      value: 0.3333
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 9007811952706829462, guid: b21cde8c0e868164d8ae6e08b289ca4e, type: 3}
       propertyPath: rouletteRates.Array.data[1]
-      value: 0.3333
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 9007811952706829462, guid: b21cde8c0e868164d8ae6e08b289ca4e, type: 3}
       propertyPath: rouletteRates.Array.data[2]
-      value: 0.3333
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 9007811952706829462, guid: b21cde8c0e868164d8ae6e08b289ca4e, type: 3}
+      propertyPath: rouletteRates.Array.data[3]
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 9007811952706829462, guid: b21cde8c0e868164d8ae6e08b289ca4e, type: 3}
       propertyPath: rouletteColors.Array.data[0].g
@@ -5604,6 +5714,22 @@ PrefabInstance:
     - target: {fileID: 9007811952706829462, guid: b21cde8c0e868164d8ae6e08b289ca4e, type: 3}
       propertyPath: rouletteColors.Array.data[2].r
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9007811952706829462, guid: b21cde8c0e868164d8ae6e08b289ca4e, type: 3}
+      propertyPath: rouletteColors.Array.data[3].a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9007811952706829462, guid: b21cde8c0e868164d8ae6e08b289ca4e, type: 3}
+      propertyPath: rouletteColors.Array.data[3].b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9007811952706829462, guid: b21cde8c0e868164d8ae6e08b289ca4e, type: 3}
+      propertyPath: rouletteColors.Array.data[3].g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9007811952706829462, guid: b21cde8c0e868164d8ae6e08b289ca4e, type: 3}
+      propertyPath: rouletteColors.Array.data[3].r
+      value: 0.9837198
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

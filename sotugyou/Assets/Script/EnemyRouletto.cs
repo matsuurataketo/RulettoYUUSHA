@@ -84,20 +84,21 @@ public class EnemyRoulette : MonoBehaviour
             // 技選択ルーレット
             case "きょう":
                 EnemyAttack();
-                HPmanegment.UpdatePlayerDownHP(50);
+                HPmanegment.UpdatePlayerDownHP(45); 
                 break;
-            case "じゃく":
+            case "ちゅう":
                 EnemyAttack();
                 HPmanegment.UpdatePlayerDownHP(30);
                 break;
-            case "misu":
+            case "じゃく":
+                EnemyAttack();
+                HPmanegment.UpdatePlayerDownHP(15);
+                break;
+            case "みす":
                 HPmanegment.UpdatePlayerDownHP(0);
                 break;
 
             // 技選択ルーレット
-            case "oisii":
-                HPmanegment.UpdateEnemyUPHP(50);
-                break;
             case "nigai":
                 HPmanegment.UpdateEnemyUPHP(30);
                 break;
