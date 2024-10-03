@@ -16,6 +16,7 @@ public class ScrollSelect : MonoBehaviour
     public RouletteMaker KaihukurMaker;
     public AudioSource SESource;  // SE用のAudioSource
 
+
     void Start()
     {
         uiManager = GameObject.Find("Canvas").GetComponent<UIManager>();
@@ -32,15 +33,11 @@ public class ScrollSelect : MonoBehaviour
         // スクロール方向によって選択を変更する
         if (scroll > 0)
         {
-            selectedIndex--; // 上にスクロール
-            if (selectedIndex < 0)
-                selectedIndex = buttons.Length - 1;
+            selectedIndex = 0;
         }
         else if (scroll < 0)
         {
-            selectedIndex++; // 下にスクロール
-            if (selectedIndex >= buttons.Length)
-                selectedIndex = 0;
+            selectedIndex = 1;
         }
 
         // 選択されたボタンを更新する
