@@ -22,6 +22,7 @@ public class RoulettoGimick : MonoBehaviour
     [SerializeField,Header("左方向の画像")] private Sprite leftImage;  // 左方向の画像
 
     private List<Image> instantiatedImages = new List<Image>(); // インスタンス化された画像のリスト
+    AudioManager audioManager;
 
     public void InitializeGame()
     {
@@ -40,12 +41,14 @@ public class RoulettoGimick : MonoBehaviour
 
     public void StartRouletteGame()
     {
+        audioManager = FindObjectOfType<AudioManager>();
         InitializeGame();
         StartCoroutine(StartGame());
     }
 
     IEnumerator StartGame()
     {
+        
         if (!gameActive)
         {
             float initialPositionX = -300f; // 初期位置
@@ -117,6 +120,7 @@ public class RoulettoGimick : MonoBehaviour
                     instantiatedImages[currentStep].gameObject.SetActive(false);
                     currentStep++;
                     CrearNum++;
+                    audioManager.PlaySound("正解");
                     Debug.Log("正しい方向に一回転完了！");
 
                     // 次のステップに進む

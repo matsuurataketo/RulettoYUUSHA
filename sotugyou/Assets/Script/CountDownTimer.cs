@@ -21,6 +21,8 @@ public class CountDownTimer : MonoBehaviour
 
     private IEnumerator CountDown()
     {
+        AudioManager audioManager = FindObjectOfType<AudioManager>();
+        audioManager.PlaySound("ボタン選択カウントダウンタイマー");
         uiText.gameObject.SetActive(true);
         uiFill.gameObject.SetActive(true);
         float timer = CountTime;
@@ -36,6 +38,7 @@ public class CountDownTimer : MonoBehaviour
         }
 
         // タイマーが0になった時の処理をここに追加できます。
+        audioManager.StopSound("ボタン選択カウントダウンタイマー");
         uiFill.fillAmount = 0;
         uiText.text = "00:00";
         uiText.gameObject.SetActive(false);

@@ -14,7 +14,6 @@ public class ScrollSelect : MonoBehaviour
     UIManager uiManager;
     public RouletteMaker KougekirMaker;
     public RouletteMaker KaihukurMaker;
-    public AudioSource SESource;  // SE用のAudioSource
 
 
     void Start()
@@ -23,6 +22,7 @@ public class ScrollSelect : MonoBehaviour
         // 最初のボタンを選択状態にする
         SelectButton(selectedIndex);
         uiManager.StartCountDown();
+        
     }
 
     void Update()
@@ -70,7 +70,8 @@ public class ScrollSelect : MonoBehaviour
     {
         if (selectedIndex == 0)
         {
-            SESource.Play();
+            AudioManager audioManager = FindObjectOfType<AudioManager>();
+            audioManager.PlaySound("ルーレット決定SE");
             currentTime = 0f;
             objectsToActivate[1].SetActive(false);
             objectsToActivate[2].SetActive(false);
@@ -102,7 +103,8 @@ public class ScrollSelect : MonoBehaviour
 
         else
         {
-            SESource.Play();
+            AudioManager audioManager = FindObjectOfType<AudioManager>();
+            audioManager.PlaySound("ルーレット決定SE");
             currentTime = 0f;
             objectsToActivate[1].SetActive(false);
             objectsToActivate[2].SetActive(false);

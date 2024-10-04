@@ -49,7 +49,9 @@ public class HPmanegment : MonoBehaviour
 
     public void UpdatePlayerDownHP(float newHP)
     {
-        
+        AudioManager audioManager = FindObjectOfType<AudioManager>();
+        if (newHP > 0)
+            audioManager.PlaySound("HPダウンの音");
         StartCoroutine(SmoothHPChange(PlayerHPSlider, PlayerHPText, PlayerHP, PlayerHP - newHP));
         PlayerHP = Mathf.Max(0, PlayerHP - newHP);  // HPを更新
     }
@@ -64,6 +66,8 @@ public class HPmanegment : MonoBehaviour
 
     public void UpdateEnemyDownHP(float newHP)
     {
+        AudioManager audioManager = FindObjectOfType<AudioManager>();
+        audioManager.PlaySound("HPダウンの音");
         float Crearnum = 1+(roulettoGimick.CrearNum/10);
         float totalDamage = newHP * Crearnum;
         StartCoroutine(SmoothHPChange(EnemyHPSlider, EnemyHPText, EnemyHP, EnemyHP - totalDamage));

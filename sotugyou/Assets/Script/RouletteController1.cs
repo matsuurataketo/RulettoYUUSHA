@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 using TMPro;
 using UnityEngine.Playables;
 
-public class RouletteController : MonoBehaviour
+public class RouletteController1 : MonoBehaviour
 {
     [HideInInspector] public GameObject roulette;
     [HideInInspector] public List<float> rotatePerRouletteStartAngle;
@@ -16,7 +16,7 @@ public class RouletteController : MonoBehaviour
 
     private string result;//ルーレットの結果の格納変数
     [SerializeField,Header("ルーレットの結果表示テキスト")] private TextMeshProUGUI resultText;//結果の表示TEXT
-    [Header("ルーレットの回転スピード")] public float rotationSpeed = 7.0f;//ルーレットの回転スピード
+    [Header("ルーレットの回転スピード")] public float rotationSpeed = 5.0f;//ルーレットの回転スピード
     private float lastScrollWheelInputTime; // 最後にマウススクロールホイールの入力があった時間
     public bool ScrollWheel = false;//最初のマウスホイール制御変数
     [SerializeField, Header("ルーレットのリアルな回転速度")] private float rouletteSpeed; // ルーレットの速度を保持する変数
@@ -44,8 +44,9 @@ public class RouletteController : MonoBehaviour
 
     private RoulettoGimick roulettoGimick;
     private bool rulettogimickflag = false;
+    public AudioSource SE;
     bool scrollSoundPlayed = false; // SEが再生されたかどうかを示すフラグ
-    AudioManager audioManager;
+
 
 
     private void Start()
@@ -56,7 +57,6 @@ public class RouletteController : MonoBehaviour
         ScrollSelect = GameObject.Find("ScrollSelect").GetComponent<ScrollSelect>();
         countDownTimer=GameObject.Find("MiniGameTimer").GetComponent<CountDownTimer>();
         activScene = GameObject.Find("ActiveScene").GetComponent<ActivScene>();
-        audioManager = FindObjectOfType<AudioManager>();
 
         //_slider = GameObject.Find("EnemyHP").GetComponent<Slider>();
         //_slider.value = 1f;
@@ -70,7 +70,7 @@ public class RouletteController : MonoBehaviour
             {
                 if (!scrollSoundPlayed) // SEがまだ再生されていない場合
                 {
-                    audioManager.PlaySound("ルーレットSE");
+                    SE.Play();
                     scrollSoundPlayed = true;
                 }
                    
@@ -87,26 +87,23 @@ public class RouletteController : MonoBehaviour
 
         if (rMaker.randomGame == 0)
         {
-            Debug.Log("ボタン連打");
             if (Input.GetKeyDown(KeyCode.Space) && ScrollWheel == true)
             {
-                
                 rMaker.IncreaseRandomAngle();
                 Debug.Log("拡張してます");
             }
         }
         else if (rMaker.randomGame == 1)
         {
-            Debug.Log("ボタン一撃");
-            rotationSpeed = 21f;
             if (Input.GetKey(KeyCode.Space) && ScrollWheel == true)
             {
                 Debug.Log("止めています");
-                rotationSpeed = 0f;
+                rouletteSpeed = 0;
             }
         }
 
-        if (frameCount % comparisonInterval == 0 && ScrollWheel == true)
+
+            if (frameCount % comparisonInterval == 0 && ScrollWheel == true)
         {
             
             float angleDifference = Quaternion.Angle(roulette.transform.rotation, previousRotation);
@@ -114,13 +111,12 @@ public class RouletteController : MonoBehaviour
             {
                 ScrollWheel = false;
                 scrollSoundPlayed = false;
-                audioManager.StopSound("ルーレットSE");
                 Debug.Log("回転は同じです。");
                 ShowResult(roulette.transform.eulerAngles.z);
-                rotationSpeed = 7.0f;
             }
             else
             {
+                
                 previousRotation = roulette.transform.rotation;
             }
         }
@@ -134,7 +130,7 @@ public class RouletteController : MonoBehaviour
                 -(360 - rotatePerRouletteStartAngle[i]) >= x && x >= -(360 - rotatePerRouletteEndAngle[i]))
             {
                 result = rMaker.choices[i];
-                
+                SE.Stop();
             }
         }
 

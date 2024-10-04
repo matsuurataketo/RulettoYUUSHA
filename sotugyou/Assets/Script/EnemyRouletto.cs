@@ -50,6 +50,8 @@ public class EnemyRoulette : MonoBehaviour
 
     private IEnumerator SpinRoulette()
     {
+        AudioManager audioManager = FindObjectOfType<AudioManager>();
+        audioManager.PlaySound("ルーレットSE");
         isSpinning = true;
         rouletteSpeed = initialRotationSpeed;
 
@@ -63,7 +65,9 @@ public class EnemyRoulette : MonoBehaviour
             yield return null; // 次のフレームまで待機
         }
 
+
         rouletteSpeed = 0;
+        audioManager.StopSound("ルーレットSE");
         ShowResult(roulette.transform.eulerAngles.z);
         isSpinning = false;
     }

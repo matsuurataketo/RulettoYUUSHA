@@ -29,9 +29,6 @@ public class RouletteMaker : MonoBehaviour
 
     // RouletteControllerアタッチされているオブジェクト
     [SerializeField, Header("RouletteControllerがアタッチされているオブジェクト")] private RouletteController rController;
-
-    [Header("ルーレットの分割数")]
-    private float ratePerRoulette = 1;
     public float rotatePerRoulette;
     private List<Image> rouletteImages = new List<Image>();
     private List<GameObject> rouletteUIImages = new List<GameObject>();
@@ -42,6 +39,8 @@ public class RouletteMaker : MonoBehaviour
 
     private List<GameObject> instantiatedObjects = new List<GameObject>(); // インスタンス化したオブジェクトのリスト
 
+    public int randomGame;
+
     private void Start()
     {
 
@@ -50,7 +49,7 @@ public class RouletteMaker : MonoBehaviour
     {
         // 前のターンのオブジェクトを削除
         ClearPreviousTurnObjects();
-
+        randomGame = Random.Range(0, 2);
         rotatePerRoulette = 360 / (float)(choices.Count);
         float rouletteRatesEnd = 0;
         float rouletteRatesStart = 0;
