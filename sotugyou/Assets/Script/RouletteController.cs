@@ -87,7 +87,7 @@ public class RouletteController : MonoBehaviour
 
         frameCount++;
 
-        if (rMaker.randomGame == 0)
+        if (rMaker.randomGame == 0&& scrollWheelEnabled)
         {
             Debug.Log("ボタン連打");
             if (Input.GetKeyDown(KeyCode.Space) && ScrollWheel == true)
@@ -97,7 +97,7 @@ public class RouletteController : MonoBehaviour
                 Debug.Log("拡張してます");
             }
         }
-        else if (rMaker.randomGame == 1)
+        else if (rMaker.randomGame == 1&& scrollWheelEnabled)
         {
             Debug.Log("ボタン一撃");
             rotationSpeed = 21f;
@@ -167,6 +167,10 @@ public class RouletteController : MonoBehaviour
             case "にがい":
                 StartCoroutine(PlayRouletteGame(result, 30f, "\n回復:"));
                 Debug.Log("にがい");
+                break;
+            case "極上回復":
+                StartCoroutine(PlayRouletteGame(result, 80f, "\n回復:"));
+                Debug.Log("極上回復");
                 break;
             case "からい":
                 StartCoroutine(PlayRouletteGame(result, 10f, "\n回復:"));
