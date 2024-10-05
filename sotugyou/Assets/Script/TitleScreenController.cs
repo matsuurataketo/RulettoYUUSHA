@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class TitleScreenController : MonoBehaviour
 {
-        public Button[] buttons;  // UI上のボタンをInspectorで設定
+    public Button[] buttons;  // UI上のボタンをInspectorで設定
     private int currentButtonIndex = 0;
 
     void Start()
@@ -20,11 +20,11 @@ public class TitleScreenController : MonoBehaviour
 
         if (scroll > 0f) // 上方向にスクロール
         {
-            NavigateToPreviousButton();
+            NavigateToButton(0); // 1のボタンに移動
         }
         else if (scroll < 0f) // 下方向にスクロール
         {
-            NavigateToNextButton();
+            NavigateToButton(1); // 0のボタンに移動
         }
 
         // スペースキーで現在選択されているボタンを押す
@@ -34,21 +34,13 @@ public class TitleScreenController : MonoBehaviour
         }
     }
 
-    void NavigateToNextButton()
+    void NavigateToButton(int buttonIndex)
     {
-        // 次のボタンに移動
-        currentButtonIndex = (currentButtonIndex + 1) % buttons.Length;
-        EventSystem.current.SetSelectedGameObject(buttons[currentButtonIndex].gameObject);
-    }
-
-    void NavigateToPreviousButton()
-    {
-        // 前のボタンに移動
-        currentButtonIndex--;
-        if (currentButtonIndex < 0)
+        // 指定されたボタンに移動
+        if (buttonIndex >= 0 && buttonIndex < buttons.Length)
         {
-            currentButtonIndex = buttons.Length - 1;
+            currentButtonIndex = buttonIndex;
+            EventSystem.current.SetSelectedGameObject(buttons[currentButtonIndex].gameObject);
         }
-        EventSystem.current.SetSelectedGameObject(buttons[currentButtonIndex].gameObject);
     }
 }

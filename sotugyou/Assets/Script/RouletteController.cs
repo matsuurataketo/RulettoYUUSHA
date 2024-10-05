@@ -47,6 +47,7 @@ public class RouletteController : MonoBehaviour
     bool scrollSoundPlayed = false; // SEが再生されたかどうかを示すフラグ
     AudioManager audioManager;
     UIListController Uilistcontroller;
+    bool scrollWheelEnabled = true;  // マウスホイールの入力を有効/無効にするフラグ
 
 
     private void Start()
@@ -65,7 +66,7 @@ public class RouletteController : MonoBehaviour
 
     private void Update()
     {
-        if (enemyScript != null && !enemyScript.IsSpinning&&!rulettogimickflag)
+        if (enemyScript != null && !enemyScript.IsSpinning&&!rulettogimickflag&& scrollWheelEnabled)
         {
             if (Input.GetAxis("Mouse ScrollWheel") != 0f)     // マウスホイールが回された場合
             {
@@ -104,6 +105,7 @@ public class RouletteController : MonoBehaviour
             {
                 Debug.Log("止めています");
                 rotationSpeed = 0f;
+                scrollWheelEnabled = false;
             }
         }
 
@@ -201,6 +203,7 @@ public class RouletteController : MonoBehaviour
 
     private IEnumerator PlayRouletteGame(string result, float hpChange, string message)
     {
+        yield return new WaitForSeconds(1f);
         SkillRouletto(message);
         //ミニゲームスタート
         countDownTimer.StartCountDown();
@@ -256,5 +259,6 @@ public class RouletteController : MonoBehaviour
         RoulettoORButton[3].SetActive(false);
         rulettogimickflag = false;
         rotationSpeed = 5.0f;
+        scrollWheelEnabled = true;
     }
 }
