@@ -40,10 +40,11 @@ public class RouletteMaker : MonoBehaviour
     private List<GameObject> instantiatedObjects = new List<GameObject>(); // インスタンス化したオブジェクトのリスト
 
     public int randomGame;
+    
 
     private void Start()
     {
-
+  
     }
     public void RuleetSet()
     {

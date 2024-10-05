@@ -46,6 +46,7 @@ public class RouletteController : MonoBehaviour
     private bool rulettogimickflag = false;
     bool scrollSoundPlayed = false; // SEが再生されたかどうかを示すフラグ
     AudioManager audioManager;
+    UIListController Uilistcontroller;
 
 
     private void Start()
@@ -57,7 +58,7 @@ public class RouletteController : MonoBehaviour
         countDownTimer=GameObject.Find("MiniGameTimer").GetComponent<CountDownTimer>();
         activScene = GameObject.Find("ActiveScene").GetComponent<ActivScene>();
         audioManager = FindObjectOfType<AudioManager>();
-
+        Uilistcontroller = FindObjectOfType<UIListController>();
         //_slider = GameObject.Find("EnemyHP").GetComponent<Slider>();
         //_slider.value = 1f;
     }
@@ -90,7 +91,7 @@ public class RouletteController : MonoBehaviour
             Debug.Log("ボタン連打");
             if (Input.GetKeyDown(KeyCode.Space) && ScrollWheel == true)
             {
-                
+                audioManager.PlaySound("連打音");
                 rMaker.IncreaseRandomAngle();
                 Debug.Log("拡張してます");
             }
@@ -117,7 +118,7 @@ public class RouletteController : MonoBehaviour
                 audioManager.StopSound("ルーレットSE");
                 Debug.Log("回転は同じです。");
                 ShowResult(roulette.transform.eulerAngles.z);
-                rotationSpeed = 7.0f;
+                rotationSpeed = 5.0f;
             }
             else
             {
@@ -189,6 +190,11 @@ public class RouletteController : MonoBehaviour
                 child.gameObject.SetActive(false);
             }
             RoulettoYazirusi.SetActive(false);
+
+            if (rMaker.randomGame == 1)
+                Uilistcontroller.ToggleSpecificImage(0);  // Imageリストの最初の要素を表示/非表示にする
+            if (rMaker.randomGame == 0)
+                Uilistcontroller.ToggleSpecificImage(1);  // Imageリストの最初の要素を表示/非表示にする
         }
 
     }
@@ -249,5 +255,6 @@ public class RouletteController : MonoBehaviour
         RoulettoYazirusi.SetActive(false);
         RoulettoORButton[3].SetActive(false);
         rulettogimickflag = false;
+        rotationSpeed = 5.0f;
     }
 }

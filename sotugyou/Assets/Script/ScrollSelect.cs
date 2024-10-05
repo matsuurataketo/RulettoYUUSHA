@@ -14,10 +14,12 @@ public class ScrollSelect : MonoBehaviour
     UIManager uiManager;
     public RouletteMaker KougekirMaker;
     public RouletteMaker KaihukurMaker;
+    UIListController uilistcontroller;
 
 
     void Start()
     {
+        uilistcontroller = FindObjectOfType<UIListController>();
         uiManager = GameObject.Find("Canvas").GetComponent<UIManager>();
         // Å‰‚Ìƒ{ƒ^ƒ“‚ğ‘I‘ğó‘Ô‚É‚·‚é
         SelectButton(selectedIndex);
@@ -98,6 +100,10 @@ public class ScrollSelect : MonoBehaviour
                 {
                     child.gameObject.SetActive(true);
                 }
+                if (KaihukurMaker.randomGame == 0)
+                    uilistcontroller.ToggleSpecificImage(1);
+                if (KaihukurMaker.randomGame == 1)
+                    uilistcontroller.ToggleSpecificImage(0);
             }
         }
 
@@ -130,6 +136,10 @@ public class ScrollSelect : MonoBehaviour
                 {
                     child.gameObject.SetActive(true);
                 }
+                if (KougekirMaker.randomGame == 0)
+                    uilistcontroller.ToggleSpecificImage(1);
+                if (KougekirMaker.randomGame == 1)
+                    uilistcontroller.ToggleSpecificImage(0);
             }
         }
        
