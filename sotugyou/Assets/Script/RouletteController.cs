@@ -117,6 +117,7 @@ public class RouletteController : MonoBehaviour
             {
                 ScrollWheel = false;
                 scrollSoundPlayed = false;
+                scrollWheelEnabled = false;
                 audioManager.StopSound("ルーレットSE");
                 Debug.Log("回転は同じです。");
                 ShowResult(roulette.transform.eulerAngles.z);
