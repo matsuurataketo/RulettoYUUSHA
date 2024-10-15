@@ -48,6 +48,8 @@ public class RouletteController : MonoBehaviour
     AudioManager audioManager;
     UIListController Uilistcontroller;
     bool scrollWheelEnabled = true;  // マウスホイールの入力を有効/無効にするフラグ
+    bool LedyImage = false;
+    bool LedyButton = false;
 
 
     private void Start()
@@ -66,7 +68,18 @@ public class RouletteController : MonoBehaviour
 
     private void Update()
     {
-        if (enemyScript != null && !enemyScript.IsSpinning&&!rulettogimickflag&& scrollWheelEnabled)
+        if (LedyImage == false)
+        {
+            Uilistcontroller.ToggleSpecificImage(2);
+            LedyImage = true;
+        }
+        if (Input.GetKeyDown(KeyCode.Space) && LedyButton == false)
+        {
+            Uilistcontroller.ToggleSpecificImage(2);
+            LedyButton = true;
+        }
+
+        if (enemyScript != null && !enemyScript.IsSpinning&&!rulettogimickflag&& scrollWheelEnabled && LedyButton)
         {
             if (Input.GetAxis("Mouse ScrollWheel") != 0f)     // マウスホイールが回された場合
             {
@@ -78,7 +91,6 @@ public class RouletteController : MonoBehaviour
                    
                 ScrollWheel = true; // フラグを下ろして、以降の処理を実行可能にする
             }
-
             rouletteSpeed = Input.GetAxis("Mouse ScrollWheel") * rotationSpeed; // ルーレットの速度を更新する
             roulette.transform.Rotate(Vector3.forward, rouletteSpeed, Space.World);
         }
@@ -265,5 +277,7 @@ public class RouletteController : MonoBehaviour
         rulettogimickflag = false;
         rotationSpeed = 5.0f;
         scrollWheelEnabled = true;
+        LedyButton = false;
+        LedyImage = false;
     }
 }
