@@ -1573,7 +1573,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e12bc5092713044da521a3f7cc87169, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 1500
+  rotationSpeed: 1000
   CrearNum: 0
   timeLimit: 5
   gameActive: 0
@@ -4455,12 +4455,16 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7839777441579159883, guid: f0b45fa946f835f42a0e65079ed69dab, type: 3}
+      propertyPath: maxRotationSpeed
+      value: 2500
+      objectReference: {fileID: 0}
+    - target: {fileID: 7839777441579159883, guid: f0b45fa946f835f42a0e65079ed69dab, type: 3}
       propertyPath: maxDecelerationRate
       value: 0.999
       objectReference: {fileID: 0}
     - target: {fileID: 7839777441579159883, guid: f0b45fa946f835f42a0e65079ed69dab, type: 3}
       propertyPath: minDecelerationRate
-      value: 0.995
+      value: 0.895
       objectReference: {fileID: 0}
     - target: {fileID: 7839777441579159883, guid: f0b45fa946f835f42a0e65079ed69dab, type: 3}
       propertyPath: initialRotationSpeed
