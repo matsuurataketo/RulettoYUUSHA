@@ -6,6 +6,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
 using UnityEngine.Playables;
+using Unity.VisualScripting;
 
 public class RouletteController : MonoBehaviour
 {
@@ -50,6 +51,8 @@ public class RouletteController : MonoBehaviour
     bool scrollWheelEnabled = true;  // マウスホイールの入力を有効/無効にするフラグ
     bool LedyImage = false;
     bool LedyButton = false;
+    float UpRouletteRates;
+    float DownRouletteRates;
 
 
     private void Start()
@@ -62,15 +65,21 @@ public class RouletteController : MonoBehaviour
         activScene = GameObject.Find("ActiveScene").GetComponent<ActivScene>();
         audioManager = FindObjectOfType<AudioManager>();
         Uilistcontroller = FindObjectOfType<UIListController>();
-        //_slider = GameObject.Find("EnemyHP").GetComponent<Slider>();
-        //_slider.value = 1f;
     }
 
     private void Update()
     {
         if (LedyImage == false)
         {
+            UpRouletteRates = rMaker.rouletteRates[0];
+            DownRouletteRates = rMaker.rouletteRates[1];
             Uilistcontroller.ToggleSpecificImage(2);
+            for (int i = 0; i < Uilistcontroller.textElements.Count; i++)
+                Uilistcontroller.ToggleSpecificText(i);
+            Uilistcontroller.KougekiRoulettoText(0, rMaker.choices[3] + "・・" + rMaker.rouletteRates[0] * 100 + "%");
+            Uilistcontroller.KougekiRoulettoText(1, rMaker.choices[2] + "・・" + rMaker.rouletteRates[1] * 100 + "%");
+            Uilistcontroller.KougekiRoulettoText(2, rMaker.choices[1] + "・・" + rMaker.rouletteRates[2] * 100 + "%");
+            Uilistcontroller.KougekiRoulettoText(3, rMaker.choices[0] + "・・" + rMaker.rouletteRates[3] * 100 + "%");
             LedyImage = true;
         }
         if (Input.GetKeyDown(KeyCode.Space) && LedyButton == false)
@@ -101,17 +110,21 @@ public class RouletteController : MonoBehaviour
 
         if (rMaker.randomGame == 0&& scrollWheelEnabled)
         {
-            Debug.Log("ボタン連打");
+            //Debug.Log("ボタン連打");
             if (Input.GetKeyDown(KeyCode.Space) && ScrollWheel == true)
             {
                 audioManager.PlaySound("連打音");
                 rMaker.IncreaseRandomAngle();
+                UpRouletteRates += 0.0025f;//割合変更
+                DownRouletteRates -= 0.0025f;//割合変更
+                Uilistcontroller.KougekiRoulettoText(0, rMaker.choices[3] + "・・" + (UpRouletteRates * 100).ToString("F2") + "%");
+                Uilistcontroller.KougekiRoulettoText(1, rMaker.choices[2] + "・・" + (DownRouletteRates * 100).ToString("F2") + "%");
                 Debug.Log("拡張してます");
             }
         }
         else if (rMaker.randomGame == 1&& scrollWheelEnabled)
         {
-            Debug.Log("ボタン一撃");
+            //Debug.Log("ボタン一撃");
             rotationSpeed = 21f;
             if (Input.GetKey(KeyCode.Space) && ScrollWheel == true)
             {
@@ -150,21 +163,22 @@ public class RouletteController : MonoBehaviour
                 -(360 - rotatePerRouletteStartAngle[i]) >= x && x >= -(360 - rotatePerRouletteEndAngle[i]))
             {
                 result = rMaker.choices[i];
-                
+                Debug.Log(result);
+
             }
         }
 
         switch (result)
         {
-            case "きょう":
+            case "強技":
                 StartCoroutine(PlayRouletteGame(result, 45, "\n攻撃:"));
                 Debug.Log(result);
                 break;
-            case "じゃく":
+            case "弱技":
                 StartCoroutine(PlayRouletteGame(result, 15, "\n攻撃:"));
                 Debug.Log("じゃく");
                 break;
-            case "中":
+            case "中技":
                 StartCoroutine(PlayRouletteGame(result, 30, "\n攻撃:"));
                 Debug.Log("中");
                 break;
@@ -214,6 +228,8 @@ public class RouletteController : MonoBehaviour
                 Uilistcontroller.ToggleSpecificImage(0);  // Imageリストの最初の要素を表示/非表示にする
             if (rMaker.randomGame == 0)
                 Uilistcontroller.ToggleSpecificImage(1);  // Imageリストの最初の要素を表示/非表示にする
+            for (int i = 0; i < Uilistcontroller.textElements.Count; i++)//Textリストを非表示/表示
+                Uilistcontroller.ToggleSpecificText(i);
         }
 
     }

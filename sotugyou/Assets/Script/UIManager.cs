@@ -10,7 +10,7 @@ public class UIManager : MonoBehaviour
     [SerializeField,Header("カウントダウンテキスト")] TextMeshProUGUI countDownText;
     int countDownCount;
     float countDownElapsedTime;
-    float countDownDuration = 5.0f;
+    public　float countDownDuration = 10.0f;
     // Start is called before the first frame update
     public void Start()
     {

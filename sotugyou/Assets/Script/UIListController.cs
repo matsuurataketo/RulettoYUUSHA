@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using TMPro;
 
 [System.Serializable]
 public class UIElement
@@ -18,6 +19,7 @@ public class UIListController : MonoBehaviour
 
     void Start()
     {
+        HideTextUI();
         HideImageUI();
     }
 
@@ -28,8 +30,6 @@ public class UIListController : MonoBehaviour
         {
             textElement.element.SetActive(false);
         }
-
-        
     }
 
     public void HideImageUI()
@@ -73,6 +73,28 @@ public class UIListController : MonoBehaviour
         if (index >= 0 && index < buttonElements.Count)
         {
             buttonElements[index].element.SetActive(!buttonElements[index].element.activeSelf);
+        }
+    }
+
+    public void KougekiRoulettoText(int index, string newText)
+    {
+        if (index >= 0 && index < textElements.Count)
+        {
+            // textElements[index]のelementからTextMeshProUGUIコンポーネントを取得
+            TextMeshProUGUI textComponent = textElements[index].element.GetComponent<TextMeshProUGUI>();
+            if (textComponent != null)
+            {
+                // TextMeshProUGUIコンポーネントのtextプロパティを新しいテキストに変更
+                textComponent.text = newText;
+            }
+            else
+            {
+                Debug.LogWarning("TextMeshProUGUIコンポーネントが見つかりません。");
+            }
+        }
+        else
+        {
+            Debug.LogWarning("指定されたインデックスが範囲外です。");
         }
     }
 }

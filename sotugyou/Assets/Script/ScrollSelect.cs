@@ -9,7 +9,7 @@ public class ScrollSelect : MonoBehaviour
     [Header("SetActivの切り替え")]public GameObject[] objectsToActivate;
     [SerializeField,Header("矢印のSetActivの切り替え")] GameObject[] RoulettoYazirusi;
     private int selectedIndex = 0; // 現在の選択インデックス
-    private float selectionTime = 5f; // 選択時間
+    public float selectionTime = 10f; // 選択時間
     [Header("現在の経過時間")]public float currentTime = 0f; // 現在の経過時間
     UIManager uiManager;
     public RouletteMaker KougekirMaker;
