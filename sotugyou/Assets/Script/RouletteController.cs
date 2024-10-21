@@ -251,7 +251,7 @@ public class RouletteController : MonoBehaviour
         RoulettoGame.SetActive(false);
         RightLeftImage.SetActive(false);
 
-        if (result == "きょう" || result == "じゃく" || result == "中"||result=="確死")
+        if (result == "強技" || result == "弱技" || result == "中技"||result=="確死")
         {
             // タイムラインを再生
             timelineController.PlayTimeline();
@@ -262,7 +262,7 @@ public class RouletteController : MonoBehaviour
             // HPを減少させる処理
             HPmanegment.UpdateEnemyDownHP(hpChange);
         }
-        else if (result == "おいしい" || result == "にがい" || result == "からい")
+        else if (result == "おいしい" || result == "にがい" || result == "からい" || result == "極上回復")
         {
             HPmanegment.UpdatePlayerUPHP(hpChange);
         }
