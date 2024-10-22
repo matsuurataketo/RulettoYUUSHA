@@ -171,7 +171,7 @@ public class RouletteController : MonoBehaviour
         switch (result)
         {
             case "‹­‹Z":
-                StartCoroutine(PlayRouletteGame(result, 45, "\nUŒ‚:"));
+                StartCoroutine(PlayRouletteGame(result, 35, "\nUŒ‚:"));
                 Debug.Log(result);
                 break;
             case "ã‹Z":
@@ -179,7 +179,7 @@ public class RouletteController : MonoBehaviour
                 Debug.Log("‚¶‚á‚­");
                 break;
             case "’†‹Z":
-                StartCoroutine(PlayRouletteGame(result, 30, "\nUŒ‚:"));
+                StartCoroutine(PlayRouletteGame(result, 25, "\nUŒ‚:"));
                 Debug.Log("’†");
                 break;
             case "Šm€":
@@ -187,11 +187,11 @@ public class RouletteController : MonoBehaviour
                 Debug.Log("Šm€");
                 break;
             case "‚¨‚¢‚µ‚¢":
-                StartCoroutine(PlayRouletteGame(result, 50f, "\n‰ñ•œ:"));
+                StartCoroutine(PlayRouletteGame(result, 40f, "\n‰ñ•œ:"));
                 Debug.Log("‚¨‚¢‚µ‚¢");
                 break;
             case "‚É‚ª‚¢":
-                StartCoroutine(PlayRouletteGame(result, 30f, "\n‰ñ•œ:"));
+                StartCoroutine(PlayRouletteGame(result, 20f, "\n‰ñ•œ:"));
                 Debug.Log("‚É‚ª‚¢");
                 break;
             case "‹Éã‰ñ•œ":

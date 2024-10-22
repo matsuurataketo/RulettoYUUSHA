@@ -51,6 +51,7 @@ public class RoulettoGimick : MonoBehaviour
         
         if (!gameActive)
         {
+            CrearNum = 0;
             float initialPositionX = -300f; // 初期位置
             float offsetX = 150f; // オフセット
 
@@ -83,6 +84,7 @@ public class RoulettoGimick : MonoBehaviour
         if (currentStep < directions.Count)
         {
             Debug.Log(currentStep);
+            Debug.Log(CrearNum);
             Debug.Log("時間切れ！");
             gameActive = false;
         }
