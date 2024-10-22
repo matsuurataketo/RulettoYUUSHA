@@ -68,13 +68,13 @@ public class WeponRouletto : MonoBehaviour
                 //•Ší‚ªŒ•‚Ì‚Æ‚«
                 ShowWeponRouletto(true, false, "\nWponsRoulrtto:");
                 Weit();
-                SceneManager.LoadScene("MaingameScene");
+                SceneManager.LoadScene("MaingameScene 1");
                 break;
             case "yari":
                 //•Ší‚ª‘„‚Ì‚Æ‚«
                 ShowWeponRouletto(true, false, "\nWponsRoulrtto:");
                 Weit();
-                SceneManager.LoadScene("MaingameScene");
+                SceneManager.LoadScene("MaingameScene 1");
                 break;
             case "kobusi":
                 //•Ší‚ªŒ‚Ì‚Æ‚«
