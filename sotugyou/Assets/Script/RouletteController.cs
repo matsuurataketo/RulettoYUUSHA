@@ -254,10 +254,10 @@ public class RouletteController : MonoBehaviour
         if (result == "強技" || result == "弱技" || result == "中技" || result == "確死")
         {
             // タイムラインを再生
-            timelinemanager.PlayTimeline(0);
+            timelinemanager.PlayTimeline(2);
 
             // タイムラインの再生が終了するまで待機
-            yield return new WaitUntil(() => timelinemanager.playableDirectors[0].state != PlayState.Playing);
+            yield return new WaitUntil(() => timelinemanager.playableDirectors[2].state != PlayState.Playing);
 
             // HPを減少させる処理
             HPmanegment.UpdateEnemyDownHP(hpChange);
