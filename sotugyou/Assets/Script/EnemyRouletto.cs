@@ -71,11 +71,10 @@ public class EnemyRoulette : MonoBehaviour
 
         rouletteSpeed = 0;
         audioManager.StopSound("ƒ‹[ƒŒƒbƒgSE");
-        ShowResult(roulette.transform.eulerAngles.z);
         isSpinning = false;
     }
 
-    private void ShowResult(float x)
+    public void ShowResult(float x)
     {
         for (int i = 1; i <= rMaker.choices.Count; i++)
         {

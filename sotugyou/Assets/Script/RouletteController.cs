@@ -41,7 +41,7 @@ public class RouletteController : MonoBehaviour
 
     [SerializeField, Header("敵のルーレットオブジェクト")] GameObject enemyroulette;
     [SerializeField, Header("EnemyRouletteがアタッチされているオブジェクト")] EnemyRoulette enemyScript;
-    [SerializeField,Header("タイムラインをアッタッチ")]TimelineController timelineController;
+    [SerializeField,Header("タイムラインをアッタッチ")]TimelineManager timelinemanager;
 
     private RoulettoGimick roulettoGimick;
     private bool rulettogimickflag = false;
@@ -251,13 +251,13 @@ public class RouletteController : MonoBehaviour
         RoulettoGame.SetActive(false);
         RightLeftImage.SetActive(false);
 
-        if (result == "強技" || result == "弱技" || result == "中技"||result=="確死")
+        if (result == "強技" || result == "弱技" || result == "中技" || result == "確死")
         {
             // タイムラインを再生
-            timelineController.PlayTimeline();
+            timelinemanager.PlayTimeline(0);
 
             // タイムラインの再生が終了するまで待機
-            yield return new WaitUntil(() => timelineController.playableDirector.state != PlayState.Playing);
+            yield return new WaitUntil(() => timelinemanager.playableDirectors[0].state != PlayState.Playing);
 
             // HPを減少させる処理
             HPmanegment.UpdateEnemyDownHP(hpChange);
@@ -280,6 +280,14 @@ public class RouletteController : MonoBehaviour
         // ルーレットが停止した後の処理
         enemyroulette.SetActive(false);
         EnemyroulettoYazirusi.SetActive(false);
+
+        // タイムラインを再生
+        timelinemanager.PlayTimeline(1);
+        // タイムラインの再生が終了するまで待機
+        yield return new WaitUntil(() => timelinemanager.playableDirectors[1].state != PlayState.Playing);
+
+        enemyScript.ShowResult(enemyScript.roulette.transform.eulerAngles.z);
+
         RoulettoORButton[0].SetActive(true);
         RoulettoORButton[1].SetActive(true);
 
