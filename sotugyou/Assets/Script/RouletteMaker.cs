@@ -16,7 +16,7 @@ public class RouletteMaker : MonoBehaviour
     [Header("ルーレット内の差し替え用画像")] public List<Sprite> Images;
 
     // ルーレットの色書き換え用
-    [SerializeField, Header("ルーレットの色")] private List<Color> rouletteColors;
+    [SerializeField, Header("ルーレットの色")] public List<Color> rouletteColors;
 
     // ルーレットの割合をインスペクターから設定できるリスト
     [Header("ルーレットの割合（各要素の割合を設定）")]

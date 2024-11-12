@@ -16,6 +16,9 @@ public class UIListController : MonoBehaviour
     public List<UIElement> textElements;
     public List<UIElement> imageElements;
     public List<UIElement> buttonElements;
+    public ScrollSelect scrollSelect;
+    public RouletteMaker kougekiMaker;
+    public RouletteMaker kaihukuMaker;
 
     void Start()
     {
@@ -86,6 +89,10 @@ public class UIListController : MonoBehaviour
             {
                 // TextMeshProUGUIコンポーネントのtextプロパティを新しいテキストに変更
                 textComponent.text = newText;
+                if (scrollSelect.selectedIndex == 0)
+                    textComponent.color = kaihukuMaker.rouletteColors[textElements.Count - index - 1];
+                if (scrollSelect.selectedIndex == 1)
+                    textComponent.color = kougekiMaker.rouletteColors[textElements.Count - index - 1];
             }
             else
             {

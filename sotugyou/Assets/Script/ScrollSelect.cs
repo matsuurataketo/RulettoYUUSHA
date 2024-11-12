@@ -8,7 +8,7 @@ public class ScrollSelect : MonoBehaviour
     [Header("左右のボタン")]public Button[] buttons; // 左右のボタン
     [Header("SetActivの切り替え")]public GameObject[] objectsToActivate;
     [SerializeField,Header("矢印のSetActivの切り替え")] GameObject[] RoulettoYazirusi;
-    private int selectedIndex = 0; // 現在の選択インデックス
+    public int selectedIndex = 0; // 現在の選択インデックス
     public float selectionTime = 10f; // 選択時間
     [Header("現在の経過時間")]public float currentTime = 0f; // 現在の経過時間
     UIManager uiManager;

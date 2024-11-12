@@ -76,6 +76,7 @@ public class RouletteController : MonoBehaviour
             Uilistcontroller.ToggleSpecificImage(2);
             for (int i = 0; i < Uilistcontroller.textElements.Count; i++)
                 Uilistcontroller.ToggleSpecificText(i);
+            Uilistcontroller.ToggleSpecificImage(3);
             Uilistcontroller.KougekiRoulettoText(0, rMaker.choices[3] + "・・" + rMaker.rouletteRates[0] * 100 + "%");
             Uilistcontroller.KougekiRoulettoText(1, rMaker.choices[2] + "・・" + rMaker.rouletteRates[1] * 100 + "%");
             Uilistcontroller.KougekiRoulettoText(2, rMaker.choices[1] + "・・" + rMaker.rouletteRates[2] * 100 + "%");
@@ -230,6 +231,7 @@ public class RouletteController : MonoBehaviour
                 Uilistcontroller.ToggleSpecificImage(1);  // Imageリストの最初の要素を表示/非表示にする
             for (int i = 0; i < Uilistcontroller.textElements.Count; i++)//Textリストを非表示/表示
                 Uilistcontroller.ToggleSpecificText(i);
+            Uilistcontroller.ToggleSpecificImage(3);
         }
 
     }
