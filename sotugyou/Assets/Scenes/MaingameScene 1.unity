@@ -5784,8 +5784,8 @@ MonoBehaviour:
   EnemyHPSlider: {fileID: 925194579}
   PlayerHPFillImage: {fileID: 967606792}
   EnemyHPFillImage: {fileID: 449691461}
-  PlayerHP: 1
-  EnemyHP: 15
+  PlayerHP: 100
+  EnemyHP: 150
   PlayerAtack: 30
   Weponstate: 0
   damageDuration: 1
