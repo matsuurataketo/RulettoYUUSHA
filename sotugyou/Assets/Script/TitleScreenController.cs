@@ -21,10 +21,14 @@ public class TitleScreenController : MonoBehaviour
         if (scroll > 0f) // 上方向にスクロール
         {
             NavigateToButton(0); // 1のボタンに移動
+            buttons[0].interactable = true;
+            buttons[1].interactable = false;
         }
         else if (scroll < 0f) // 下方向にスクロール
         {
             NavigateToButton(1); // 0のボタンに移動
+            buttons[0].interactable = false;
+            buttons[1].interactable = true;
         }
 
         // スペースキーで現在選択されているボタンを押す
