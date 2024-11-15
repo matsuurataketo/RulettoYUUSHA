@@ -33,11 +33,11 @@ public class ScrollSelect : MonoBehaviour
         float scroll = Input.GetAxis("Mouse ScrollWheel");
 
         // スクロール方向によって選択を変更する
-        if (scroll > 0)
+        if (scroll > 0 && buttons[0].gameObject.activeSelf)
         {
             selectedIndex = 0;
         }
-        else if (scroll < 0)
+        else if (scroll < 0 && buttons[1].gameObject.activeSelf)
         {
             selectedIndex = 1;
         }
