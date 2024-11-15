@@ -266,7 +266,18 @@ public class RouletteController : MonoBehaviour
         }
         else if (result == "おいしい" || result == "にがい" || result == "からい" || result == "極上回復")
         {
+            timelinemanager.PlayTimeline(5);
+            yield return new WaitUntil(() => timelinemanager.playableDirectors[5].state != PlayState.Playing);
             HPmanegment.UpdatePlayerUPHP(hpChange);
+        }
+
+        if (HPmanegment.EnemyHP <= 0)
+        {
+            // タイムラインを再生
+            timelinemanager.PlayTimeline(3);
+            // タイムラインの再生が終了するまで待機
+            yield return new WaitUntil(() => timelinemanager.playableDirectors[3].state != PlayState.Playing);
+            SceneManager.LoadScene("CrearScene");
         }
 
         //敵のルーレット開始
@@ -289,6 +300,16 @@ public class RouletteController : MonoBehaviour
         yield return new WaitUntil(() => timelinemanager.playableDirectors[1].state != PlayState.Playing);
 
         enemyScript.ShowResult(enemyScript.roulette.transform.eulerAngles.z);
+        yield return new WaitForSeconds(1);
+
+        if (HPmanegment.PlayerHP <= 0)
+        {
+            // タイムラインを再生
+            timelinemanager.PlayTimeline(4);
+            // タイムラインの再生が終了するまで待機
+            yield return new WaitUntil(() => timelinemanager.playableDirectors[4].state != PlayState.Playing);
+            SceneManager.LoadScene("EndScene");
+        }
 
         RoulettoORButton[0].SetActive(true);
         RoulettoORButton[1].SetActive(true);
@@ -305,5 +326,12 @@ public class RouletteController : MonoBehaviour
         scrollWheelEnabled = true;
         LedyButton = false;
         LedyImage = false;
+    }
+    IEnumerator Weit(string sceneName)
+    {
+        Time.timeScale = 0;
+        yield return new WaitForSecondsRealtime(1.0f);
+        Time.timeScale = 1;
+        SceneManager.LoadScene(sceneName);
     }
 }

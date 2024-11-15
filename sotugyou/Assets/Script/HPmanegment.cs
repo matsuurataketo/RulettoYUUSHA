@@ -3,6 +3,7 @@ using TMPro;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI; // スライダー用
 using System.Collections;
+using UnityEngine.Playables;
 
 public class HPmanegment : MonoBehaviour
 {
@@ -100,7 +101,7 @@ public class HPmanegment : MonoBehaviour
         UpdateUI(); // 色の更新もする
     }
 
-    void UpdateUI()
+    void  UpdateUI()
     {
         // プレイヤーHPスライダーの更新
         PlayerHPText.text = "ぷれいやー: " + PlayerHP.ToString();
@@ -111,10 +112,6 @@ public class HPmanegment : MonoBehaviour
         EnemyHPText.text = "てき: " + EnemyHP.ToString();
         EnemyHPSlider.value = EnemyHP;
         UpdateHPBarColor(EnemyHPSlider, EnemyHPFillImage, EnemyHP);
-        if (PlayerHP <= 0)
-            StartCoroutine(Weit("EndScene"));
-        if (EnemyHP <= 0)
-            StartCoroutine(Weit("CrearScene"));
     }
 
     void UpdateHPBarColor(Slider slider, Image fillImage, float hp)
@@ -136,13 +133,5 @@ public class HPmanegment : MonoBehaviour
             fillImage.color = redColor;
         }
         
-    }
-
-    IEnumerator Weit(string sceneName)
-    {
-        Time.timeScale = 0;
-        yield return new WaitForSecondsRealtime(1.0f);
-        Time.timeScale = 1;
-        SceneManager.LoadScene(sceneName);
     }
 }
