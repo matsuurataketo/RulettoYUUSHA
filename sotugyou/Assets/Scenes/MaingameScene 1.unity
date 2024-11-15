@@ -4469,14 +4469,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.66121495, b: 0.3160377, a: 0.36862746}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.74509805}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: a5be039a90cdf094b9dc797618af1e69, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c0707ebabaa0ca744a0c266a0e90b1ac, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5817,7 +5817,7 @@ MonoBehaviour:
   EnemyHPSlider: {fileID: 925194579}
   PlayerHPFillImage: {fileID: 967606792}
   EnemyHPFillImage: {fileID: 449691461}
-  PlayerHP: 10
+  PlayerHP: 100
   EnemyHP: 150
   PlayerAtack: 30
   Weponstate: 0
