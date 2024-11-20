@@ -100,10 +100,10 @@ public class ScrollSelect : MonoBehaviour
                 {
                     child.gameObject.SetActive(true);
                 }
-                if (KaihukurMaker.randomGame == 0)
-                    uilistcontroller.ToggleSpecificImage(1);
-                if (KaihukurMaker.randomGame == 1)
-                    uilistcontroller.ToggleSpecificImage(0);
+                //if (KaihukurMaker.randomGame == 0)
+                //    uilistcontroller.ToggleSpecificImage(1);
+                //if (KaihukurMaker.randomGame == 1)
+                //    uilistcontroller.ToggleSpecificImage(0);
             }
         }
 
@@ -135,10 +135,10 @@ public class ScrollSelect : MonoBehaviour
                 {
                     child.gameObject.SetActive(true);
                 }
-                if (KougekirMaker.randomGame == 0)
-                    uilistcontroller.ToggleSpecificImage(1);
-                if (KougekirMaker.randomGame == 1)
-                    uilistcontroller.ToggleSpecificImage(0);
+                //if (KougekirMaker.randomGame == 0)
+                //    uilistcontroller.ToggleSpecificImage(1);
+                //if (KougekirMaker.randomGame == 1)
+                //    uilistcontroller.ToggleSpecificImage(0);
             }
         }
        

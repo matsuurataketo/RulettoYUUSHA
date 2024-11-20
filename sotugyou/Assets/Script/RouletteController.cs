@@ -54,9 +54,13 @@ public class RouletteController : MonoBehaviour
     float UpRouletteRates;
     float DownRouletteRates;
 
+    private float currentAngle = 0f; // 現在の回転角度
+    private int totalRotations = 0; // 回転数
+
 
     private void Start()
     {
+        totalRotations = 0;
         roulettoGimick = FindObjectOfType<RoulettoGimick>();
         HPmanegment = GameObject.Find("HPManegment").GetComponent<HPmanegment>();
         UIManager = GameObject.Find("Canvas").GetComponent<UIManager>();
@@ -85,7 +89,9 @@ public class RouletteController : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Space) && LedyButton == false)
         {
+           
             Uilistcontroller.ToggleSpecificImage(2);
+            Uilistcontroller.ToggleSpecificImage(4);
             LedyButton = true;
         }
 
@@ -96,12 +102,28 @@ public class RouletteController : MonoBehaviour
                 if (!scrollSoundPlayed) // SEがまだ再生されていない場合
                 {
                     audioManager.PlaySound("ルーレットSE");
+                    Uilistcontroller.ToggleSpecificImage(1);
+                    Uilistcontroller.ToggleSpecificImage(4);
                     scrollSoundPlayed = true;
                 }
-                   
                 ScrollWheel = true; // フラグを下ろして、以降の処理を実行可能にする
             }
             rouletteSpeed = Input.GetAxis("Mouse ScrollWheel") * rotationSpeed; // ルーレットの速度を更新する
+            currentAngle += rouletteSpeed;
+            if(currentAngle>=360f)
+            {
+                totalRotations++;
+                currentAngle -= 360f; // 角度をリセット
+                                      // デバッグログで確認
+                Debug.Log($"Total Rotations: {totalRotations}");
+            }
+            else if (currentAngle <= -360f)
+            {
+                totalRotations++;
+                currentAngle += 360f; // 角度をリセット
+                                      // デバッグログで確認
+                Debug.Log($"Total Rotations: {totalRotations}");
+            }
             roulette.transform.Rotate(Vector3.forward, rouletteSpeed, Space.World);
         }
 
@@ -325,6 +347,7 @@ public class RouletteController : MonoBehaviour
         scrollWheelEnabled = true;
         LedyButton = false;
         LedyImage = false;
+        totalRotations = 0;
     }
     IEnumerator Weit(string sceneName)
     {
