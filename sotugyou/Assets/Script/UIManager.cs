@@ -18,53 +18,53 @@ public class UIManager : MonoBehaviour
         audioManager.PlaySound("BGM");
     }
 
-    public void StartCountDown()
-    {
-        StartCoroutine("CountDown");
-    }
+    //public void StartCountDown()
+    //{
+    //    StartCoroutine("CountDown");
+    //}
 
-    IEnumerator CountDown()
-    {
-        AudioManager audioManager = FindObjectOfType<AudioManager>();
-        audioManager.PlaySound("ボタン選択カウントダウンタイマー");
-        countDownCount = 0;
-        countDownElapsedTime = 0;
-
-
-        //テキストの更新。
-        countDownText.text = System.String.Format("{0}", Mathf.FloorToInt(countDownDuration));
-
-        //多分、負荷的にはGameObjectへの参照は別に保持していた方が宜しいかと思うが割愛。
-        countDownImage.gameObject.SetActive(true);
-        countDownText.gameObject.SetActive(true);
+    //IEnumerator CountDown()
+    //{
+    //    AudioManager audioManager = FindObjectOfType<AudioManager>();
+    //    audioManager.PlaySound("ボタン選択カウントダウンタイマー");
+    //    countDownCount = 0;
+    //    countDownElapsedTime = 0;
 
 
-        while (true)
-        {
-            countDownElapsedTime += Time.deltaTime;
+    //    //テキストの更新。
+    //    countDownText.text = System.String.Format("{0}", Mathf.FloorToInt(countDownDuration));
 
-            //円形スライダーの更新。fillAmountは0～1.0fの間で指定する。経過時間の小数点以下の値を入れている。
-            countDownImage.fillAmount = countDownElapsedTime % 1.0f;
+    //    //多分、負荷的にはGameObjectへの参照は別に保持していた方が宜しいかと思うが割愛。
+    //    countDownImage.gameObject.SetActive(true);
+    //    countDownText.gameObject.SetActive(true);
 
-            if (countDownCount < Mathf.FloorToInt(countDownElapsedTime))
-            {
-                //1秒刻みでカウント。
-                countDownCount++;
-                //テキストの更新。
-                countDownText.text = System.String.Format("{0}", Mathf.FloorToInt(countDownDuration - countDownCount));
-            }
 
-            if (countDownDuration <= countDownElapsedTime)
-            {
-                //カウントダウン終了。
-                audioManager.StopSound("ボタン選択カウントダウンタイマー");
-                countDownImage.gameObject.SetActive(false);
-                countDownText.gameObject.SetActive(false);
+    //    while (true)
+    //    {
+    //        countDownElapsedTime += Time.deltaTime;
+
+    //        //円形スライダーの更新。fillAmountは0～1.0fの間で指定する。経過時間の小数点以下の値を入れている。
+    //        countDownImage.fillAmount = countDownElapsedTime % 1.0f;
+
+    //        if (countDownCount < Mathf.FloorToInt(countDownElapsedTime))
+    //        {
+    //            //1秒刻みでカウント。
+    //            countDownCount++;
+    //            //テキストの更新。
+    //            countDownText.text = System.String.Format("{0}", Mathf.FloorToInt(countDownDuration - countDownCount));
+    //        }
+
+    //        if (countDownDuration <= countDownElapsedTime)
+    //        {
+    //            //カウントダウン終了。
+    //            audioManager.StopSound("ボタン選択カウントダウンタイマー");
+    //            countDownImage.gameObject.SetActive(false);
+    //            countDownText.gameObject.SetActive(false);
                
-                yield break;
-            }
+    //            yield break;
+    //        }
 
-            yield return null;
-        }
-    }
+    //        yield return null;
+    //    }
+    //}
 }

@@ -313,7 +313,7 @@ public class RouletteController : MonoBehaviour
         RoulettoORButton[0].SetActive(true);
         RoulettoORButton[1].SetActive(true);
 
-        UIManager.StartCountDown();
+        //UIManager.StartCountDown();
         activScene.StartPlayerEffect();
         ScrollSelect.currentFrag = true;
 

@@ -23,7 +23,7 @@ public class ScrollSelect : MonoBehaviour
         uiManager = GameObject.Find("Canvas").GetComponent<UIManager>();
         // Å‰‚Ìƒ{ƒ^ƒ“‚ğ‘I‘ğó‘Ô‚É‚·‚é
         SelectButton(selectedIndex);
-        uiManager.StartCountDown();
+        //uiManager.StartCountDown();
         
     }
 
