@@ -10,7 +10,7 @@ public class ScrollSelect : MonoBehaviour
     [SerializeField,Header("矢印のSetActivの切り替え")] GameObject[] RoulettoYazirusi;
     public int selectedIndex = 0; // 現在の選択インデックス
     public float selectionTime = 10f; // 選択時間
-    [Header("現在の経過時間")]public float currentTime = 0f; // 現在の経過時間
+    [Header("現在の経過時間")]public bool currentFrag = true; // 現在の経過時間
     UIManager uiManager;
     public RouletteMaker KougekirMaker;
     public RouletteMaker KaihukurMaker;
@@ -46,16 +46,17 @@ public class ScrollSelect : MonoBehaviour
         SelectButton(selectedIndex);
 
         // 選択が決定されるまでの時間をカウント
-        currentTime += Time.deltaTime;
+        //currentTime += Time.deltaTime;
 
-        if (currentTime >= selectionTime)
+        if (Input.GetKeyDown(KeyCode.Space)&& currentFrag)
         {
             // 選択を決定する処理をここに追加する
             buttons[selectedIndex].onClick.Invoke();
             Debug.Log("Button " + selectedIndex + " selected!");
         }
         if (!objectsToActivate[1].activeSelf)
-            currentTime = 0;
+            currentFrag = false;
+
         //Debug.Log(currentTime);
     }
 
@@ -74,7 +75,6 @@ public class ScrollSelect : MonoBehaviour
         {
             AudioManager audioManager = FindObjectOfType<AudioManager>();
             audioManager.PlaySound("ルーレット決定SE");
-            currentTime = 0f;
             objectsToActivate[1].SetActive(false);
             objectsToActivate[2].SetActive(false);
             objectsToActivate[0].SetActive(true);
@@ -111,7 +111,6 @@ public class ScrollSelect : MonoBehaviour
         {
             AudioManager audioManager = FindObjectOfType<AudioManager>();
             audioManager.PlaySound("ルーレット決定SE");
-            currentTime = 0f;
             objectsToActivate[1].SetActive(false);
             objectsToActivate[2].SetActive(false);
             objectsToActivate[3].SetActive(true);

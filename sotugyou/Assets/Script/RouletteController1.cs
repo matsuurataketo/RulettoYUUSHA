@@ -239,7 +239,7 @@ public class RouletteController1 : MonoBehaviour
 
         UIManager.StartCountDown();
         activScene.StartPlayerEffect();
-        ScrollSelect.currentTime = 0f;
+        //ScrollSelect.currentTime = 0f;
 
         RoulettoORButton[2].SetActive(false);
         RoulettoYazirusi.SetActive(false);

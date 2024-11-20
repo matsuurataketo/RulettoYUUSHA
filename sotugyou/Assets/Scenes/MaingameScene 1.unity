@@ -277,9 +277,9 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 570548199}
   - {fileID: 1306179868}
   - {fileID: 1629256478}
+  - {fileID: 217292206}
   m_Father: {fileID: 668309374}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -659,6 +659,42 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseMenuUI: {fileID: 941517026}
   pauseMenuUI2: {fileID: 370647228}
+--- !u!1 &217292205
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 217292206}
+  m_Layer: 5
+  m_Name: StartCount
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &217292206
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 217292205}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 570548199}
+  m_Father: {fileID: 37274362}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &261348721
 GameObject:
   m_ObjectHideFlags: 0
@@ -2122,7 +2158,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 668309370}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 018c97a8637395544a3d620da0d15097, type: 3}
   m_Name: 
@@ -3019,7 +3055,7 @@ MonoBehaviour:
   - {fileID: 920359826}
   selectedIndex: 0
   selectionTime: 5
-  currentTime: 0
+  currentFrag: 1
   KougekirMaker: {fileID: 1035663096}
   KaihukurMaker: {fileID: 1015445208}
 --- !u!4 &914738627
@@ -6198,7 +6234,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 37274362}
+    m_TransformParent: {fileID: 217292206}
     m_Modifications:
     - target: {fileID: 698972131143715284, guid: fbbb349397efe7d459680b09b12822f9, type: 3}
       propertyPath: m_Pivot.x
