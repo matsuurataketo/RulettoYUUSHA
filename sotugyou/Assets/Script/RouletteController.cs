@@ -123,17 +123,16 @@ public class RouletteController : MonoBehaviour
                 Debug.Log("Šg’£‚µ‚Ä‚Ü‚·");
             }
         }
-        else if (rMaker.randomGame == 1&& scrollWheelEnabled)
-        {
-            //Debug.Log("ƒ{ƒ^ƒ“ˆêŒ‚");
-            rotationSpeed = 21f;
-            if (Input.GetKey(KeyCode.Space) && ScrollWheel == true)
-            {
-                Debug.Log("Ž~‚ß‚Ä‚¢‚Ü‚·");
-                rotationSpeed = 0f;
-                scrollWheelEnabled = false;
-            }
-        }
+        //else if (rMaker.randomGame == 1&& scrollWheelEnabled)
+        //{
+        //    rotationSpeed = 21f;
+        //    if (Input.GetKey(KeyCode.Space) && ScrollWheel == true)
+        //    {
+        //        Debug.Log("Ž~‚ß‚Ä‚¢‚Ü‚·");
+        //        rotationSpeed = 0f;
+        //        scrollWheelEnabled = false;
+        //    }
+        //}
 
         if (frameCount % comparisonInterval == 0 && ScrollWheel == true)
         {

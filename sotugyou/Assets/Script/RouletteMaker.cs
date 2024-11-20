@@ -50,7 +50,7 @@ public class RouletteMaker : MonoBehaviour
     {
         // 前のターンのオブジェクトを削除
         ClearPreviousTurnObjects();
-        randomGame = Random.Range(0, 2);
+        randomGame = Random.Range(0, 1);
         rotatePerRoulette = 360 / (float)(choices.Count);
         float rouletteRatesEnd = 0;
         float rouletteRatesStart = 0;
