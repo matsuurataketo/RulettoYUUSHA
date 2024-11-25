@@ -27,8 +27,8 @@ public class RouletteController : MonoBehaviour
     private int comparisonInterval = 60; // 比較間隔
 
     Slider _slider; //HPバー
-    [SerializeField, Header("敵ルーレットの停止矢印")] GameObject EnemyroulettoYazirusi;//
-    [SerializeField, Header("自分ルーレットの停止矢印")] GameObject RoulettoYazirusi;//
+    [SerializeField, Header("敵ルーレットの停止矢印")] GameObject EnemyroulettoYazirusi;
+    [SerializeField, Header("自分ルーレットの停止矢印")] GameObject RoulettoYazirusi;
     [SerializeField , Header("ミニゲームScriptオブジェクト")] GameObject RoulettoGame;
     [SerializeField, Header("ミニゲームに使う画像プレファブ")] GameObject RightLeftImage;
     [SerializeField, Header("SetActivの切り替えを行うオブジェクト")] GameObject[] RoulettoORButton;//スキルルーレット
@@ -263,15 +263,19 @@ public class RouletteController : MonoBehaviour
         SkillRouletto(message);
         //ミニゲームスタート
         countDownTimer.StartCountDown();
-        RoulettoGame.SetActive(true);
+        //RoulettoGame.SetActive(true);
+        Uilistcontroller.ToggleSpecificImage(5);
+        Uilistcontroller.ToggleSpecificImage(6);
         RightLeftImage.SetActive(true);
         rulettogimickflag = true;
         roulettoGimick.StartRouletteGame();
 
         // 10秒間待機
-        yield return new WaitForSeconds(5); 
+        yield return new WaitForSeconds(5);
 
-        RoulettoGame.SetActive(false);
+        Uilistcontroller.ToggleSpecificImage(5);
+        Uilistcontroller.ToggleSpecificImage(6);
+        //RoulettoGame.SetActive(false);
         RightLeftImage.SetActive(false);
 
         if (result == "強技" || result == "弱技" || result == "中技" || result == "確死")
