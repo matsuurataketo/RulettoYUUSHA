@@ -46,6 +46,7 @@ public class RouletteController : MonoBehaviour
     private RoulettoGimick roulettoGimick;
     private bool rulettogimickflag = false;
     bool scrollSoundPlayed = false; // SEが再生されたかどうかを示すフラグ
+    bool scrollimagflag = false; // SEが再生されたかどうかを示すフラグ
     AudioManager audioManager;
     UIListController Uilistcontroller;
     bool scrollWheelEnabled = true;  // マウスホイールの入力を有効/無効にするフラグ
@@ -56,6 +57,12 @@ public class RouletteController : MonoBehaviour
 
     private float currentAngle = 0f; // 現在の回転角度
     private int totalRotations = 0; // 回転数
+
+    //ルーレット警告に使う変数
+    private bool WarningFlag = false;
+    private float WarningdisplayTime = 1.0f; // 表示する時間
+    private float Warningtimer;
+    private bool WarningisDisplaying = false;
 
 
     private void Start()
@@ -95,22 +102,39 @@ public class RouletteController : MonoBehaviour
             LedyButton = true;
         }
 
-        if (enemyScript != null && !enemyScript.IsSpinning&&!rulettogimickflag&& scrollWheelEnabled && LedyButton)
+        //警告文の表示
+        if (WarningisDisplaying)
+        {
+            Warningtimer += Time.deltaTime;
+
+            if (Warningtimer >= WarningdisplayTime)
+            {
+                Uilistcontroller.ToggleSpecificImage(8);
+                WarningisDisplaying = false; // 表示中フラグをリセット
+            }
+        }
+
+        if (enemyScript != null && !enemyScript.IsSpinning && !rulettogimickflag && scrollWheelEnabled && LedyButton && !WarningisDisplaying)
         {
             if (Input.GetAxis("Mouse ScrollWheel") != 0f)     // マウスホイールが回された場合
             {
                 if (!scrollSoundPlayed) // SEがまだ再生されていない場合
                 {
                     audioManager.PlaySound("ルーレットSE");
+                    scrollSoundPlayed = true;
+                    WarningFlag = false;
+                }
+                if (!scrollimagflag)
+                {
                     Uilistcontroller.ToggleSpecificImage(1);
                     Uilistcontroller.ToggleSpecificImage(4);
-                    scrollSoundPlayed = true;
+                    scrollimagflag = true;
                 }
                 ScrollWheel = true; // フラグを下ろして、以降の処理を実行可能にする
             }
             rouletteSpeed = Input.GetAxis("Mouse ScrollWheel") * rotationSpeed; // ルーレットの速度を更新する
             currentAngle += rouletteSpeed;
-            if(currentAngle>=360f)
+            if (currentAngle >= 360f)
             {
                 totalRotations++;
                 currentAngle -= 360f; // 角度をリセット
@@ -160,14 +184,24 @@ public class RouletteController : MonoBehaviour
         {
             
             float angleDifference = Quaternion.Angle(roulette.transform.rotation, previousRotation);
-            if (angleDifference < tolerance && ScrollWheel == true&&totalRotations>0)
+            if (angleDifference < tolerance && ScrollWheel == true)
             {
-                ScrollWheel = false;
                 scrollSoundPlayed = false;
-                scrollWheelEnabled = false;
                 audioManager.StopSound("ルーレットSE");
+                if (!WarningFlag&&totalRotations==0)
+                {
+                    WarningShowUI();
+                    WarningFlag = true;
+                }
                 Debug.Log("回転は同じです。");
-                ShowResult(roulette.transform.eulerAngles.z);
+                if (totalRotations > 0)
+                {
+                    scrollimagflag = false;
+                    scrollWheelEnabled = false;
+                    ScrollWheel = false;
+                    ShowResult(roulette.transform.eulerAngles.z);
+                }
+                    
                 rotationSpeed = 5.0f;
             }
             else
@@ -365,5 +399,11 @@ public class RouletteController : MonoBehaviour
         yield return new WaitForSecondsRealtime(1.0f);
         Time.timeScale = 1;
         SceneManager.LoadScene(sceneName);
+    }
+    public void WarningShowUI()
+    {
+        Uilistcontroller.ToggleSpecificImage(8);
+        Warningtimer = 0; // タイマーをリセット
+        WarningisDisplaying = true; // 表示中フラグをセット
     }
 }
