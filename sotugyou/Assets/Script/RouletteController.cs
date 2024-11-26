@@ -160,7 +160,7 @@ public class RouletteController : MonoBehaviour
         {
             
             float angleDifference = Quaternion.Angle(roulette.transform.rotation, previousRotation);
-            if (angleDifference < tolerance && ScrollWheel == true)
+            if (angleDifference < tolerance && ScrollWheel == true&&totalRotations>0)
             {
                 ScrollWheel = false;
                 scrollSoundPlayed = false;
@@ -262,6 +262,11 @@ public class RouletteController : MonoBehaviour
         yield return new WaitForSeconds(1f);
         SkillRouletto(message);
         //ミニゲームスタート
+        Uilistcontroller.ToggleSpecificImage(7);
+        // 3秒間待機
+        yield return new WaitForSeconds(3);
+        Uilistcontroller.ToggleSpecificImage(7);
+
         countDownTimer.StartCountDown();
         //RoulettoGame.SetActive(true);
         Uilistcontroller.ToggleSpecificImage(5);
@@ -270,7 +275,7 @@ public class RouletteController : MonoBehaviour
         rulettogimickflag = true;
         roulettoGimick.StartRouletteGame();
 
-        // 10秒間待機
+        // 5秒間待機
         yield return new WaitForSeconds(5);
 
         Uilistcontroller.ToggleSpecificImage(5);

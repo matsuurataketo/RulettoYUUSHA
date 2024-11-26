@@ -19,6 +19,7 @@ public class RoulettoGimick : MonoBehaviour
     [SerializeField, Header("Imageを格納する親オブジェクト")] private Transform imageParent;
     [SerializeField, Header("右方向の画像")] private Sprite rightImage;
     [SerializeField, Header("左方向の画像")] private Sprite leftImage;
+    [SerializeField, Header("デバイス画像")] GameObject dviceimag;
 
     private Image displayedImage; // 表示される画像
     AudioManager audioManager;
@@ -39,6 +40,7 @@ public class RoulettoGimick : MonoBehaviour
 
     public void StartRouletteGame()
     {
+        dviceimag.transform.rotation = Quaternion.Euler(0, 0, 0);
         audioManager = FindObjectOfType<AudioManager>();
         InitializeGame();
         StartCoroutine(StartGame());
