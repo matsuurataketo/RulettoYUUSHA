@@ -261,6 +261,7 @@ public class RouletteController : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
         SkillRouletto(message);
+
         //ミニゲームスタート
         Uilistcontroller.ToggleSpecificImage(7);
         // 3秒間待機
