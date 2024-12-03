@@ -151,8 +151,7 @@ public class RouletteController : MonoBehaviour
             currentAngle += rotationStep;
             roulette.transform.Rotate(Vector3.forward, rotationStep, Space.World);
             // Šµ«Œ¸‘¬
-            if (totalRotations > 0)
-                rouletteSpeed = Mathf.MoveTowards(rouletteSpeed, 0f, deceleration * Time.deltaTime);
+            rouletteSpeed = Mathf.MoveTowards(rouletteSpeed, 0f, deceleration * Time.deltaTime);
 
             //‰½‰ñ“]‚µ‚Ä‚é‚©‚Ç‚¤‚©
             if (currentAngle >= 360f)
@@ -213,6 +212,7 @@ public class RouletteController : MonoBehaviour
                 {
                     WarningShowUI();
                     WarningFlag = true;
+                    currentAngle = 0;
                 }
                 Debug.Log("‰ñ“]‚Í“¯‚¶‚Å‚·B");
                 if (totalRotations > 0)
