@@ -6,6 +6,7 @@ public class TitleScreenController : MonoBehaviour
 {
     public Button[] buttons;  // UI上のボタンをInspectorで設定
     private int currentButtonIndex = 0;
+    public float StartButtonDely = 0;
 
     void Start()
     {
@@ -30,10 +31,11 @@ public class TitleScreenController : MonoBehaviour
             buttons[0].interactable = false;
             buttons[1].interactable = true;
         }
-
+        StartButtonDely++;
         // スペースキーで現在選択されているボタンを押す
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space)&& StartButtonDely>30)
         {
+            StartButtonDely = 0;
             buttons[currentButtonIndex].onClick.Invoke();
         }
     }

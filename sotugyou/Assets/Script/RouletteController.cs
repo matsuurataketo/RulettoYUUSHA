@@ -127,7 +127,7 @@ public class RouletteController : MonoBehaviour
                     scrollSoundPlayed = true;
                     WarningFlag = false;
                 }
-                if (!scrollimagflag)
+                if (!scrollimagflag&&totalRotations>0)
                 {
                     Uilistcontroller.ToggleSpecificImage(1);
                     Uilistcontroller.ToggleSpecificImage(4);
