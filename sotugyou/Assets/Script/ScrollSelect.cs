@@ -15,6 +15,7 @@ public class ScrollSelect : MonoBehaviour
     public RouletteMaker KougekirMaker;
     public RouletteMaker KaihukurMaker;
     UIListController uilistcontroller;
+    public float BottonStart = 0;
 
 
     void Start()
@@ -47,15 +48,19 @@ public class ScrollSelect : MonoBehaviour
 
         // 選択が決定されるまでの時間をカウント
         //currentTime += Time.deltaTime;
-
-        if (Input.GetKeyDown(KeyCode.Space)&& currentFrag)
+        BottonStart++;
+        if (Input.GetKeyDown(KeyCode.Space)&& currentFrag&&BottonStart>30)
         {
             // 選択を決定する処理をここに追加する
             buttons[selectedIndex].onClick.Invoke();
             Debug.Log("Button " + selectedIndex + " selected!");
+            BottonStart = 0;
         }
         if (!objectsToActivate[1].activeSelf)
+        {
             currentFrag = false;
+        }
+            
 
         //Debug.Log(currentTime);
     }
