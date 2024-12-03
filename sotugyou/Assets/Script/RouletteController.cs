@@ -63,7 +63,7 @@ public class RouletteController : MonoBehaviour
     private float WarningdisplayTime = 1.0f; // 表示する時間
     private float Warningtimer;
     private bool WarningisDisplaying = false;
-
+    public float Startspace = 0;
 
     private void Start()
     {
@@ -80,6 +80,7 @@ public class RouletteController : MonoBehaviour
 
     private void Update()
     {
+        
         if (LedyImage == false)
         {
             UpRouletteRates = rMaker.rouletteRates[0];
@@ -94,12 +95,14 @@ public class RouletteController : MonoBehaviour
             Uilistcontroller.KougekiRoulettoText(3, rMaker.choices[0] + "・・" + rMaker.rouletteRates[3] * 100 + "%");
             LedyImage = true;
         }
-        if (Input.GetKeyDown(KeyCode.Space) && LedyButton == false)
+
+        Startspace++;
+        if (Input.GetKeyDown(KeyCode.Space) && LedyButton == false&&Startspace>30)
         {
-           
             Uilistcontroller.ToggleSpecificImage(2);
             Uilistcontroller.ToggleSpecificImage(4);
             LedyButton = true;
+            Startspace = 0;
         }
 
         //警告文の表示
@@ -392,6 +395,7 @@ public class RouletteController : MonoBehaviour
         LedyButton = false;
         LedyImage = false;
         totalRotations = 0;
+        Startspace = 0;
     }
     IEnumerator Weit(string sceneName)
     {
