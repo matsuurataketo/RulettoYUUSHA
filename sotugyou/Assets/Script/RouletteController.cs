@@ -18,13 +18,14 @@ public class RouletteController : MonoBehaviour
     private string result;//ルーレットの結果の格納変数
     [SerializeField,Header("ルーレットの結果表示テキスト")] private TextMeshProUGUI resultText;//結果の表示TEXT
     [Header("ルーレットの回転スピード")] public float rotationSpeed = 7.0f;//ルーレットの回転スピード
+    public float deceleration = 5f; // 減速率
     private float lastScrollWheelInputTime; // 最後にマウススクロールホイールの入力があった時間
     public bool ScrollWheel = false;//最初のマウスホイール制御変数
     [SerializeField, Header("ルーレットのリアルな回転速度")] private float rouletteSpeed; // ルーレットの速度を保持する変数
     public float RouletteSpeed => rouletteSpeed; // プロパティを介して外部からアクセスできるようにする
     private Quaternion previousRotation;//ルーレットのｚ回転の変数
     private int frameCount = 0;//回り始めてからのフレームカウンター
-    private int comparisonInterval = 60; // 比較間隔
+    private int comparisonInterval = 30; // 比較間隔
 
     Slider _slider; //HPバー
     [SerializeField, Header("敵ルーレットの停止矢印")] GameObject EnemyroulettoYazirusi;
@@ -127,16 +128,33 @@ public class RouletteController : MonoBehaviour
                     scrollSoundPlayed = true;
                     WarningFlag = false;
                 }
-                if (!scrollimagflag&&totalRotations>0)
-                {
-                    Uilistcontroller.ToggleSpecificImage(1);
-                    Uilistcontroller.ToggleSpecificImage(4);
-                    scrollimagflag = true;
-                }
+                
                 ScrollWheel = true; // フラグを下ろして、以降の処理を実行可能にする
             }
-            rouletteSpeed = Input.GetAxis("Mouse ScrollWheel") * rotationSpeed; // ルーレットの速度を更新する
-            currentAngle += rouletteSpeed;
+            if (!scrollimagflag && totalRotations > 0)
+            {
+                Uilistcontroller.ToggleSpecificImage(1);
+                Uilistcontroller.ToggleSpecificImage(4);
+                scrollimagflag = true;
+            }
+
+            //UIルーレットを回しているとこ
+            //float scrollInput = Input.GetAxis("Mouse ScrollWheel");
+            if (totalRotations==0)
+            { 
+                // マウスホイール入力に応じて速度を設定
+                //rouletteSpeed += scrollInput * rotationSpeed;
+
+                rouletteSpeed += Input.GetAxis("Mouse ScrollWheel") * rotationSpeed; // ルーレットの速度を更新する
+            }
+            float rotationStep = rouletteSpeed * Time.deltaTime;
+            currentAngle += rotationStep;
+            roulette.transform.Rotate(Vector3.forward, rotationStep, Space.World);
+            // 慣性減速
+            if (totalRotations > 0)
+                rouletteSpeed = Mathf.MoveTowards(rouletteSpeed, 0f, deceleration * Time.deltaTime);
+
+            //何回転してるかどうか
             if (currentAngle >= 360f)
             {
                 totalRotations++;
@@ -151,10 +169,9 @@ public class RouletteController : MonoBehaviour
                                       // デバッグログで確認
                 Debug.Log($"Total Rotations: {totalRotations}");
             }
-            roulette.transform.Rotate(Vector3.forward, rouletteSpeed, Space.World);
         }
 
-        float tolerance = 0.1f; // Adjust this value based on the precision you need
+        
 
         frameCount++;
 
@@ -183,6 +200,7 @@ public class RouletteController : MonoBehaviour
         //    }
         //}
 
+        float tolerance = 0.1f; // Adjust this value based on the precision you need
         if (frameCount % comparisonInterval == 0 && ScrollWheel == true)
         {
             
