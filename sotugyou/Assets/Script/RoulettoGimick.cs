@@ -100,7 +100,7 @@ public class RoulettoGimick : MonoBehaviour
                 }
 
                 // 1回転（360度）したかどうかをチェック
-                if (totalRotation >= 360f)
+                if (totalRotation >= 90f)
                 {
                     totalRotation = 0f;
                     CrearNum++;
