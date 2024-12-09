@@ -169,15 +169,12 @@ public class RouletteController : MonoBehaviour
                 Debug.Log($"Total Rotations: {totalRotations}");
             }
         }
-
-        
-
         frameCount++;
 
         if (rMaker.randomGame == 0&& scrollWheelEnabled)
         {
             //Debug.Log("ボタン連打");
-            if (Input.GetKeyDown(KeyCode.Space) && ScrollWheel == true)
+            if (Input.GetKeyDown(KeyCode.Space) && ScrollWheel == true&&totalRotations>0)
             {
                 audioManager.PlaySound("連打音");
                 rMaker.IncreaseRandomAngle();
