@@ -23,6 +23,12 @@ public class RoulettoGimick : MonoBehaviour
 
     private Image displayedImage; // 表示される画像
     AudioManager audioManager;
+    MinigameEfect MinigameEfect;
+
+    private void Start()
+    {
+        MinigameEfect = FindObjectOfType<MinigameEfect>();
+    }
 
     public void InitializeGame()
     {
@@ -106,6 +112,7 @@ public class RoulettoGimick : MonoBehaviour
                     CrearNum++;
                     audioManager.PlaySound("正解");
                     Debug.Log("正しい方向に一回転完了！");
+                    MinigameEfect.PlayParticle();
 
                     // 次の方向を抽選して更新
                     UpdateDirection();
