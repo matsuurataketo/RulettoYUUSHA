@@ -116,6 +116,7 @@ public class RoulettoGimick : MonoBehaviour
 
                     // Ÿ‚Ì•ûŒü‚ğ’Š‘I‚µ‚ÄXV
                     UpdateDirection();
+                    dviceimag.transform.rotation = Quaternion.Euler(0, 0, 0);
                 }
             }
         }

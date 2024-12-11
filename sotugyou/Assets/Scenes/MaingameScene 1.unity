@@ -327,7 +327,7 @@ Transform:
   m_GameObject: {fileID: 54378973}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -6, z: 9}
+  m_LocalPosition: {x: 0, y: 1.6, z: 9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2072,15 +2072,15 @@ MonoBehaviour:
   sounds:
   - name: BGM
     clip: {fileID: 8300000, guid: e2849dbb181b685439ac33e0e996b6d2, type: 3}
-    volume: 1
+    volume: 0.5
     loop: 1
   - name: "\u30EB\u30FC\u30EC\u30C3\u30C8SE"
     clip: {fileID: 8300000, guid: a96162a5326917b4e8844f255b407d19, type: 3}
-    volume: 0.5
+    volume: 1
     loop: 1
   - name: "\u30EB\u30FC\u30EC\u30C3\u30C8\u6C7A\u5B9ASE"
     clip: {fileID: 8300000, guid: c99474187b4b15e40add677f9fcbd74d, type: 3}
-    volume: 0.5
+    volume: 1
     loop: 0
   - name: "\u30DC\u30BF\u30F3\u9078\u629E\u30AB\u30A6\u30F3\u30C8\u30C0\u30A6\u30F3\u30BF\u30A4\u30DE\u30FC"
     clip: {fileID: 8300000, guid: d412e06a66d8f2c4888a41482a7fb6c5, type: 3}
@@ -2088,7 +2088,7 @@ MonoBehaviour:
     loop: 1
   - name: "HP\u30C0\u30A6\u30F3\u306E\u97F3"
     clip: {fileID: 8300000, guid: 3952e50ab26feda42acba16dc1e86601, type: 3}
-    volume: 0.5
+    volume: 0.75
     loop: 0
   - name: "\u6B63\u89E3"
     clip: {fileID: 8300000, guid: a52bd1021325d8b48a525aa8fabab867, type: 3}
@@ -2096,7 +2096,7 @@ MonoBehaviour:
     loop: 0
   - name: "\u9023\u6253\u97F3"
     clip: {fileID: 8300000, guid: fa62e4f75ab073245ac56ec8b79773b3, type: 3}
-    volume: 0.75
+    volume: 1
     loop: 0
   audioSourcePrefab: {fileID: 6420494920634176643, guid: 866b7edb2341bd94f9cf48559a0e4d1c, type: 3}
   poolSize: 7
