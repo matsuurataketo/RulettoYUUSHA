@@ -1,4 +1,5 @@
 using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -24,6 +25,7 @@ public class RoulettoGimick : MonoBehaviour
     private Image displayedImage; // 表示される画像
     AudioManager audioManager;
     MinigameEfect MinigameEfect;
+    public TextMeshProUGUI CreaNumText;
 
     private void Start()
     {
@@ -57,6 +59,7 @@ public class RoulettoGimick : MonoBehaviour
         if (!gameActive)
         {
             CrearNum = 0;
+            CreaNumText.text = ("×" + CrearNum);
             UpdateDirection(); // 最初の方向を設定
             gameActive = true;
             timer = 0f;
@@ -113,7 +116,7 @@ public class RoulettoGimick : MonoBehaviour
                     audioManager.PlaySound("正解");
                     Debug.Log("正しい方向に一回転完了！");
                     MinigameEfect.PlayParticle();
-
+                    CreaNumText.text = ("×" + CrearNum);
                     // 次の方向を抽選して更新
                     UpdateDirection();
                     dviceimag.transform.rotation = Quaternion.Euler(0, 0, 0);

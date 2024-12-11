@@ -320,6 +320,7 @@ public class RouletteController : MonoBehaviour
         yield return new WaitForSeconds(3);
         Uilistcontroller.ToggleSpecificImage(7);
 
+        Uilistcontroller.ToggleSpecificImage(9);
         countDownTimer.StartCountDown();
         //RoulettoGame.SetActive(true);
         Uilistcontroller.ToggleSpecificImage(5);
@@ -331,6 +332,7 @@ public class RouletteController : MonoBehaviour
         // 5ïbä‘ë“ã@
         yield return new WaitForSeconds(5);
 
+        Uilistcontroller.ToggleSpecificImage(9);
         Uilistcontroller.ToggleSpecificImage(5);
         Uilistcontroller.ToggleSpecificImage(6);
         //RoulettoGame.SetActive(false);
