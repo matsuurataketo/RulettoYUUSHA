@@ -21,4 +21,8 @@ public class LodeScene : MonoBehaviour
         Application.Quit();
 #endif
     }
+    public void PushButton()
+    {
+        Debug.Log("‰½‚©‚¨‚±‚è‚Ü‚·");
+    }
 }

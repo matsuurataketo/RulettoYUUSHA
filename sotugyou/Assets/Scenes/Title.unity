@@ -259,6 +259,7 @@ MonoBehaviour:
   buttons:
   - {fileID: 1230829758}
   - {fileID: 1261378565}
+  StartButtonDely: 0
 --- !u!82 &361301358
 AudioSource:
   m_ObjectHideFlags: 0
@@ -271,7 +272,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 79c66d699cbc4a84b8cb7c4334318446, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -1106,7 +1107,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 361301356}
         m_TargetAssemblyTypeName: LodeScene, Assembly-CSharp
-        m_MethodName: ExitGame
+        m_MethodName: PushButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
