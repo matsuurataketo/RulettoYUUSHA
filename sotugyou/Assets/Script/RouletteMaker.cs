@@ -133,9 +133,9 @@ public class RouletteMaker : MonoBehaviour
     {
         if (rouletteImages.Count > 1 && rouletteImages[1] != null) // nullチェックを追加
         {
-            rouletteImages[1].fillAmount -= 0.0025f;
-            rController.rotatePerRouletteEndAngle[2] -= 0.9f;
-            rController.rotatePerRouletteStartAngle[3] -= 0.9f;
+            rouletteImages[1].fillAmount -= 0.005f;
+            rController.rotatePerRouletteEndAngle[2] -= 1.8f;
+            rController.rotatePerRouletteStartAngle[3] -= 1.8f;
         }
 
         for (int i = 0; i < choices.Count - 2; i++)

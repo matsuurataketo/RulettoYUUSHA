@@ -174,12 +174,12 @@ public class RouletteController : MonoBehaviour
         if (rMaker.randomGame == 0&& scrollWheelEnabled)
         {
             //Debug.Log("ボタン連打");
-            if (Input.GetKeyDown(KeyCode.Space) && ScrollWheel == true&&totalRotations>0)
+            if (Input.GetKeyDown(KeyCode.Space) && ScrollWheel == true&&totalRotations>0&&DownRouletteRates>0.005f)
             {
                 audioManager.PlaySound("連打音");
                 rMaker.IncreaseRandomAngle();
-                UpRouletteRates += 0.0025f;//割合変更
-                DownRouletteRates -= 0.0025f;//割合変更
+                UpRouletteRates += 0.005f;//割合変更
+                DownRouletteRates -= 0.005f;//割合変更
                 Uilistcontroller.KougekiRoulettoText(0, rMaker.choices[3] + "・・" + (UpRouletteRates * 100).ToString("F2") + "%");
                 Uilistcontroller.KougekiRoulettoText(1, rMaker.choices[2] + "・・" + (DownRouletteRates * 100).ToString("F2") + "%");
                 Debug.Log("拡張してます");
@@ -349,7 +349,7 @@ public class RouletteController : MonoBehaviour
             // HPを減少させる処理
             HPmanegment.UpdateEnemyDownHP(hpChange);
         }
-        else if (result == "おいしい" || result == "にがい" || result == "からい" || result == "極上回復")
+        else if (result == "強回復" || result == "中回復" || result == "弱回復" || result == "最強回復")
         {
             timelinemanager.PlayTimeline(5);
             yield return new WaitUntil(() => timelinemanager.playableDirectors[5].state != PlayState.Playing);
