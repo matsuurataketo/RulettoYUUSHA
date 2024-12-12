@@ -260,19 +260,19 @@ public class RouletteController : MonoBehaviour
                 StartCoroutine(PlayRouletteGame(result, 100f, "\nUŒ‚:"));
                 Debug.Log("Šm€");
                 break;
-            case "‚¨‚¢‚µ‚¢":
+            case "‹­‰ñ•œ":
                 StartCoroutine(PlayRouletteGame(result, 40f, "\n‰ñ•œ:"));
                 Debug.Log("‚¨‚¢‚µ‚¢");
                 break;
-            case "‚É‚ª‚¢":
+            case "’†‰ñ•œ":
                 StartCoroutine(PlayRouletteGame(result, 20f, "\n‰ñ•œ:"));
                 Debug.Log("‚É‚ª‚¢");
                 break;
-            case "‹Éã‰ñ•œ":
+            case "Å‹­‰ñ•œ":
                 StartCoroutine(PlayRouletteGame(result, 80f, "\n‰ñ•œ:"));
                 Debug.Log("‹Éã‰ñ•œ");
                 break;
-            case "‚©‚ç‚¢":
+            case "ã‰ñ•œ":
                 StartCoroutine(PlayRouletteGame(result, 10f, "\n‰ñ•œ:"));
                 Debug.Log("‚©‚ç‚¢");
                 break;
