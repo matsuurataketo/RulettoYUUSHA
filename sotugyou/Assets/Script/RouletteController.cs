@@ -220,7 +220,7 @@ public class RouletteController : MonoBehaviour
                     ShowResult(roulette.transform.eulerAngles.z);
                 }
                     
-                rotationSpeed = 5.0f;
+                rotationSpeed = 7.0f;
             }
             else
             {
@@ -408,7 +408,7 @@ public class RouletteController : MonoBehaviour
         RoulettoYazirusi.SetActive(false);
         RoulettoORButton[3].SetActive(false);
         rulettogimickflag = false;
-        rotationSpeed = 5.0f;
+        rotationSpeed = 7.0f;
         scrollWheelEnabled = true;
         LedyButton = false;
         LedyImage = false;
