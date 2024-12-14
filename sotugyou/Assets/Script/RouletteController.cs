@@ -362,8 +362,6 @@ public class RouletteController : MonoBehaviour
             timelinemanager.PlayTimeline(3);
             // タイムラインの再生が終了するまで待機
             yield return new WaitUntil(() => timelinemanager.playableDirectors[3].state != PlayState.Playing);
-            //FindObjectOfType<SceneTransition>().SwitchCameraAndScene("CrearScene");
-            //SceneManager.LoadScene("CrearScene");
         }
 
         //敵のルーレット開始
@@ -394,7 +392,6 @@ public class RouletteController : MonoBehaviour
             timelinemanager.PlayTimeline(4);
             // タイムラインの再生が終了するまで待機
             yield return new WaitUntil(() => timelinemanager.playableDirectors[4].state != PlayState.Playing);
-            FindObjectOfType<SceneTransition>().SwitchCameraAndScene("EndScene");
         }
 
         RoulettoORButton[0].SetActive(true);
