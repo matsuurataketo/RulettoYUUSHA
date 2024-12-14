@@ -1790,6 +1790,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SceneName: Title
+  fadeImage: {fileID: 0}
+  fadeDuration: 1
+  fadeIn: 1
 --- !u!1001 &377237166
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6910,8 +6913,8 @@ MonoBehaviour:
   EnemyHPSlider: {fileID: 925194579}
   PlayerHPFillImage: {fileID: 967606792}
   EnemyHPFillImage: {fileID: 449691461}
-  PlayerHP: 1
-  EnemyHP: 1
+  PlayerHP: 100
+  EnemyHP: 150
   PlayerAtack: 30
   Weponstate: 0
   damageDuration: 1
