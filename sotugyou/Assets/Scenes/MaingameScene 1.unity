@@ -35520,6 +35520,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 08da9f8db8d7f484980c48e4336650ba, type: 3}
     - target: {fileID: 8371949389234987480, guid: 9701416c3c25c3f43af8c1516854822e, type: 3}
+      propertyPath: Images.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: 37fac0521a8d8674ba918e7356f48474, type: 3}
+    - target: {fileID: 8371949389234987480, guid: 9701416c3c25c3f43af8c1516854822e, type: 3}
+      propertyPath: Images.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: 20afcff3e53a6bd41ab82aa8d423ac10, type: 3}
+    - target: {fileID: 8371949389234987480, guid: 9701416c3c25c3f43af8c1516854822e, type: 3}
       propertyPath: Images.Array.data[3]
       value: 
       objectReference: {fileID: 21300000, guid: 5ff6951034ed8e24a9f259d1aee5080d, type: 3}
@@ -35841,12 +35849,24 @@ PrefabInstance:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 9007811952706829462, guid: b21cde8c0e868164d8ae6e08b289ca4e, type: 3}
+      propertyPath: Images.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: f06ceb742d9cae643a51e885e0779886, type: 3}
+    - target: {fileID: 9007811952706829462, guid: b21cde8c0e868164d8ae6e08b289ca4e, type: 3}
+      propertyPath: Images.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: 4aba0e0dea229fe4a80984beee67693c, type: 3}
+    - target: {fileID: 9007811952706829462, guid: b21cde8c0e868164d8ae6e08b289ca4e, type: 3}
+      propertyPath: Images.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: 77b01ab70e21a6542b5bb775b9816e3d, type: 3}
+    - target: {fileID: 9007811952706829462, guid: b21cde8c0e868164d8ae6e08b289ca4e, type: 3}
       propertyPath: Images.Array.data[3]
       value: 
-      objectReference: {fileID: 21300000, guid: 08da9f8db8d7f484980c48e4336650ba, type: 3}
+      objectReference: {fileID: 21300000, guid: 7d4bcd8be97c4ed4bbab69089397efa2, type: 3}
     - target: {fileID: 9007811952706829462, guid: b21cde8c0e868164d8ae6e08b289ca4e, type: 3}
       propertyPath: choices.Array.data[0]
-      value: "\u5F31\u56DE\u5FA9"
+      value: "\u5C0F\u56DE\u5FA9"
       objectReference: {fileID: 0}
     - target: {fileID: 9007811952706829462, guid: b21cde8c0e868164d8ae6e08b289ca4e, type: 3}
       propertyPath: choices.Array.data[1]
@@ -35854,11 +35874,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9007811952706829462, guid: b21cde8c0e868164d8ae6e08b289ca4e, type: 3}
       propertyPath: choices.Array.data[2]
-      value: "\u5F37\u56DE\u5FA9"
+      value: "\u5927\u56DE\u5FA9"
       objectReference: {fileID: 0}
     - target: {fileID: 9007811952706829462, guid: b21cde8c0e868164d8ae6e08b289ca4e, type: 3}
       propertyPath: choices.Array.data[3]
-      value: "\u6700\u5F37\u56DE\u5FA9"
+      value: "\u6975\u56DE\u5FA9"
       objectReference: {fileID: 0}
     - target: {fileID: 9007811952706829462, guid: b21cde8c0e868164d8ae6e08b289ca4e, type: 3}
       propertyPath: rouletteRates.Array.size

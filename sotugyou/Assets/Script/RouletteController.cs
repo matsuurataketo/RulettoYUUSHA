@@ -261,7 +261,7 @@ public class RouletteController : MonoBehaviour
                 StartCoroutine(PlayRouletteGame(result, 100f, "\nUŒ‚:"));
                 Debug.Log("ŠmŽ€");
                 break;
-            case "‹­‰ñ•œ":
+            case "‘å‰ñ•œ":
                 StartCoroutine(PlayRouletteGame(result, 40f, "\n‰ñ•œ:"));
                 Debug.Log("‚¨‚¢‚µ‚¢");
                 break;
@@ -273,7 +273,7 @@ public class RouletteController : MonoBehaviour
                 StartCoroutine(PlayRouletteGame(result, 80f, "\n‰ñ•œ:"));
                 Debug.Log("‹Éã‰ñ•œ");
                 break;
-            case "Žã‰ñ•œ":
+            case "¬‰ñ•œ":
                 StartCoroutine(PlayRouletteGame(result, 10f, "\n‰ñ•œ:"));
                 Debug.Log("‚©‚ç‚¢");
                 break;
@@ -373,7 +373,7 @@ public class RouletteController : MonoBehaviour
                 // HP‚ðŒ¸­‚³‚¹‚éˆ—
                 HPmanegment.UpdateEnemyDownHP(hpChange);
                 break;
-            case "Žã‰ñ•œ":
+            case "¬‰ñ•œ":
                 timelinemanager.PlayTimeline(5);
                 yield return new WaitUntil(() => timelinemanager.playableDirectors[5].state != PlayState.Playing);
                 HPmanegment.UpdatePlayerUPHP(hpChange);
@@ -383,7 +383,7 @@ public class RouletteController : MonoBehaviour
                 yield return new WaitUntil(() => timelinemanager.playableDirectors[5].state != PlayState.Playing);
                 HPmanegment.UpdatePlayerUPHP(hpChange);
                 break;
-            case "‹­‰ñ•œ":
+            case "‘å‰ñ•œ":
                 timelinemanager.PlayTimeline(5);
                 yield return new WaitUntil(() => timelinemanager.playableDirectors[5].state != PlayState.Playing);
                 HPmanegment.UpdatePlayerUPHP(hpChange);
