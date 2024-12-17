@@ -359,7 +359,7 @@ public class RouletteController : MonoBehaviour
                 break;
             case "強技":
                 // タイムラインを再生
-                timelinemanager.PlayTimeline(2);
+                timelinemanager.PlayTimeline(9);
                 // タイムラインの再生が終了するまで待機
                 yield return new WaitUntil(() => timelinemanager.playableDirectors[2].state != PlayState.Playing);
                 // HPを減少させる処理
@@ -367,7 +367,7 @@ public class RouletteController : MonoBehaviour
                 break;
             case "確死":
                 // タイムラインを再生
-                timelinemanager.PlayTimeline(2);
+                timelinemanager.PlayTimeline(10);
                 // タイムラインの再生が終了するまで待機
                 yield return new WaitUntil(() => timelinemanager.playableDirectors[2].state != PlayState.Playing);
                 // HPを減少させる処理
