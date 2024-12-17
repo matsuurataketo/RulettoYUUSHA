@@ -23503,7 +23503,7 @@ PlayableDirector:
   m_Enabled: 1
   serializedVersion: 3
   m_PlayableAsset: {fileID: 11400000, guid: 2798d0a736f43c94f8e960be0807d415, type: 2}
-  m_InitialState: 1
+  m_InitialState: 0
   m_WrapMode: 2
   m_DirectorUpdateMode: 1
   m_InitialTime: 0
@@ -35516,9 +35516,13 @@ PrefabInstance:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8371949389234987480, guid: 9701416c3c25c3f43af8c1516854822e, type: 3}
-      propertyPath: Images.Array.data[3]
+      propertyPath: Images.Array.data[0]
       value: 
       objectReference: {fileID: 21300000, guid: 08da9f8db8d7f484980c48e4336650ba, type: 3}
+    - target: {fileID: 8371949389234987480, guid: 9701416c3c25c3f43af8c1516854822e, type: 3}
+      propertyPath: Images.Array.data[3]
+      value: 
+      objectReference: {fileID: 21300000, guid: 5ff6951034ed8e24a9f259d1aee5080d, type: 3}
     - target: {fileID: 8371949389234987480, guid: 9701416c3c25c3f43af8c1516854822e, type: 3}
       propertyPath: choices.Array.data[0]
       value: "\u78BA\u6B7B"
