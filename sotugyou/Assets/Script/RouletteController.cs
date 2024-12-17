@@ -17,8 +17,8 @@ public class RouletteController : MonoBehaviour
 
     private string result;//ルーレットの結果の格納変数
     [SerializeField,Header("ルーレットの結果表示テキスト")] private TextMeshProUGUI resultText;//結果の表示TEXT
-    [Header("ルーレットの回転スピード")] public float rotationSpeed = 7.0f;//ルーレットの回転スピード
-    public float deceleration = 5f; // 減速率
+    [Header("ルーレットの回転スピード")] public float rotationSpeed = 6.0f;//ルーレットの回転スピード
+    public float deceleration ; // 減速率
     private float lastScrollWheelInputTime; // 最後にマウススクロールホイールの入力があった時間
     public bool ScrollWheel = false;//最初のマウスホイール制御変数
     [SerializeField, Header("ルーレットのリアルな回転速度")] private float rouletteSpeed; // ルーレットの速度を保持する変数
@@ -150,6 +150,7 @@ public class RouletteController : MonoBehaviour
             float rotationStep = rouletteSpeed * Time.deltaTime;
             currentAngle += rotationStep;
             roulette.transform.Rotate(Vector3.forward, rotationStep, Space.World);
+            deceleration = Random.Range(100f, 125f);
             // 慣性減速
             rouletteSpeed = Mathf.MoveTowards(rouletteSpeed, 0f, deceleration * Time.deltaTime);
 
@@ -220,7 +221,7 @@ public class RouletteController : MonoBehaviour
                     ShowResult(roulette.transform.eulerAngles.z);
                 }
                     
-                rotationSpeed = 7.0f;
+                rotationSpeed = 6.0f;
             }
             else
             {
@@ -475,7 +476,7 @@ public class RouletteController : MonoBehaviour
         RoulettoYazirusi.SetActive(false);
         RoulettoORButton[3].SetActive(false);
         rulettogimickflag = false;
-        rotationSpeed = 7.0f;
+        rotationSpeed = 6.0f;
         scrollWheelEnabled = true;
         LedyButton = false;
         LedyImage = false;
