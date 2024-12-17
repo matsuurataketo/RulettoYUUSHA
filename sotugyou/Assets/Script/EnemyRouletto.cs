@@ -47,7 +47,7 @@ public class EnemyRoulette : MonoBehaviour
     {
         if (!isSpinning)
         {
-            RandmResult = Random.Range(2, 3);
+            RandmResult = Random.Range(0, 4);
             initialRotationSpeed = Random.Range(minRotationSpeed, maxRotationSpeed);
             StartCoroutine(SpinRoulette());
         }
