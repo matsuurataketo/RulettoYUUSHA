@@ -361,7 +361,7 @@ public class RouletteController : MonoBehaviour
                 // タイムラインを再生
                 timelinemanager.PlayTimeline(9);
                 // タイムラインの再生が終了するまで待機
-                yield return new WaitUntil(() => timelinemanager.playableDirectors[2].state != PlayState.Playing);
+                yield return new WaitUntil(() => timelinemanager.playableDirectors[9].state != PlayState.Playing);
                 // HPを減少させる処理
                 HPmanegment.UpdateEnemyDownHP(hpChange);
                 break;
@@ -369,7 +369,7 @@ public class RouletteController : MonoBehaviour
                 // タイムラインを再生
                 timelinemanager.PlayTimeline(10);
                 // タイムラインの再生が終了するまで待機
-                yield return new WaitUntil(() => timelinemanager.playableDirectors[2].state != PlayState.Playing);
+                yield return new WaitUntil(() => timelinemanager.playableDirectors[10].state != PlayState.Playing);
                 // HPを減少させる処理
                 HPmanegment.UpdateEnemyDownHP(hpChange);
                 break;
