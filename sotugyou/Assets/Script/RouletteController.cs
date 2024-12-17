@@ -269,7 +269,7 @@ public class RouletteController : MonoBehaviour
                 StartCoroutine(PlayRouletteGame(result, 20f, "\n‰ñ•œ:"));
                 Debug.Log("‚É‚ª‚¢");
                 break;
-            case "Å‹­‰ñ•œ":
+            case "‹É‰ñ•œ":
                 StartCoroutine(PlayRouletteGame(result, 80f, "\n‰ñ•œ:"));
                 Debug.Log("‹Éã‰ñ•œ");
                 break;
@@ -388,7 +388,7 @@ public class RouletteController : MonoBehaviour
                 yield return new WaitUntil(() => timelinemanager.playableDirectors[5].state != PlayState.Playing);
                 HPmanegment.UpdatePlayerUPHP(hpChange);
                 break;
-            case "Å‹­‰ñ•œ":
+            case "‹É‰ñ•œ":
                 timelinemanager.PlayTimeline(5);
                 yield return new WaitUntil(() => timelinemanager.playableDirectors[5].state != PlayState.Playing);
                 HPmanegment.UpdatePlayerUPHP(hpChange);
