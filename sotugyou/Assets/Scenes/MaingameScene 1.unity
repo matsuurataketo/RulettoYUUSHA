@@ -8408,7 +8408,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &498770446
 Transform:
   m_ObjectHideFlags: 0
@@ -10306,7 +10306,7 @@ PlayableDirector:
   m_Enabled: 1
   serializedVersion: 3
   m_PlayableAsset: {fileID: 11400000, guid: e78ecbccc41f2e848a5d92eaafdd5107, type: 2}
-  m_InitialState: 1
+  m_InitialState: 0
   m_WrapMode: 2
   m_DirectorUpdateMode: 1
   m_InitialTime: 0
@@ -11529,7 +11529,7 @@ PlayableDirector:
   m_Enabled: 1
   serializedVersion: 3
   m_PlayableAsset: {fileID: 11400000, guid: 7757007129ace934289e085ca648aa98, type: 2}
-  m_InitialState: 1
+  m_InitialState: 0
   m_WrapMode: 2
   m_DirectorUpdateMode: 1
   m_InitialTime: 0
@@ -17437,7 +17437,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1053911155
 Transform:
   m_ObjectHideFlags: 0
@@ -18210,7 +18210,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1094258159
 Transform:
   m_ObjectHideFlags: 0
@@ -23062,12 +23062,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playableDirectors:
-  - {fileID: 0}
+  - {fileID: 685284668}
   - {fileID: 196361978}
   - {fileID: 1121422369}
   - {fileID: 937078761}
   - {fileID: 72094529}
   - {fileID: 1566203451}
+  - {fileID: 629257111}
+  - {fileID: 1786104583}
 --- !u!1001 &1390893064
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -29419,7 +29421,7 @@ PlayableDirector:
   m_Enabled: 1
   serializedVersion: 3
   m_PlayableAsset: {fileID: 11400000, guid: 355e2f45ef78ca34499fc99375c9f90b, type: 2}
-  m_InitialState: 1
+  m_InitialState: 0
   m_WrapMode: 2
   m_DirectorUpdateMode: 1
   m_InitialTime: 0
@@ -30616,7 +30618,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5588025233561594105, guid: f0b45fa946f835f42a0e65079ed69dab, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 1869
+      value: 1975
       objectReference: {fileID: 0}
     - target: {fileID: 5588025233561594105, guid: f0b45fa946f835f42a0e65079ed69dab, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -30642,6 +30644,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7561367482313522377, guid: f0b45fa946f835f42a0e65079ed69dab, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7839777441579159883, guid: f0b45fa946f835f42a0e65079ed69dab, type: 3}
       propertyPath: resultText
       value: 
@@ -30652,7 +30658,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7839777441579159883, guid: f0b45fa946f835f42a0e65079ed69dab, type: 3}
       propertyPath: maxRotationSpeed
-      value: 2500
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 7839777441579159883, guid: f0b45fa946f835f42a0e65079ed69dab, type: 3}
+      propertyPath: minRotationSpeed
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7839777441579159883, guid: f0b45fa946f835f42a0e65079ed69dab, type: 3}
       propertyPath: maxDecelerationRate
@@ -30660,7 +30670,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7839777441579159883, guid: f0b45fa946f835f42a0e65079ed69dab, type: 3}
       propertyPath: minDecelerationRate
-      value: 0.895
+      value: 0.9
       objectReference: {fileID: 0}
     - target: {fileID: 7839777441579159883, guid: f0b45fa946f835f42a0e65079ed69dab, type: 3}
       propertyPath: initialRotationSpeed
@@ -34631,7 +34641,7 @@ MonoBehaviour:
   fadeImage: {fileID: 959257895}
   fadeDuration: 1
   waitDurationVictory: 1
-  waitDurationDefeat: 1.5
+  waitDurationDefeat: 1
 --- !u!1001 &2135060678
 PrefabInstance:
   m_ObjectHideFlags: 0

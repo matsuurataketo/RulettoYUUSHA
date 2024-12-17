@@ -9,7 +9,7 @@ public class EnemyRoulette : MonoBehaviour
     [HideInInspector] public float rotatePerRoulette;
     [HideInInspector] public EnemyMaker rMaker;
 
-    private string result; // ルーレットの結果の格納変数
+    public string result; // ルーレットの結果の格納変数
     [SerializeField, Header("結果表示TEXT")] private TextMeshProUGUI resultText; // 結果の表示TEXT
     [Header("ルーレットの回転速度")] float initialRotationSpeed = 500f; // ルーレットの初期回転スピード
     private float rouletteSpeed; // ルーレットの速度を保持する変数
@@ -19,6 +19,7 @@ public class EnemyRoulette : MonoBehaviour
     [Header("ルーレットの最小減速率")] public float minDecelerationRate = 0.1f; // 最小減速率
     [Header("ルーレットの最大減速率")] public float maxDecelerationRate = 0.5f; // 最大減速率
     [Header("ルーレットの最低速度")] public float minimumSpeed = 4.5f; // 最低速度
+    public int RandmResult;
     public bool IsSpinning => isSpinning;
 
     HPmanegment HPmanegment;
@@ -46,6 +47,7 @@ public class EnemyRoulette : MonoBehaviour
     {
         if (!isSpinning)
         {
+            RandmResult = Random.Range(0, 4);
             initialRotationSpeed = Random.Range(minRotationSpeed, maxRotationSpeed);
             StartCoroutine(SpinRoulette());
         }
@@ -84,38 +86,37 @@ public class EnemyRoulette : MonoBehaviour
                 result = rMaker.choices[i - 1];
             }
         }
+        //switch (result)
+        //{
+        //    // 技選択ルーレット
+        //    case "きょう":
+        //        EnemyAttack();
+        //        HPmanegment.UpdatePlayerDownHP(45); 
+        //        break;
+        //    case "ちゅう":
+        //        EnemyAttack();
+        //        HPmanegment.UpdatePlayerDownHP(30);
+        //        break;
+        //    case "じゃく":
+        //        EnemyAttack();
+        //        HPmanegment.UpdatePlayerDownHP(15);
+        //        break;
+        //    case "みす":
+        //        EnemyAttack();
+        //        HPmanegment.UpdatePlayerDownHP(0);
+        //        break;
 
-        switch (result)
-        {
-            // 技選択ルーレット
-            case "きょう":
-                EnemyAttack();
-                HPmanegment.UpdatePlayerDownHP(45); 
-                break;
-            case "ちゅう":
-                EnemyAttack();
-                HPmanegment.UpdatePlayerDownHP(30);
-                break;
-            case "じゃく":
-                EnemyAttack();
-                HPmanegment.UpdatePlayerDownHP(15);
-                break;
-            case "みす":
-                EnemyAttack();
-                HPmanegment.UpdatePlayerDownHP(0);
-                break;
+        //    // 技選択ルーレット
+        //    case "nigai":
+        //        HPmanegment.UpdateEnemyUPHP(30);
+        //        break;
+        //    case "karai":
+        //        HPmanegment.UpdateEnemyUPHP(10);
+        //        break;
 
-            // 技選択ルーレット
-            case "nigai":
-                HPmanegment.UpdateEnemyUPHP(30);
-                break;
-            case "karai":
-                HPmanegment.UpdateEnemyUPHP(10);
-                break;
-
-            default:
-                break;
-        }
+        //    default:
+        //        break;
+        //}
     }
 
     private void EnemyAttack()

@@ -338,22 +338,62 @@ public class RouletteController : MonoBehaviour
         //RoulettoGame.SetActive(false);
         RightLeftImage.SetActive(false);
 
-        if (result == "強技" || result == "弱技" || result == "中技" || result == "確死")
+        switch (result)
         {
-            // タイムラインを再生
-            timelinemanager.PlayTimeline(2);
-
-            // タイムラインの再生が終了するまで待機
-            yield return new WaitUntil(() => timelinemanager.playableDirectors[2].state != PlayState.Playing);
-
-            // HPを減少させる処理
-            HPmanegment.UpdateEnemyDownHP(hpChange);
-        }
-        else if (result == "強回復" || result == "中回復" || result == "弱回復" || result == "最強回復")
-        {
-            timelinemanager.PlayTimeline(5);
-            yield return new WaitUntil(() => timelinemanager.playableDirectors[5].state != PlayState.Playing);
-            HPmanegment.UpdatePlayerUPHP(hpChange);
+            case "弱技":
+                // タイムラインを再生
+                timelinemanager.PlayTimeline(2);
+                // タイムラインの再生が終了するまで待機
+                yield return new WaitUntil(() => timelinemanager.playableDirectors[2].state != PlayState.Playing);
+                // HPを減少させる処理
+                HPmanegment.UpdateEnemyDownHP(hpChange);
+                break;
+            case "中技":
+                // タイムラインを再生
+                timelinemanager.PlayTimeline(0);
+                // タイムラインの再生が終了するまで待機
+                yield return new WaitUntil(() => timelinemanager.playableDirectors[0].state != PlayState.Playing);
+                // HPを減少させる処理
+                HPmanegment.UpdateEnemyDownHP(hpChange);
+                break;
+            case "強技":
+                // タイムラインを再生
+                timelinemanager.PlayTimeline(2);
+                // タイムラインの再生が終了するまで待機
+                yield return new WaitUntil(() => timelinemanager.playableDirectors[2].state != PlayState.Playing);
+                // HPを減少させる処理
+                HPmanegment.UpdateEnemyDownHP(hpChange);
+                break;
+            case "確死":
+                // タイムラインを再生
+                timelinemanager.PlayTimeline(2);
+                // タイムラインの再生が終了するまで待機
+                yield return new WaitUntil(() => timelinemanager.playableDirectors[2].state != PlayState.Playing);
+                // HPを減少させる処理
+                HPmanegment.UpdateEnemyDownHP(hpChange);
+                break;
+            case "弱回復":
+                timelinemanager.PlayTimeline(5);
+                yield return new WaitUntil(() => timelinemanager.playableDirectors[5].state != PlayState.Playing);
+                HPmanegment.UpdatePlayerUPHP(hpChange);
+                break;
+            case "中回復":
+                timelinemanager.PlayTimeline(5);
+                yield return new WaitUntil(() => timelinemanager.playableDirectors[5].state != PlayState.Playing);
+                HPmanegment.UpdatePlayerUPHP(hpChange);
+                break;
+            case "強回復":
+                timelinemanager.PlayTimeline(5);
+                yield return new WaitUntil(() => timelinemanager.playableDirectors[5].state != PlayState.Playing);
+                HPmanegment.UpdatePlayerUPHP(hpChange);
+                break;
+            case "最強回復":
+                timelinemanager.PlayTimeline(5);
+                yield return new WaitUntil(() => timelinemanager.playableDirectors[5].state != PlayState.Playing);
+                HPmanegment.UpdatePlayerUPHP(hpChange);
+                break;
+            default:
+                break;
         }
 
         if (HPmanegment.EnemyHP <= 0)
@@ -378,13 +418,42 @@ public class RouletteController : MonoBehaviour
         enemyroulette.SetActive(false);
         EnemyroulettoYazirusi.SetActive(false);
 
-        // タイムラインを再生
-        timelinemanager.PlayTimeline(1);
-        // タイムラインの再生が終了するまで待機
-        yield return new WaitUntil(() => timelinemanager.playableDirectors[1].state != PlayState.Playing);
-
         enemyScript.ShowResult(enemyScript.roulette.transform.eulerAngles.z);
-        yield return new WaitForSeconds(1);
+
+        switch (enemyScript.RandmResult)
+        {
+            case 0:
+                // タイムラインを再生
+                timelinemanager.PlayTimeline(1);
+                // タイムラインの再生が終了するまで待機
+                yield return new WaitUntil(() => timelinemanager.playableDirectors[1].state != PlayState.Playing);
+                HPmanegment.UpdatePlayerDownHP(15);
+                break;
+
+            case 1:
+                // タイムラインを再生
+                timelinemanager.PlayTimeline(7);
+                // タイムラインの再生が終了するまで待機
+                yield return new WaitUntil(() => timelinemanager.playableDirectors[7].state != PlayState.Playing);
+                HPmanegment.UpdatePlayerDownHP(30);
+                break;
+            case 2:
+                // タイムラインを再生
+                timelinemanager.PlayTimeline(1);
+                // タイムラインの再生が終了するまで待機
+                yield return new WaitUntil(() => timelinemanager.playableDirectors[1].state != PlayState.Playing);
+                HPmanegment.UpdatePlayerDownHP(45);
+                break;
+            case 3:
+                // タイムラインを再生
+                timelinemanager.PlayTimeline(6);
+                // タイムラインの再生が終了するまで待機
+                yield return new WaitUntil(() => timelinemanager.playableDirectors[6].state != PlayState.Playing);
+                HPmanegment.UpdatePlayerDownHP(0);
+                break;
+            default:
+                break;
+        }
 
         if (HPmanegment.PlayerHP <= 0)
         {
