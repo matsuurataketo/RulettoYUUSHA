@@ -440,9 +440,9 @@ public class RouletteController : MonoBehaviour
                 break;
             case 2:
                 // タイムラインを再生
-                timelinemanager.PlayTimeline(1);
+                timelinemanager.PlayTimeline(8);
                 // タイムラインの再生が終了するまで待機
-                yield return new WaitUntil(() => timelinemanager.playableDirectors[1].state != PlayState.Playing);
+                yield return new WaitUntil(() => timelinemanager.playableDirectors[8].state != PlayState.Playing);
                 HPmanegment.UpdatePlayerDownHP(45);
                 break;
             case 3:
