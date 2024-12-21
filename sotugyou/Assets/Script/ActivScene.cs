@@ -6,7 +6,7 @@ using TMPro;
 
 public class ActivScene : MonoBehaviour
 {
-    [SerializeField,Header("ターン表示画像")] private Image image;
+    [SerializeField,Header("ターン表示画像")] private Image[] image;
     [SerializeField,Header("ターン表示テキスト")] private TextMeshProUGUI text;
     private bool isIncreasing = true;
     private bool hasCompleted = false;
@@ -14,7 +14,7 @@ public class ActivScene : MonoBehaviour
 
     void Start()
     {
-        PleyerInitText();
+        //PleyerInitText();
         StartPlayerEffect();
     }
 
@@ -37,21 +37,21 @@ public class ActivScene : MonoBehaviour
     {
         hasCompleted = false;
         isIncreasing = true;
-        image.fillAmount = 0;
-        PleyerInitText();
-        StartCoroutine(EffectCoroutine());
+        image[0].fillAmount = 0;
+        //PleyerInitText();
+        StartCoroutine(EffectCoroutine(image[0]));
     }
 
     public void StartEnemyEffect()
     {
         hasCompleted = false;
         isIncreasing = true;
-        image.fillAmount = 0;
-        EnemyInitText();
-        StartCoroutine(EffectCoroutine());
+        image[1].fillAmount = 0;
+        //EnemyInitText();
+        StartCoroutine(EffectCoroutine(image[1]));
     }
 
-    private IEnumerator EffectCoroutine()
+    private IEnumerator EffectCoroutine(Image image)
     {
         while (!hasCompleted)
         {

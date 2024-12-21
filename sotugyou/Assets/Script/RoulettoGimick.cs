@@ -116,7 +116,7 @@ public class RoulettoGimick : MonoBehaviour
                     audioManager.PlaySound("正解");
                     Debug.Log("正しい方向に一回転完了！");
                     MinigameEfect.PlayParticle();
-                    CreaNumText.text = ("×" + CrearNum);
+                    CreaNumText.text = CrearNum.ToString();
                     // 次の方向を抽選して更新
                     UpdateDirection();
                     dviceimag.transform.rotation = Quaternion.Euler(0, 0, 0);
