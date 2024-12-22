@@ -33,6 +33,10 @@ public class RouletteMaker : MonoBehaviour
     private List<Image> rouletteImages = new List<Image>();
     private List<GameObject> rouletteUIImages = new List<GameObject>();
 
+    public Color flashColor = Color.white; // 一瞬光る色
+    public float flashDuration = 0.05f; // 光る時間（秒）
+    private Color originalColor; // 元の色を保存
+
     // 初期状態を保存するリスト
     private List<Quaternion> initialRotations = new List<Quaternion>();
     private List<float> initialFillAmounts = new List<float>();
@@ -133,6 +137,8 @@ public class RouletteMaker : MonoBehaviour
     {
         if (rouletteImages.Count > 1 && rouletteImages[1] != null) // nullチェックを追加
         {
+            originalColor = rouletteColors[3];
+            StartCoroutine(Flash());
             rouletteImages[1].fillAmount -= 0.005f;
             rController.rotatePerRouletteEndAngle[2] -= 1.8f;
             rController.rotatePerRouletteStartAngle[3] -= 1.8f;
@@ -150,5 +156,15 @@ public class RouletteMaker : MonoBehaviour
                 rouletteUIImages[i].transform.rotation = Quaternion.Euler(UIsaveRotation);
             }
         }
+    }
+    private System.Collections.IEnumerator Flash()
+    {
+        // 一瞬色を変更
+        rouletteImages[0].color = flashColor;
+        // 指定時間待つ
+        yield return new WaitForSeconds(flashDuration);
+        // 元の色に戻す
+        rouletteImages[0].color = originalColor;
+
     }
 }
