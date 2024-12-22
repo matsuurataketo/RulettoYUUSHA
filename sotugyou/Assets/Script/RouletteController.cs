@@ -306,6 +306,8 @@ public class RouletteController : MonoBehaviour
             for (int i = 0; i < Uilistcontroller.textElements.Count; i++)//Textリストを非表示/表示
                 Uilistcontroller.ToggleSpecificText(i);
             Uilistcontroller.ToggleSpecificImage(3);
+            Uilistcontroller.ToggleSpecificImage(10);
+            Uilistcontroller.ToggleSpecificImage(11);
         }
 
     }

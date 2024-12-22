@@ -44,16 +44,19 @@ public class RouletteMaker : MonoBehaviour
     private List<GameObject> instantiatedObjects = new List<GameObject>(); // インスタンス化したオブジェクトのリスト
 
     public int randomGame;
-    
+
+    UIListController Uilistcontroller;
+
 
     private void Start()
     {
-  
+        
     }
     public void RuleetSet()
     {
         // 前のターンのオブジェクトを削除
         ClearPreviousTurnObjects();
+        Uilistcontroller = FindObjectOfType<UIListController>();
         randomGame = Random.Range(0, 1);
         rotatePerRoulette = 360 / (float)(choices.Count);
         float rouletteRatesEnd = 0;
@@ -117,6 +120,8 @@ public class RouletteMaker : MonoBehaviour
         }
         rController.rMaker = this;
         rController.roulette = imageParentTransform.gameObject;
+        Uilistcontroller.ToggleSpecificImage(10);
+        Uilistcontroller.ToggleSpecificImage(11);
     }
 
     private void ClearPreviousTurnObjects()
