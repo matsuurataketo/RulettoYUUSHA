@@ -16,10 +16,12 @@ public class ScrollSelect : MonoBehaviour
     public RouletteMaker KaihukurMaker;
     UIListController uilistcontroller;
     public float BottonStart = 0;
+    AudioManager audioManager;
 
 
     void Start()
     {
+        audioManager = FindObjectOfType<AudioManager>();
         uilistcontroller = FindObjectOfType<UIListController>();
         uiManager = GameObject.Find("Canvas").GetComponent<UIManager>();
         // 最初のボタンを選択状態にする
@@ -34,12 +36,14 @@ public class ScrollSelect : MonoBehaviour
         float scroll = Input.GetAxis("Mouse ScrollWheel");
 
         // スクロール方向によって選択を変更する
-        if (scroll > 0 && buttons[0].gameObject.activeSelf)
+        if (scroll > 0 && buttons[0].gameObject.activeSelf&&selectedIndex==1)
         {
+            audioManager.PlaySound("カーソル");
             selectedIndex = 0;
         }
-        else if (scroll < 0 && buttons[1].gameObject.activeSelf)
+        else if (scroll < 0 && buttons[1].gameObject.activeSelf && selectedIndex == 0)
         {
+            audioManager.PlaySound("カーソル");
             selectedIndex = 1;
         }
 
@@ -78,7 +82,7 @@ public class ScrollSelect : MonoBehaviour
     {
         if (selectedIndex == 0)
         {
-            AudioManager audioManager = FindObjectOfType<AudioManager>();
+            
             audioManager.PlaySound("ルーレット決定SE");
             objectsToActivate[1].SetActive(false);
             objectsToActivate[2].SetActive(false);
