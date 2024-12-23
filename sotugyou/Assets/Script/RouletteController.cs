@@ -65,6 +65,7 @@ public class RouletteController : MonoBehaviour
     private float Warningtimer;
     private bool WarningisDisplaying = false;
     public float Startspace = 0;
+    float rotationStep = 0;
 
     private void Start()
     {
@@ -147,10 +148,10 @@ public class RouletteController : MonoBehaviour
 
                 rouletteSpeed += Input.GetAxis("Mouse ScrollWheel") * rotationSpeed; // ルーレットの速度を更新する
             }
-            float rotationStep = rouletteSpeed * Time.deltaTime;
+            rotationStep = rouletteSpeed * Time.deltaTime;
             currentAngle += rotationStep;
             roulette.transform.Rotate(Vector3.forward, rotationStep, Space.World);
-            deceleration = Random.Range(100f, 125f);
+            deceleration = Random.Range(100f, 200f);
             // 慣性減速
             rouletteSpeed = Mathf.MoveTowards(rouletteSpeed, 0f, deceleration * Time.deltaTime);
 
@@ -218,6 +219,8 @@ public class RouletteController : MonoBehaviour
                     scrollimagflag = false;
                     scrollWheelEnabled = false;
                     ScrollWheel = false;
+                    rotationStep = 0;
+                    currentAngle = 0;
                     ShowResult(roulette.transform.eulerAngles.z);
                 }
                     
