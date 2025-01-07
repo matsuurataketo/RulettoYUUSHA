@@ -248,6 +248,7 @@ MonoBehaviour:
   fadeImage: {fileID: 1959656424}
   fadeDuration: 1
   fadeIn: 1
+  audioManager: {fileID: 1693141773}
 --- !u!114 &361301357
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1397,6 +1398,57 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1526432041}
   m_CullTransparentMesh: 1
+--- !u!1 &1693141772
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1693141774}
+  - component: {fileID: 1693141773}
+  m_Layer: 0
+  m_Name: Audio
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1693141773
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1693141772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e099a48d572aac4c8ef6fd0a22a1842, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: "\u30DC\u30BF\u30F3"
+    clip: {fileID: 8300000, guid: cf485c3782daa3442b3f494f790dbff9, type: 3}
+    volume: 0.7
+    loop: 0
+  audioSourcePrefab: {fileID: 6420494920634176643, guid: 866b7edb2341bd94f9cf48559a0e4d1c, type: 3}
+  poolSize: 10
+--- !u!4 &1693141774
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1693141772}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 818.6103, y: 626.6608, z: -25.917908}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1959656423
 GameObject:
   m_ObjectHideFlags: 0
@@ -1480,3 +1532,4 @@ SceneRoots:
   - {fileID: 735691103}
   - {fileID: 361301355}
   - {fileID: 1420342334}
+  - {fileID: 1693141774}

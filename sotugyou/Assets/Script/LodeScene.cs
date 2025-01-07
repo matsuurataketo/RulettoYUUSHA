@@ -10,6 +10,7 @@ public class LodeScene : MonoBehaviour
     public Image fadeImage; // フェード用のImage
     public float fadeDuration = 1f; // フェード時間
     public bool fadeIn = true;
+    public AudioManager audioManager;
 
     // Start is called before the first frame update
     private void Start()
@@ -19,6 +20,7 @@ public class LodeScene : MonoBehaviour
     }
     public void OnClickGameStart()
     {
+        audioManager.PlaySound("ボタン");
         StartCoroutine(FadeOut(SceneName));
     }
     public void ExitGame()
@@ -33,6 +35,7 @@ public class LodeScene : MonoBehaviour
     }
     public void PushButton()
     {
+        audioManager.PlaySound("ボタン");
         Debug.Log("何かおこります");
     }
     private IEnumerator FadeIn()
