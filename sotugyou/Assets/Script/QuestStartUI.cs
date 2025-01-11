@@ -11,15 +11,18 @@ public class QuestStartUI : MonoBehaviour
     public float animationDuration = 2f; // アニメーションの長さ
     public float displayTime = 2f;       // 中央に留まる時間
     public AudioManager audioManager;
+    private EncountMove encountMove;
+    public Animator animator; // Animatorコンポーネント
 
     private float elapsedTime = 0f;
 
     void Start()
     {
+        encountMove = FindObjectOfType<EncountMove>();
         // 初期位置とサイズを設定
         questImage.localPosition = startPosition;
         questImage.localScale = startScale;
-
+        animator.SetBool("IsWork", false);
         // アニメーションを開始
         StartCoroutine(ShowQuestStart());
     }
@@ -37,6 +40,8 @@ public class QuestStartUI : MonoBehaviour
 
         // 完了後に他の処理を追加するならここに書く
         Debug.Log("Quest Start animation complete!");
+        encountMove.Hit = false;
+        animator.SetBool("IsWork", true);
     }
 
     private System.Collections.IEnumerator AnimateMoveAndScale(Vector3 fromPosition, Vector3 toPosition, Vector2 fromScale, Vector2 toScale, float duration,string audiostring)

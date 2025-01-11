@@ -8,7 +8,7 @@ public class EncountMove : MonoBehaviour
     public float speed = 5f; // Z•ûŒü‚ÌˆÚ“®‘¬“x
     public string targetSceneName = "MaingameScene 1"; // ‘JˆÚæ‚ÌƒV[ƒ“–¼
     public LodeScene lodeScene;
-    private bool Hit;
+    public bool Hit;
 
     private void Start()
     {

@@ -18804,6 +18804,7 @@ MonoBehaviour:
   speed: 30
   targetSceneName: MaingameScene 1
   lodeScene: {fileID: 992924026}
+  Hit: 0
 --- !u!1001 &1196373569
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -32450,6 +32451,7 @@ MonoBehaviour:
   animationDuration: 0.5
   displayTime: 1.5
   audioManager: {fileID: 992924027}
+  animator: {fileID: 1194946879}
 --- !u!1001 &1992453760
 PrefabInstance:
   m_ObjectHideFlags: 0
