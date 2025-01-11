@@ -20,7 +20,8 @@ public class LodeScene : MonoBehaviour
     }
     public void OnClickGameStart()
     {
-        audioManager.PlaySound("ボタン");
+        if (audioManager != null)
+            audioManager.PlaySound("ボタン");
         StartCoroutine(FadeOut(SceneName));
     }
     public void ExitGame()
@@ -54,7 +55,7 @@ public class LodeScene : MonoBehaviour
         fadeImage.color = color;
         fadeImage.gameObject.SetActive(false);
     }
-    private IEnumerator FadeOut(string sceneName)
+    public IEnumerator FadeOut(string sceneName)
     {
         fadeImage.gameObject.SetActive(true);
         Color color = fadeImage.color;
