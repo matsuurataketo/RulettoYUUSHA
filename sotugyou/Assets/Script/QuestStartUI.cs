@@ -40,8 +40,9 @@ public class QuestStartUI : MonoBehaviour
 
         // Š®—¹Œã‚É‘¼‚Ìˆ—‚ğ’Ç‰Á‚·‚é‚È‚ç‚±‚±‚É‘‚­
         Debug.Log("Quest Start animation complete!");
-        encountMove.Hit = false;
         animator.SetBool("IsWork", true);
+        encountMove.Hit = false;
+        
     }
 
     private System.Collections.IEnumerator AnimateMoveAndScale(Vector3 fromPosition, Vector3 toPosition, Vector2 fromScale, Vector2 toScale, float duration,string audiostring)
