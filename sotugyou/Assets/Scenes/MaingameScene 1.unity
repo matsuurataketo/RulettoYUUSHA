@@ -8163,8 +8163,8 @@ MonoBehaviour:
     volume: 1
     loop: 0
   - name: "\u30DC\u30BF\u30F3\u9078\u629E\u30AB\u30A6\u30F3\u30C8\u30C0\u30A6\u30F3\u30BF\u30A4\u30DE\u30FC"
-    clip: {fileID: 8300000, guid: d412e06a66d8f2c4888a41482a7fb6c5, type: 3}
-    volume: 0.75
+    clip: {fileID: 8300000, guid: d4e5bc663e3ee244b8f33800c18e1210, type: 3}
+    volume: 1
     loop: 1
   - name: "HP\u30C0\u30A6\u30F3\u306E\u97F3"
     clip: {fileID: 8300000, guid: 3952e50ab26feda42acba16dc1e86601, type: 3}
