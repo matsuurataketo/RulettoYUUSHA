@@ -249,15 +249,15 @@ public class RouletteController : MonoBehaviour
         switch (result)
         {
             case "強技":
-                StartCoroutine(PlayRouletteGame(result, 35, "\n攻撃:"));
+                StartCoroutine(PlayRouletteGame(result, 20, "\n攻撃:"));
                 Debug.Log(result);
                 break;
             case "弱技":
-                StartCoroutine(PlayRouletteGame(result, 15, "\n攻撃:"));
+                StartCoroutine(PlayRouletteGame(result, 10, "\n攻撃:"));
                 Debug.Log("じゃく");
                 break;
             case "中技":
-                StartCoroutine(PlayRouletteGame(result, 25, "\n攻撃:"));
+                StartCoroutine(PlayRouletteGame(result, 15, "\n攻撃:"));
                 Debug.Log("中");
                 break;
             case "確死":
@@ -441,14 +441,14 @@ public class RouletteController : MonoBehaviour
                 timelinemanager.PlayTimeline(7);
                 // タイムラインの再生が終了するまで待機
                 yield return new WaitUntil(() => timelinemanager.playableDirectors[7].state != PlayState.Playing);
-                HPmanegment.UpdatePlayerDownHP(30);
+                HPmanegment.UpdatePlayerDownHP(25);
                 break;
             case 2:
                 // タイムラインを再生
                 timelinemanager.PlayTimeline(8);
                 // タイムラインの再生が終了するまで待機
                 yield return new WaitUntil(() => timelinemanager.playableDirectors[8].state != PlayState.Playing);
-                HPmanegment.UpdatePlayerDownHP(45);
+                HPmanegment.UpdatePlayerDownHP(35);
                 break;
             case 3:
                 // タイムラインを再生
