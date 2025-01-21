@@ -134,7 +134,10 @@ public class RouletteController : MonoBehaviour
             }
             if (!scrollimagflag && totalRotations > 0)
             {
-                Uilistcontroller.ToggleSpecificImage(1);
+                if (ScrollSelect.selectedIndex == 1)
+                    Uilistcontroller.ToggleSpecificImage(1);
+                if (ScrollSelect.selectedIndex == 0)
+                    Uilistcontroller.ToggleSpecificImage(12);
                 Uilistcontroller.ToggleSpecificImage(4);
                 scrollimagflag = true;
             }
@@ -304,8 +307,10 @@ public class RouletteController : MonoBehaviour
 
             if (rMaker.randomGame == 1)
                 Uilistcontroller.ToggleSpecificImage(0);  // Imageリストの最初の要素を表示/非表示にする
-            if (rMaker.randomGame == 0)
+            if (rMaker.randomGame == 0&&ScrollSelect.selectedIndex==1)
                 Uilistcontroller.ToggleSpecificImage(1);  // Imageリストの最初の要素を表示/非表示にする
+            if (rMaker.randomGame == 0 && ScrollSelect.selectedIndex == 0)
+                Uilistcontroller.ToggleSpecificImage(12);
             for (int i = 0; i < Uilistcontroller.textElements.Count; i++)//Textリストを非表示/表示
                 Uilistcontroller.ToggleSpecificText(i);
             Uilistcontroller.ToggleSpecificImage(3);
