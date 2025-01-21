@@ -59,7 +59,7 @@ public class RoulettoGimick : MonoBehaviour
         if (!gameActive)
         {
             CrearNum = 0;
-            CreaNumText.text = ("~" + CrearNum);
+            CreaNumText.text = ("" + CrearNum);
             UpdateDirection(); // Å‰‚Ì•ûŒü‚ğİ’è
             gameActive = true;
             timer = 0f;
